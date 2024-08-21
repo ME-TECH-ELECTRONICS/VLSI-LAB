@@ -1,0 +1,26 @@
+module basicGates(A,B,NY,AY,OY,NAY,NOY,XY,XNY);
+	input A,B;
+	output NY,AY,OY,NAY,NOY,XY,XNY;
+	not(NY,A);
+	and(AY, A, B);
+	or(OY, A, B);
+	nand(NAY, A, B);
+	nor(NOY, A, B);
+	xor(XY, A, B);
+	xnor(XNY,A,B);
+endmodule
+
+//Test bench
+
+module basicGates_tb;
+	reg a,b;
+	wire NY,AY,OY,NAY,NOY,XY,XNY;
+	basicGates dut(a,b,NY,AY,OY,NAY,NOY,XY,XNY);
+	initial begin
+		a=1'b0; b=1'b0; #10;
+		a=1'b0; b=1'b1; #10;
+		a=1'b1; b=1'b0; #10;
+		a=1'b1; b=1'b1; #10;
+	end
+endmodule
+	
