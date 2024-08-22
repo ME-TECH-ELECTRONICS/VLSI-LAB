@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/flow-level/fulladder
+vfullAdder
+Z0 !s110 1724288900
+!i10b 1
+!s100 ZPJ48fB<Nm384F3n:@cTU2
+IBKmDcfeS[S`;0Ld7n18V^0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder
+Z3 w1724288892
+Z4 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v
+Z5 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1724288900.000000
+Z8 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nfull@adder
+vfullAdder_tb
+R0
+!i10b 1
+!s100 H5bX^PDiQK`Vao9LU5?]82
+I<`4EOY[L;lQ^C8JGlXm=]2
+R1
+R2
+R3
+R4
+R5
+L0 14
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nfull@adder_tb
