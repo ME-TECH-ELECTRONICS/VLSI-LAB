@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder
+vhalfAdder
+Z0 !s110 1724287062
+!i10b 1
+!s100 mN0zgiWa4`S7D@8[_lbaB0
+I>fiXVRD:FCSTf[gVeXJ?=2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/flow-level/halfadder
+Z3 w1724287047
+Z4 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v
+Z5 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1724287062.000000
+Z8 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nhalf@adder
+vhalfAdder_tb
+R0
+!i10b 1
+!s100 M7lPIzTD49D3O<HEA;BOC0
+IfOOaFFUm^eeHSbi@8M@M:3
+R1
+R2
+R3
+R4
+R5
+L0 11
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nhalf@adder_tb
