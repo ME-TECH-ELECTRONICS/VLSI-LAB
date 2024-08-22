@@ -1,1 +1,9 @@
+C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/fulladder/fuladder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module fullAdder
+-- Compiling module fullAdder_tb
 
+Top level modules:
+	fullAdder_tb
+
+} {} {}}
