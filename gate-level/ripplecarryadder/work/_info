@@ -30,6 +30,50 @@ Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_
 Z10 o-work work
 Z11 tCvgOpt 0
 nfull@adder
+vhalfAdder
+Z12 !s110 1724291452
+!i10b 1
+!s100 mN0zgiWa4`S7D@8[_lbaB0
+I>fiXVRD:FCSTf[gVeXJ?=2
+R1
+R2
+Z13 w1724287047
+Z14 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v
+Z15 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z16 !s108 1724291452.000000
+Z17 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v|
+Z18 !s90 -reportprogress|300|-work|work|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/gate-level/halfAdder/halfadder.v|
+!i113 1
+R10
+R11
+nhalf@adder
+vhalfAdder_tb
+R12
+!i10b 1
+!s100 M7lPIzTD49D3O<HEA;BOC0
+IfOOaFFUm^eeHSbi@8M@M:3
+R1
+R2
+R13
+R14
+R15
+L0 11
+R6
+r1
+!s85 0
+31
+R16
+R17
+R18
+!i113 1
+R10
+R11
+nhalf@adder_tb
 vrippleCarryAdder_4b
 R0
 !i10b 1
