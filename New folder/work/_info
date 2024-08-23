@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/
 vbasicGates
-Z0 !s110 1724376427
+Z0 !s110 1724398107
 !i10b 1
 !s100 ??ZY32SPhS6Z9;Q6eS?LJ1
 IeG7CaCfe`=[[4FmQ7@>jl3
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1724376427.000000
+Z7 !s108 1724398107.000000
 Z8 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v|
 !i113 1
@@ -52,45 +52,87 @@ R9
 R10
 R11
 nbasic@gates_tb
+vdemux_1x2
+Z12 !s110 1724398108
+!i10b 1
+!s100 4YARgWnnX]D>bI1oAoBSe0
+I5LahZU8PImMU2Rj4k8Qa70
+R1
+R2
+Z13 w1724398102
+Z14 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v
+Z15 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v
+L0 2
+R6
+r1
+!s85 0
+31
+Z16 !s108 1724398108.000000
+Z17 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v|
+Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v|
+!i113 1
+R10
+R11
+vdemux_1x4
+R12
+!i10b 1
+!s100 gVlKNeMKSh:FAnl;JWZb23
+I8951=Y8l:W[B26eABHSKh0
+R1
+R2
+R13
+R14
+R15
+L0 9
+R6
+r1
+!s85 0
+31
+R16
+R17
+R18
+!i113 1
+R10
+R11
 vdemux_2x1
-R0
+R12
 !i10b 1
 !s100 JLFfkWK`Rh<U4>^5D=fnN1
 I`afEJ22dXcFOPZmg^a3190
 R1
 R2
-Z12 w1724376424
-Z13 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
-Z14 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
+Z19 w1724376424
+Z20 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
+Z21 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
 L0 1
 R6
 r1
 !s85 0
 31
-R7
-Z15 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
-Z16 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
+R16
+Z22 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
+Z23 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
 !i113 1
 R10
 R11
 vdemux_2x1_tb
-R0
+R12
 !i10b 1
 !s100 I6n?DeznJc=MXcKIaPCLI1
 ILid5L?VbM7@S`PMZ3S^bZ1
 R1
 R2
-R12
-R13
-R14
+R19
+R20
+R21
 L0 10
 R6
 r1
 !s85 0
 31
-R7
-R15
 R16
+R22
+R23
 !i113 1
 R10
 R11
@@ -101,17 +143,17 @@ R0
 IEXDh5Q2[g7^RCo2=H4Zl:3
 R1
 R2
-Z17 w1724372435
-Z18 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v
-Z19 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v
+Z24 w1724372435
+Z25 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v
+Z26 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v
 L0 1
 R6
 r1
 !s85 0
 31
 R7
-Z20 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v|
-Z21 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v|
+Z27 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v|
+Z28 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v|
 !i113 1
 R10
 R11
@@ -123,44 +165,44 @@ R0
 IHS8Qj]E2]_7Y@Cla5MY[d2
 R1
 R2
-R17
-R18
-R19
+R24
+R25
+R26
 L0 11
 R6
 r1
 !s85 0
 31
 R7
-R20
-R21
+R27
+R28
 !i113 1
 R10
 R11
 nfull@adder_tb
 vmux_2x1
-R0
+R12
 !i10b 1
 !s100 bLZAV<`Om:Q=Jh3PL@HSG0
 Id?[X>d30i00M>5`h4oi;@2
 R1
 R2
-Z22 w1724376089
-Z23 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
-Z24 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
+Z29 w1724376089
+Z30 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
+Z31 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
 L0 1
 R6
 r1
 !s85 0
 31
-R7
-Z25 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
-Z26 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
+R16
+Z32 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
+Z33 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
 !i113 1
 R10
 R11
 vmux_2x1_tb
-R0
+R12
 !i10b 1
 !s100 [2:Q9DaWPi]l;@zn2zX`h2
 IT01kYAb;FKehh?eC?OFUR1
@@ -174,51 +216,51 @@ R6
 r1
 !s85 0
 31
-R7
+R16
 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_1x2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_1x2.v|
 !i113 1
 R10
 R11
 vmux_4x1
-R0
+R12
 !i10b 1
 !s100 52cV^U0D`2UHh_^CkAfT>0
 Io3o1VQ]3kYCcR2JdcT@Ki2
 R1
 R2
-R22
-R23
-R24
+R29
+R30
+R31
 L0 8
 R6
 r1
 !s85 0
 31
-R7
-R25
-R26
+R16
+R32
+R33
 !i113 1
 R10
 R11
 vmux_4x1_tb
-R0
+R12
 !i10b 1
 !s100 0QWL:CiX<;Le;jcH3S@TR1
 IR0[:A7kg21J5B1AgHF4i[0
 R1
 R2
-R22
-R23
-R24
+R29
+R30
+R31
 L0 18
 R6
 r1
 !s85 0
 31
-R7
-R25
-R26
+R16
+R32
+R33
 !i113 1
 R10
 R11
@@ -229,17 +271,17 @@ R0
 IBBN8EbdX_@oW0<BTE80z43
 R1
 R2
-Z27 w1724372723
-Z28 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v
-Z29 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v
+Z34 w1724372723
+Z35 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v
+Z36 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v
 L0 9
 R6
 r1
 !s85 0
 31
 R7
-Z30 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v|
-Z31 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v|
+Z37 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v|
+Z38 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v|
 !i113 1
 R10
 R11
@@ -251,17 +293,17 @@ R0
 IL1@`J4X@OlaWWfln04?7T2
 R1
 R2
-R27
-R28
-R29
+R34
+R35
+R36
 L0 23
 R6
 r1
 !s85 0
 31
 R7
-R30
-R31
+R37
+R38
 !i113 1
 R10
 R11
