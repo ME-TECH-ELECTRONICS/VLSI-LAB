@@ -1,4 +1,13 @@
-{C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v}
+{C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_2x1
+-- Compiling module mux_4x1
+-- Compiling module mux_4x1_tb
+
+Top level modules:
+	mux_4x1_tb
+
+} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module basicGates
 -- Compiling module basicGates_tb
@@ -16,5 +25,30 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	fullAdder_tb
+
+} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_1x2.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_1x2.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_2x1
+-- Compiling module mux_2x1_tb
+
+Top level modules:
+	mux_2x1_tb
+
+} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module demux_2x1
+-- Compiling module demux_2x1_tb
+
+Top level modules:
+	demux_2x1_tb
+
+} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/ripplecarryadder.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module fullAdder
+-- Compiling module rippleCarryAdder_4b
+-- Compiling module rippleCarryAdder_4b_tb
+
+Top level modules:
+	rippleCarryAdder_4b_tb
 
 } {} {}}
