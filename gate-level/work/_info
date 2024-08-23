@@ -1,0 +1,268 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/
+vbasicGates
+Z0 !s110 1724371967
+!i10b 1
+!s100 B=CY5_375VaRc?eGF@hNA0
+I`[c9Ozfao`B1]iBnUbA7e2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder
+Z3 w1724371221
+Z4 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v
+Z5 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1724371967.000000
+Z8 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v|
+Z9 !s90 -reportprogress|300|-work|work|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/basicgates.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nbasic@gates
+vbasicGates_tb
+R0
+!i10b 1
+!s100 ]Ofo?faI8z5A^Ld]_K[3z0
+IT:W_ilFE7`_Wd9fjV]SlR1
+R1
+R2
+R3
+R4
+R5
+L0 15
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nbasic@gates_tb
+vdemux_2x1
+Z12 !s110 1724371608
+!i10b 1
+!s100 k2cNK2A^KZMmC:I_gPTke0
+I51Q4EMYQnmjJzNM:Z@4b20
+R1
+R2
+Z13 w1724369683
+Z14 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
+Z15 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z16 !s108 1724371608.000000
+Z17 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
+Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x2.v|
+!i113 1
+R10
+R11
+vdemux_2x1_tb
+R12
+!i10b 1
+!s100 f1lFK]6ei7Jdz`ZHH:7nO0
+I@NYP]iiPGQfOm:Z6YNTC90
+R1
+R2
+R13
+R14
+R15
+Z19 L0 12
+R6
+r1
+!s85 0
+31
+R16
+R17
+R18
+!i113 1
+R10
+R11
+vfullAdder
+R12
+!i10b 1
+!s100 ZPJ48fB<Nm384F3n:@cTU2
+IZ8WCL0JP:=m`lZ[ccCGEj1
+R1
+R2
+Z20 w1724371383
+Z21 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fulladder.v
+Z22 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fulladder.v
+L0 1
+R6
+r1
+!s85 0
+31
+R16
+Z23 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fulladder.v|
+Z24 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fulladder.v|
+!i113 1
+R10
+R11
+nfull@adder
+vfullAdder_tb
+R12
+!i10b 1
+!s100 H5bX^PDiQK`Vao9LU5?]82
+IA8@Bnf9OL1IKP3o<M<=zN3
+R1
+R2
+R20
+R21
+R22
+L0 14
+R6
+r1
+!s85 0
+31
+R16
+R23
+R24
+!i113 1
+R10
+R11
+nfull@adder_tb
+vhalfAdder
+R12
+!i10b 1
+!s100 mN0zgiWa4`S7D@8[_lbaB0
+I6AYOJ;A6e>nOPA5dgFJQ?0
+R1
+R2
+Z25 w1724371604
+Z26 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v
+Z27 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v
+L0 1
+R6
+r1
+!s85 0
+31
+R16
+Z28 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v|
+Z29 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v|
+!i113 1
+R10
+R11
+nhalf@adder
+vhalfAdder_tb
+R12
+!i10b 1
+!s100 M7lPIzTD49D3O<HEA;BOC0
+IDJm3cQYSE9XIC=G9HYm:Y1
+R1
+R2
+R25
+R26
+R27
+L0 11
+R6
+r1
+!s85 0
+31
+R16
+R28
+R29
+!i113 1
+R10
+R11
+nhalf@adder_tb
+vmux_2x1
+R12
+!i10b 1
+!s100 KiL^T:]oPP0BYJmAAi=Vl1
+I^Ca@6lNf7[kID268=CQ>Q3
+R1
+R2
+Z30 w1724368757
+Z31 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
+Z32 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v
+L0 1
+R6
+r1
+!s85 0
+31
+R16
+Z33 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
+Z34 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/mux_4x1.v|
+!i113 1
+R10
+R11
+vmux_2x1_tb
+R12
+!i10b 1
+!s100 DoN6=JdEXA@^`Mk_7NWaD3
+IGlN;jTY62HbDm8]6<nNLf0
+R1
+R2
+w1724367277
+8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/multiplexer.v
+FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/multiplexer.v
+L0 13
+R6
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/multiplexer.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/multiplexer.v|
+!i113 1
+R10
+R11
+vmux_4x1
+R12
+!i10b 1
+!s100 mE5<Z44jHVS7Xeb_I@N5g0
+IFW>R8LT=43C0]:G_M?^Od2
+R1
+R2
+R30
+R31
+R32
+R19
+R6
+r1
+!s85 0
+31
+R16
+R33
+R34
+!i113 1
+R10
+R11
+vmux_4x1_tb
+R12
+!i10b 1
+!s100 GESYb@iHObo1<c;^KkDEi1
+I?RJ<>J=5<5XE;3nSQKEiR2
+R1
+R2
+R30
+R31
+R32
+L0 22
+R6
+r1
+!s85 0
+31
+R16
+R33
+R34
+!i113 1
+R10
+R11
