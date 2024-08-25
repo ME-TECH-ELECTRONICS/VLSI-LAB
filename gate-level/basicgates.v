@@ -17,10 +17,19 @@ module basicGates_tb;
 	wire NY,AY,OY,NAY,NOY,XY,XNY;
 	basicGates hh(a,b,NY,AY,OY,NAY,NOY,XY,XNY);
 	initial begin
+		/* verilator lint_off STMTDLY */
 		a=1'b0; b=1'b0; #10;
 		a=1'b0; b=1'b1; #10;
 		a=1'b1; b=1'b0; #10;
 		a=1'b1; b=1'b1; #10;
+		
+		$dumpfile("waveform.vcd");
+    	$dumpvars(0, basicGates_tb);
+    	#100;  // Run for some time
+    	$finish;
+		/* verilator lint_on STMTDLY */
 	end
+
+	
 endmodule
 	
