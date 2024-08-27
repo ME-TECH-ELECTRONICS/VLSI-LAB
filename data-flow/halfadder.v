@@ -1,8 +1,8 @@
 module halfAdder(s,c,a,b);
 	input a,b;
 	output s,c;
-	xor(s,a,b);
-    and(c,a,b);
+	assign s = a^b;
+	assign c = a&b;
 endmodule
 
 //Test Bench
