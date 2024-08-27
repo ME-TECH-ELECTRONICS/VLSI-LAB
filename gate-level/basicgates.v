@@ -1,4 +1,3 @@
-
 module basicGates(A,B,NY,AY,OY,NAY,NOY,XY,XNY);
 	input A,B;
 	output NY,AY,OY,NAY,NOY,XY,XNY;
@@ -13,21 +12,17 @@ endmodule
 
 //Test bench
 
-module basicGates_tb;
+module basicgates_tb;
 	reg a,b;
 	wire NY,AY,OY,NAY,NOY,XY,XNY;
 	basicGates hh(a,b,NY,AY,OY,NAY,NOY,XY,XNY);
 	initial begin
-		/* verilator lint_off STMTDLY */
-
-		a=0; b=0; #10;
-		a=0; b=1; #10;
-		a=1; b=0; #10;
-		a=1; b=1; #10;
-		#100;
-		/* verilator lint_on STMTDLY */
+		a=0; b=0; #10ns;
+		a=0; b=1; #10ns;
+		a=1; b=0; #10ns;
+		a=1; b=1; #10ns;
+		#100ns;
+    	$finish;
 	end
-
-	
 endmodule
 	
