@@ -1,5 +1,5 @@
-module mux_4x1(y,s0,s1,di);
-    input s0,s1;
+module mux_4x1(y,si,di);
+    input[1:0] si;
     input[3:0] di; 
     output y;
     wire s_0,s_1,t0,t1,t2,t3;
@@ -13,11 +13,11 @@ module mux_4x1(y,s0,s1,di);
 endmodule
 
 module mux_16x1(y,s0,s1,s2,s3,di);
-    input s0,s1,s2,s3;
+    input[3:0] si;
     input[15:0] di;
     output y;
     wire[3:0] ti;
-    mux_4x1 mx0(ti[0],s0,s1,di[3:0]);
+    mux_4x1 mx0(ti[0],s[],s1,di[3:0]);
     mux_4x1 mx1(ti[1],s0,s1,di[7:4]);
     mux_4x1 mx2(ti[2],s0,s1,di[11:8]);
     mux_4x1 mx3(ti[3],s0,s1,di[15:12]);
@@ -28,5 +28,5 @@ module mux_16x1_tb();
     reg[15:0] di;
     reg s0,s1;
     wire y;
-    mux_16x1 dut(y);
+    mux_16x1 dut(y,);
 endmodule
