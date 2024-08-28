@@ -26,7 +26,7 @@ endmodule
 
 module mux_16x1_tb();
     reg[15:0] di;
-    reg s0,s1;
+    reg[4:0] si;
     wire y;
-    mux_16x1 dut(y,);
+    mux_16x1 dut(y,si,di);
 endmodule
