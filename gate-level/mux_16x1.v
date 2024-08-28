@@ -13,5 +13,12 @@ endmodule
 
 module mux_16x1(y,s0,s1,s2,s3,di);
     input s0,s1,s2,s3;
-    input[15:0]
+    input[15:0] di;
+    output y;
+    wire[3:0];
+    mux_4x1 mx0()
+    mux_4x1 mx1()
+    mux_4x1 mx2()
+    mux_4x1 mx3()
+    mux_4x1 mx4()
 endmodule
