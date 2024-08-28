@@ -11,4 +11,7 @@ module mux_4x1(y,s0,s1,d0,d1,d2,d3);
     or(y,t0 t1,t2,t3);
 endmodule
 
-module mux_16x1(y,s0,s1,s2,s3,di)
+module mux_16x1(y,s0,s1,s2,s3,di);
+    input s0,s1,s2,s3;
+    input[15:0]
+endmodule
