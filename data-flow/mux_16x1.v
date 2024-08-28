@@ -2,14 +2,7 @@ module mux_4x1(y,si,di);
     input[1:0] si;
     input[3:0] di; 
     output y;
-    wire s_0,s_1,t0,t1,t2,t3;
-    not(s_0,si[0]);
-    not(s_1,si[1]);
-    and(t0,s_0,s_1,di[0]);
-    and(t1,s_0,si[1],di[1]);
-    and(t2,si[0],s_1,di[2]);
-    and(t3,si[0],si[1],di[3]);
-    or(y,t0 t1,t2,t3);
+    assign y = ((~si[0])&(~si[1])&di[0]) | ((~si[0])&(si[1])&di[1]) | ((si[0])&(~si[1])&di[2]) | ((si[0])&(si[1])&di[3]);
 endmodule
 
 module mux_16x1(y,si,di);
