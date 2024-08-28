@@ -22,4 +22,5 @@ module mux_16x1(y,s0,s1,s2,s3,di);
     mux_4x1 mx2(ti[2],s0,s1,di[11:8]);
     mux_4x1 mx3(ti[3],s0,s1,di[15:12]);
     mux_4x1 mx4(y,s2,s3,ti);
+    
 endmodule
