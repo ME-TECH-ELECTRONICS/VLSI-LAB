@@ -19,4 +19,6 @@ module basicGates_tb();
     wire ny,ay,oy,nay,noy,xoy,xny;
     
     basicGates dut(a,b,ny,ay,oy,nay,noy,xoy,xny);
+    initial begin
+    end
 endmodule
