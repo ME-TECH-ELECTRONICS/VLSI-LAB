@@ -1,0 +1,352 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/
+vbasicGates
+Z0 !s110 1724913214
+!i10b 1
+!s100 _n<Fe;@iOM;6d>ZY=W^4Z2
+IoRDR8>1?]8j08XdgzcKi21
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral
+Z3 w1724906912
+Z4 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v
+Z5 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1724913214.000000
+Z8 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nbasic@gates
+vbasicGates_tb
+R0
+!i10b 1
+!s100 HSKZoj]4n`_A=O@K=LHfG2
+IFg?nKjVKLd865[gb^gL8Y1
+R1
+R2
+R3
+R4
+R5
+L0 17
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+nbasic@gates_tb
+vfullAdder
+Z12 !s110 1724913215
+!i10b 1
+!s100 al3e>^LW[gJ37UK_NNoMl1
+I_6X:RT2[z[cB2IjDJZDIO1
+R1
+R2
+Z13 w1724908223
+Z14 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v
+Z15 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z16 !s108 1724913215.000000
+Z17 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v|
+Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v|
+!i113 1
+R10
+R11
+nfull@adder
+vfullAdder_tb
+R12
+!i10b 1
+!s100 GaC1HdXiR=5z2A41H4O;93
+I4;V4l`kn]1Q5GL4JEa8WR1
+R1
+R2
+R13
+R14
+R15
+Z19 L0 11
+R6
+r1
+!s85 0
+31
+R16
+R17
+R18
+!i113 1
+R10
+R11
+nfull@adder_tb
+vfullsubstractor
+R12
+!i10b 1
+!s100 YPJgHD7<de75dQ_hDo1>g0
+IT:dfJKm;MR[;:6TNW?4F>1
+R1
+R2
+Z20 w1724908366
+Z21 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v
+Z22 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v
+L0 10
+R6
+r1
+!s85 0
+31
+R16
+Z23 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v|
+Z24 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v|
+!i113 1
+R10
+R11
+vfullsubstractor_tb
+R12
+!i10b 1
+!s100 ao_<j]P;]4AAgnANdP0;`3
+IH0FCaMLUbme[78EjjE6cF3
+R1
+R2
+R20
+R21
+R22
+L0 19
+R6
+r1
+!s85 0
+31
+R16
+R23
+R24
+!i113 1
+R10
+R11
+vhalfAdder
+R0
+!i10b 1
+!s100 FCM234i`OdYEDe1<C@0aX3
+ITI;h3V?TPlmj?6]iAoj?:2
+R1
+R2
+Z25 w1724907959
+Z26 8C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\halfadder.v
+Z27 FC:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\halfadder.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+Z28 !s107 C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\halfadder.v|
+Z29 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\halfadder.v|
+!i113 1
+R10
+R11
+nhalf@adder
+vhalfAdder_tb
+R0
+!i10b 1
+!s100 HS^h6hQBmo]W6RG?>fcn60
+I^^HhDREYkHY0`>7JH^MAO0
+R1
+R2
+R25
+R26
+R27
+L0 12
+R6
+r1
+!s85 0
+31
+R7
+R28
+R29
+!i113 1
+R10
+R11
+nhalf@adder_tb
+vhalfsubstractor
+R12
+!i10b 1
+!s100 E]OQ`;HKjkV?zb?RQ=JD63
+Il]LQMUb5>lz=ARIA5F[Z=3
+R1
+R2
+Z30 w1724908517
+Z31 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
+Z32 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
+L0 1
+R6
+r1
+!s85 0
+31
+R16
+Z33 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v|
+Z34 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v|
+!i113 1
+R10
+R11
+vhalfsubstractor_tb
+R12
+!i10b 1
+!s100 TDA4dPEI:P2NleO[9g`6X1
+IB^nFFeaz4c653VDD;N^C_2
+R1
+R2
+R30
+R31
+R32
+R19
+R6
+r1
+!s85 0
+31
+R16
+R33
+R34
+!i113 1
+R10
+R11
+vmux_16x1
+R12
+!i10b 1
+!s100 WFhm0SU=G]LVd]IeCc_^z2
+IW3Vd@l4Qa4RSoUzzMVbj32
+R1
+R2
+Z35 w1724910228
+Z36 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v
+Z37 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v
+L0 8
+R6
+r1
+!s85 0
+31
+R16
+Z38 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v|
+Z39 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v|
+!i113 1
+R10
+R11
+vmux_16x1_tb
+R12
+!i10b 1
+!s100 QBM5Zi=c2hgi=dkN3LPHL3
+IIDXV`>TAUk;Ydb7e?R4FS0
+R1
+R2
+R35
+R36
+R37
+L0 21
+R6
+r1
+!s85 0
+31
+R16
+R38
+R39
+!i113 1
+R10
+R11
+vmux_2x1
+Z40 !s110 1724913378
+!i10b 1
+!s100 bLZAV<`Om:Q=Jh3PL@HSG0
+IID?OlBz>TEX3jClWIZJ<M0
+R1
+R2
+Z41 w1724906707
+Z42 8C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v
+Z43 FC:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z44 !s108 1724913378.000000
+Z45 !s107 C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v|
+Z46 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v|
+!i113 1
+R10
+R11
+vmux_2x1_tb
+R12
+!i10b 1
+!s100 2d:7IBgB]JMOZcTRkT;?@0
+IRPM6@LZBH:1<z>;dW4lPP0
+R1
+R2
+w1724908493
+8C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\mux_2x1.v
+FC:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\mux_2x1.v
+R19
+R6
+r1
+!s85 0
+31
+R16
+!s107 C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\mux_2x1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\mux_2x1.v|
+!i113 1
+R10
+R11
+vmux_4x1
+R40
+!i10b 1
+!s100 52cV^U0D`2UHh_^CkAfT>0
+Imd^:TdgiL=ePVS=<jL_j43
+R1
+R2
+R41
+R42
+R43
+L0 8
+R6
+r1
+!s85 0
+31
+R44
+R45
+R46
+!i113 1
+R10
+R11
+vmux_4x1_tb
+R40
+!i10b 1
+!s100 0QWL:CiX<;Le;jcH3S@TR1
+Ia9=YJhjWGSP^a:Ug?W7m:1
+R1
+R2
+R41
+R42
+R43
+L0 18
+R6
+r1
+!s85 0
+31
+R44
+R45
+R46
+!i113 1
+R10
+R11

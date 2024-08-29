@@ -16,13 +16,14 @@ module mux_16x1(y,si,di);
     // mux_4x1 mx2(ti[2],si[1:0],di[11:8]);
     // mux_4x1 mx3(ti[3],si[1:0],di[15:12]);
     // mux_4x1 mx4(y,si[3:2],ti);
+    $display(si);
 endmodule
 
 module mux_16x1_tb();
     reg[15:0] di;
     reg[3:0] si;
     wire y;
-    mux_16x1 dut(y,si,di);
+mux_16x1 dut(y,si[3:0],di[16:0]);
     
     initial begin
         si=4'b0000; di=16'h0001; #10;

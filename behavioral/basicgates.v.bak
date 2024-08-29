@@ -5,7 +5,7 @@ module basicGates(a,b,ny,ay,oy,nay,noy,xoy,xny);
     always @(*)
     begin
         ny = ~a;
-        ay = a&b;
+        ay = a&b
         nay = ~(a&b);
         oy = a|b;
         noy = ~(a|b);
