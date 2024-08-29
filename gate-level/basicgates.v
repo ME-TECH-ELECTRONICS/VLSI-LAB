@@ -12,15 +12,17 @@ endmodule
 
 //Test bench
 
-module basicGates_tb;
+module basicgates_tb;
 	reg a,b;
 	wire NY,AY,OY,NAY,NOY,XY,XNY;
 	basicGates hh(a,b,NY,AY,OY,NAY,NOY,XY,XNY);
 	initial begin
-		a=1'b0; b=1'b0; #10;
-		a=1'b0; b=1'b1; #10;
-		a=1'b1; b=1'b0; #10;
-		a=1'b1; b=1'b1; #10;
+		a=0; b=0; #10ns;
+		a=0; b=1; #10ns;
+		a=1; b=0; #10ns;
+		a=1; b=1; #10ns;
+		#100ns;
+    	$finish;
 	end
 endmodule
 	
