@@ -13,3 +13,10 @@ module basicGates(a,b,ny,ay,oy,nay,noy,xoy,xny);
         xny =~(a^b);
     end
 endmodule
+
+module basicGates_tb();
+    reg a,b;
+    wire ny,ay,oy,nay,noy,xoy,xny;
+    
+    basicGates dut(a,b,ny,ay,oy,nay,noy,xoy,xny);
+endmodule
