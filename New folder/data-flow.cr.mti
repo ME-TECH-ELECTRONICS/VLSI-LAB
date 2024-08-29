@@ -15,7 +15,45 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	basicGates_tb
 
-} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v}
+} {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v} {0 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module demux_1x2
+-- Compiling module demux_1x4
+-- Compiling module demux_1x4_tb
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(24): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(24): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(24): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(24): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(25): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(25): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(25): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(25): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(26): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(26): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(26): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(26): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(27): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(27): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(27): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(27): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(28): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(28): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(28): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(28): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(29): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(29): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(29): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(29): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(30): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(30): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(30): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(30): (vlog-2110) Illegal reference to net "y3".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(31): (vlog-2110) Illegal reference to net "y0".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(31): (vlog-2110) Illegal reference to net "y1".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(31): (vlog-2110) Illegal reference to net "y2".
+** Error: C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/demux_1x4.v(31): (vlog-2110) Illegal reference to net "y3".
+
+} {6.0 38.0} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/halfadder.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 
 } {} {}} {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v} {1 {vlog -work work -stats=none {C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/New folder/fuladder.v}
