@@ -1,4 +1,9 @@
-module dff ();
+module dff (
+    input wire D,
+    input wire clk 
+    input wire rst,
+    output reg Q;
+);
     
 endmodule
 
