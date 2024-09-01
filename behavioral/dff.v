@@ -6,9 +6,9 @@ module dff (
 );
     always @(posedge clk) begin
         if(rst) 
-            Q = 0;
+            Q <= 0;
         else
-            Q = D;
+            Q <= D;
     end
 endmodule
 
