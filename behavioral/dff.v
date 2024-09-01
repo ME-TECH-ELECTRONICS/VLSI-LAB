@@ -13,9 +13,13 @@ module dff (
 endmodule
 
 module tb();
-    clk = 0;
+    reg d,rst,clk=0;
+    wire q;
     always #5 clk=~clk;
     initial begin
-
+        rst=1; d=0; #10;
+        rst=1; d=1; #10;
+        rst=0; d=0; #10;
+        rst=0; d=1; #10;
     end
 endmodule
