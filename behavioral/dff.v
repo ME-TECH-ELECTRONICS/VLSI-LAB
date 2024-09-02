@@ -1,6 +1,6 @@
 module dff (
     input wire D,
-    input wire clk
+    input wire clk,
     input wire rst,
     output reg Q;
 );
