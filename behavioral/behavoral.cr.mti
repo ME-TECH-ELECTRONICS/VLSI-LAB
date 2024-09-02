@@ -1,4 +1,13 @@
-C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
+C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_16x1.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_4x1
+-- Compiling module mux_16x1
+-- Compiling module mux_16x1_tb
+
+Top level modules:
+	mux_16x1_tb
+
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module halfsubstractor
 -- Compiling module halfsubstractor_tb
@@ -30,6 +39,15 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	halfAdder_tb
+
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_2x1
+-- Compiling module mux_4x1
+-- Compiling module mux_4x1_tb
+
+Top level modules:
+	mux_4x1_tb
 
 } {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_2x1.v {1 {vlog -work work -stats=none {C:\Users\user\Desktop\MELVIN_NITHIN_VLSI\VLSI-LAB\behavioral\mux_2x1.v}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
