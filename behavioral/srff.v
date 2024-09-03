@@ -8,12 +8,14 @@ module srff (
     always @(posedge clk) begin
         if(rst)
             q <= 0;
-        else if(s)
-            q <= 1;
-        else if(r)
-            q <= 0;
-        else
-            q <= q;
+        else 
+            q = 
+            if(s)
+                q <= 1;
+            else if(r)
+                q <= 0;
+            else
+                q <= q;
 
     end
 endmodule

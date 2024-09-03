@@ -8,7 +8,7 @@ module tff (
         if(rst)
             q <= 0;
         else
-            q <= ~q & t;
+            q <= t ? ~q : q;
     end
 endmodule
 

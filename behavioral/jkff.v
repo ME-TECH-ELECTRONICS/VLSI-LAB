@@ -1,23 +1,15 @@
 module jkff(
-    input wire j,k,clk,rst,
+    input j,
+    input k,
+    input clk,
+    input rst,
     output reg q
 );
     always @(posedge clk) begin
         if(rst)
             q <= 0;
         else
-            if (j==0 && k==0) begin
-                q <= q;
-            end
-            else if (j==0 && k==1) begin
-                q <= 0;
-            end
-            else if (j==1 && k==0) begin
-                q <= 1;
-            end
-            else if (j==1 && k==1) begin
-                q <= ~q;
-            end
+            q = (j & (~q)) | (~k & q); 
     end
 endmodule
 

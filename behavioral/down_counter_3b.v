@@ -1,17 +1,17 @@
-module up_counter_3b (
+module down_counter_3b (
     input clk,
     input rst,
-    output reg[2:0] q
+    output reg[2:0] q 
 );
     always @(posedge clk) begin
         if(rst) 
             q=7;
         else 
-            q = q + 1;
+            q = q-1;
     end
 endmodule
 
-module up_counter_3b_tb();
+module down_counter_3b_tb ();
     reg clk=0,rst;
     wire [2:0] q;
     up_counter_3b dut (clk,rst,q);
