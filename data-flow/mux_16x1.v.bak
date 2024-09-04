@@ -16,7 +16,7 @@ module mux_16x1(
       mux_4x1 mx1(si[1:0],di[7:4],ti[1]);
       mux_4x1 mx2(si[1:0],di[11:8],ti[2]);
       mux_4x1 mx3(si[1:0],di[15:12],ti[3]);
-      mux_4x1 mx4(si[3:2],ti,y);
+      mux_4x1 mx4(si[3:2],ti[3:0],y);
 endmodule
 
 module mux_16x1_tb();

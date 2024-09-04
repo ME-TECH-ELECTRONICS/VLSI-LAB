@@ -7,13 +7,21 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	mux_16x1_tb
 
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfadder.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfadder.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module halfsubstractor
--- Compiling module halfsubstractor_tb
+-- Compiling module halfAdder
+-- Compiling module halfAdder_tb
 
 Top level modules:
-	halfsubstractor_tb
+	halfAdder_tb
+
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module fullAdder
+-- Compiling module fullAdder_tb
+
+Top level modules:
+	fullAdder_tb
 
 } {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fullsubstractor.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -24,21 +32,34 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	fullsubstractor_tb
 
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/fulladder.v
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfsubstractor.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module fullAdder
--- Compiling module fullAdder_tb
+-- Compiling module halfsubstractor
+-- Compiling module halfsubstractor_tb
 
 Top level modules:
-	fullAdder_tb
+	halfsubstractor_tb
 
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfadder.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/halfadder.v
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v {0 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module halfAdder
--- Compiling module halfAdder_tb
+-- Compiling module dff
+** Error: (vlog-13069) C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v(5): near ";": syntax error, unexpected ';', expecting ')'.
+
+} {4.0 5.0} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_nx1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_nx1.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_Nx1
+-- Compiling module mux_Nx1_tb
 
 Top level modules:
-	halfAdder_tb
+	mux_Nx1_tb
+
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_2x1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_2x1.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module mux_2x1
+-- Compiling module mux_2x1_tb
+
+Top level modules:
+	mux_2x1_tb
 
 } {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/data-flow/mux_4x1.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -49,28 +70,7 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	mux_4x1_tb
 
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_2x1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_2x1.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module mux_2x1
--- Compiling module mux_2x1_tb
-
-Top level modules:
-	mux_2x1_tb
-
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_nx1.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/mux_nx1.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module mux_Nx1
--- Compiling module mux_Nx1_tb
-
-Top level modules:
-	mux_Nx1_tb
-
-} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v {0 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module dff
-** Error: (vlog-13069) C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/dff.v(4): near "input": syntax error, unexpected input, expecting ')'.
-
-} {4.0 5.0} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v
+} {} {}} C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v {1 {vlog -work work -stats=none C:/Users/user/Desktop/MELVIN_NITHIN_VLSI/VLSI-LAB/behavioral/basicgates.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module basicGates
 -- Compiling module basicGates_tb
