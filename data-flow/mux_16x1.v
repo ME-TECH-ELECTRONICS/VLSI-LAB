@@ -3,7 +3,7 @@ module mux_4x1(
     input[3:0] di,
     output y
     );
-    assign y = ((~si[0])&(~si[1])&di[0]) | ((~si[0])&(si[1])&di[1]) | ((si[0])&(~si[1])&di[2]) | ((si[0])&(si[1])&di[3]);
+    assign y = ((~si[1])&(~si[0])&di[0]) | ((~si[1])&(si[0])&di[1]) | ((si[1])&(~si[0])&di[2]) | ((si[0])&(si[1])&di[3]);
 endmodule
 
 module mux_16x1(
