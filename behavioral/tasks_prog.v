@@ -12,4 +12,18 @@ module task_prog (
             end 
         end
     endtask
+    initial begin
+        factroial_num(num, data);
+    end
+endmodule
+
+module task_prog_tb ();
+    input [7:0] num;
+    reg [15:0] data;
+    task_prog dut (num, data);
+    initial begin
+        num = 5;
+        #10;
+        $display("Square of %0d is %0d", num, data);
+    end
 endmodule
