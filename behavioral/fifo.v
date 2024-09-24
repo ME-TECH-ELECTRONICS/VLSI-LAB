@@ -63,23 +63,19 @@ module fifo_16x8_tb ();
     always #5 clk = ~clk;
     initial begin
         rst = 0; #10;
-        rst = 1; // rst_n = 1;
+        rst = 1; 
         wr_en = 0; rd_en = 0; din = 8'b0;
         #10;
-        wr_en = 1; rd_en = 0; din = 8'b10101010;
-        #10;
-        wr_en = 1; rd_en = 0; din = 8'b11110000;
-        #10;
-        wr_en = 0; rd_en = 1;
-        #10;
-        wr_en = 1; rd_en = 1; din = 8'b11001100;
-        #10;
-        wr_en = 1; rd_en = 1; din = 8'b11110000;
-        #10;
-        wr_en = 1; rd_en = 1; din = 8'b10101010;
-        #10;
-        wr_en = 0; rd_en = 0;
-        #10;
+        wr_en =1;
+        for (i = 0; i<16; i=i+1) begin
+            din = $urandom_range(0, 255);
+		  #10;
+        end
+        rd_en = 1;
+        for (j = 0; j<16; j=j+1) begin
+            $display("D[%d]: %h", j, dout);
+		  #10;
+        end
     end
 
 endmodule
