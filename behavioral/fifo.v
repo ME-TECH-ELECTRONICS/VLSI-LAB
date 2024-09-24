@@ -1,5 +1,5 @@
-module fifo_16x8 (
-    input wire clk,        
+module fifo_16x8(
+input wire clk,        
     input wire rst,      
     input wire wr_en,      
     input wire rd_en,      
@@ -9,7 +9,7 @@ module fifo_16x8 (
     output wire empty      
 );
 
-    reg [7:0] fifo_mem [15:0] = 0; 
+    reg [7:0] fifo_mem [15:0]; 
     reg [3:0] wr_ptr = 0;      
     reg [3:0] rd_ptr = 0;      
     reg [4:0] count = 0;       
@@ -18,6 +18,7 @@ module fifo_16x8 (
     always @(posedge clk or negedge rst) begin
         if (!rst) begin
             wr_ptr <= 0;
+            dout <= 8'b0;
         end else if (wr_en && !full) begin
             fifo_mem[wr_ptr] <= din;    
             wr_ptr <= wr_ptr + 1;       
@@ -35,7 +36,7 @@ module fifo_16x8 (
         end
     end
 
-    assign full = (count == 16);
+    assign full = (count == 15);
     assign empty = (count == 0);
 
     // Count Logic
@@ -52,7 +53,7 @@ module fifo_16x8 (
     end
 endmodule
 
-module fifo_16x8_tb ();
+module fifo_16x8_tb();
     reg clk=0,rst;
     reg wr_en,rd_en;
     reg [7:0] din;
@@ -61,21 +62,21 @@ module fifo_16x8_tb ();
 
     fifo_16x8 dut(clk,rst,wr_en,rd_en,din,dout,full,empty);
     always #5 clk = ~clk;
+    integer i,j;
     initial begin
         rst = 0; #10;
         rst = 1; 
         wr_en = 0; rd_en = 0; din = 8'b0;
         #10;
         wr_en =1;
-        for (i = 0; i<16; i=i+1) begin
+        for (i = 0; i<15; i=i+1) begin
             din = $urandom_range(0, 255);
 		  #10;
         end
         rd_en = 1;
-        for (j = 0; j<16; j=j+1) begin
+        for (j = 0; j<15; j=j+1) begin
             $display("D[%d]: %h", j, dout);
 		  #10;
         end
     end
-
 endmodule
