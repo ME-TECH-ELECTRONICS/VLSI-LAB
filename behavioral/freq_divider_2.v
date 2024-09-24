@@ -11,8 +11,20 @@ module freq_divider_2(
         end
         else begin
             count <= count + 1;
-            if(count == 2'b11)
-                out <= ~out
+            if(count == 2'b01)
+                out <= ~out;
+                count <= 0;
         end
+    end
+endmodule
+
+module freq_divider_2_tb ();
+    reg clk=0,rst=0;
+    wire out;
+    freq_divider_2 dut(clk,rst,out);
+    always #5  clk = ~clk;
+    initial begin
+        rst =1; #10;
+        rst = 0;
     end
 endmodule
