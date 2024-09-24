@@ -15,7 +15,6 @@ module t_latch (
                     0 : q = q;
                     1 : q = #2 ~q;
                 endcase
-                // q = en ? (t ? #1 ~q : q) : q;
             end
         end
     end
