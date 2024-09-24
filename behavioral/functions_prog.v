@@ -1,27 +1,40 @@
-module functions_prog (
-    input[3:0] num,
-    output reg[15:0] val
-);
-    function [15:0] square_num ;
-        input [7:0] n;
-        begin
-           square_num = n ** 2; 
+module fibonacci_function;
+
+  reg [31:0] n;
+  reg [31:0] fib;
+  integer i;
+  
+  // Function to calculate Fibonacci number
+  function [31:0] fibonacci;
+    input [31:0] num;
+    integer j;
+    reg [31:0] a, b, temp;
+    begin
+      a = 0;
+      b = 1;
+      if (num == 0) begin
+        fibonacci = a;
+      end else if (num == 1) begin
+        fibonacci = b;
+      end else begin
+        for (j = 2; j <= num; j = j + 1) begin
+          temp = a + b;
+          a = b;
+          b = temp;
         end
-    endfunction
-
-    always @(*) begin
-        val = square_num(num);
+        fibonacci = b;
+      end
     end
-endmodule
-
-module functions_prog_tb ();
-    reg[7:0] num;
-    wire[15:0] val;
-
-    functions_prog dut(num,val);
-    initial begin
-        num = 5;
-        #10 $display("Square of %0d is %0d", num, val);
-        $finish;
+  endfunction
+  
+  initial begin
+    // Number of Fibonacci terms to display
+    n = 10; 
+    // Display Fibonacci series
+    $display("Fibonacci series up to %0d terms:", n);
+    for (i = 0; i < n; i = i + 1) begin
+      fib = fibonacci(i);
+      $display("Fib(%0d) = %0d", i, fib);
     end
+  end
 endmodule

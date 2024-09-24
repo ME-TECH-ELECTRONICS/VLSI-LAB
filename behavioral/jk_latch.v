@@ -3,8 +3,7 @@ module jk_latch (
     input k,
     input en,
     input rst,
-    output reg q,
-    output reg q_bar
+    output reg q
 );
     always @(*) begin
         if(rst) begin
@@ -12,31 +11,35 @@ module jk_latch (
         end
         else begin 
             if(en) begin
-                case (t)
-                    0 : q = q;
-                    1 : q = #2 ~q;
-                endcase
-                // q = en ? (t ? #1 ~q : q) : q;
+                if(j ==0 && k == 0) begin
+                    q = q;
+                end
+                else if(j == 0 && k == 1) begin
+                    q = 0;
+                end
+                else if(j == 1 && k == 0) begin
+                    q = 1;
+                end
+                else if(j == 1 && k == 1) begin
+                    q = ~q;
+                end
             end
         end
-    end
-    always @(*) begin
-        q_bar = ~q;
     end
 endmodule
 
 module jk_latch_tb ();
-    reg t,en,rst;
-    wire q,q_bar;
+    reg j,k,en,rst;
+    wire q;
 
-    jk_latch dut(t,en,rst,q,q_bar);
+    jk_latch dut(j,k,en,rst,q);
     initial begin
         rst = 1; en=1; #10;
-        rst = 0; en=0; t=0; #10;
-        rst = 0; en=0; t=1; #10;
-        rst = 0; en=1; t=0; #10;
-        rst = 0; en=1; t=1; #10;
-        rst = 0; en=1; t=1; #10;
-        rst = 0; en=1; t=1; #10;
+        rst = 0; en=0; j=0; k=0;#10;
+        rst = 0; en=0; j=1; k=1;#10;
+        rst = 0; en=1; j=0; k=0;#10;
+        rst = 0; en=1; j=0; k=1;#10;
+        rst = 0; en=1; j=1; k=0;#10;
+        rst = 0; en=1; j=1; k=1;#10;
     end
 endmodule
