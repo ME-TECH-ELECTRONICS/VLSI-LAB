@@ -1,5 +1,5 @@
 module seq_detector_moore(
-input clk,
+    input clk,
     input rst,
     input din,
     output reg dout
@@ -41,14 +41,23 @@ input clk,
                     NS = IDLE;
             end
             S2: begin
+            
                 if(din)begin
-                    dout <= 1;
+                   
                     NS <= IDLE;
                 end
                 else
                     NS = S1;
             end
             default: NS = IDLE;  
+        endcase
+    end
+    always @(PS) begin
+        case (PS)
+            S2: begin
+                dout = 1;
+            end 
+            default: dout = 0;
         endcase
     end
 endmodule
