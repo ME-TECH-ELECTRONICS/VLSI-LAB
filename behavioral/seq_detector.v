@@ -46,7 +46,7 @@ module seq_detector (
                 else
                     NS = S1;
             end
-            default: 
+            default: NS = IDLE
         endcase
     end
 endmodule
