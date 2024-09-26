@@ -50,3 +50,7 @@ module seq_detector (
         endcase
     end
 endmodule
+
+module seq_detector_tb();
+    reg clk=0,rst=1;
+endmodule
