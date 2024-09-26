@@ -52,5 +52,8 @@ module seq_detector (
 endmodule
 
 module seq_detector_tb();
-    reg clk=0,rst=1;
+    reg clk=0,rst=1,din;
+    wire out;
+    
+    seq_detector dut(clk,rst,din,out);
 endmodule
