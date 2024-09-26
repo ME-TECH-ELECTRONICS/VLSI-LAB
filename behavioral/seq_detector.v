@@ -1,13 +1,12 @@
 module seq_detector(
-input clk,
+    input clk,
     input rst,
     input din,
     output reg dout
 );
     parameter IDLE = 2'b00,
               S0 = 2'b01,
-              S1 = 2'b10,
-              S2 = 2'b11;
+              S1 = 2'b10;
     reg[1:0] NS, PS;
 
     always @(posedge clk) begin
@@ -35,7 +34,7 @@ input clk,
             end
             S1: begin
                 if(din)begin
-                    NS <= S2;
+                    NS <= S0;
                     dout <= 1;
                 end
                 else
