@@ -56,4 +56,19 @@ module seq_detector_tb();
     wire out;
     
     seq_detector dut(clk,rst,din,out);
+    always #5 clk = ~clk;
+    initial begin
+        rst = 0; #10;
+        rst = 1; #10;
+        
+        din = 0; #10;
+        din = 1; #10;
+        din = 1; #10;
+        din = 0; #10;
+        din = 1; #10;
+        din = 1; #10;
+        din = 0; #10;
+        din = 0; #10;
+        
+    end
 endmodule
