@@ -20,7 +20,6 @@ module seq_detector (
 
     always @(*) begin
         out = 0;
-
         case (PS)
             IDLE :  begin
                 if(din)
@@ -49,5 +48,4 @@ module seq_detector (
             default: 
         endcase
     end
-    
 endmodule
