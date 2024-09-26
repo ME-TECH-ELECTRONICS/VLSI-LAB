@@ -30,15 +30,15 @@ module seq_detector (
             end
             S0 : begin
                 if(din)
-                    NS = S1;
-                else 
                     NS = S0;
+                else 
+                    NS = S1;
             end
             S1 : begin
                 if(din)
                     NS = S2;
                 else
-                    NS = S1;
+                    NS = IDLE;
             end
             S2 : begin
                 if(din)
