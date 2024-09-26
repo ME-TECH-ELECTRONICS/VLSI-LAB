@@ -1,4 +1,4 @@
-module seq_detector(
+module seq_detector_moore(
 input clk,
     input rst,
     input din,
@@ -6,8 +6,8 @@ input clk,
 );
     parameter IDLE = 3'b000,
               S0 = 3'b001,
-              S1 = 3'b010;
-              S1 = 3'b101;
+              S1 = 3'b010,
+              S2 = 3'b101;
     reg[2:0] NS, PS;
 
     always @(posedge clk) begin
@@ -35,13 +35,20 @@ input clk,
             end
             S1: begin
                 if(din)begin
-                    NS <= S0;
-                    dout <= 1;
+                    NS <= S2;
                 end
                 else
                     NS = IDLE;
             end
-            default: NS = IDLE;
+            S2: begin
+                if(din)begin
+                    dout <= 1;
+                    NS <= IDLE;
+                end
+                else
+                    NS = S1;
+            end
+            default: NS = IDLE;  
         endcase
     end
 endmodule
@@ -49,7 +56,7 @@ endmodule
 module seq_detector_tb();
     reg clk=0,rst=1,din;
     wire out;
-    seq_detector_ dut(clk,rst,din,out);
+    seq_detector_moore dut(clk,rst,din,out);
     always #5 clk = ~clk;
     initial begin
         rst = 0; #10;
