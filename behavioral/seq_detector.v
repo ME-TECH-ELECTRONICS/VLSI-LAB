@@ -69,6 +69,5 @@ module seq_detector_tb();
         din = 1; #10;
         din = 0; #10;
         din = 0; #10;
-        
     end
 endmodule
