@@ -40,6 +40,7 @@ module seq_detector (
                     NS = IDLE;
             end
             S2 : begin
+                out = 1;
                 if(din)
                     NS = S0;
                 else
