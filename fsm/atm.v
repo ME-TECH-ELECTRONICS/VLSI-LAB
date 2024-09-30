@@ -3,7 +3,7 @@ module ATM_FSM(
     input rst,
     input card_inserted,
     input pin_correct,
-    input W_D_B,
+    input [1:0] W_D_B,
     input [15:0] amount,
     output reg dispense_cash,
     output reg update_balance,
@@ -115,7 +115,7 @@ module ATM_tb;
     reg rst;
     reg card_inserted;
     reg pin_correct;
-    reg W_D_B;
+    reg [1:0] W_D_B;
     reg [15:0] amount;
 
     // Outputs
