@@ -3,9 +3,7 @@ module ATM_FSM(
     input rst,
     input card_inserted,
     input pin_correct,
-    input withdraw,
-    input deposit,
-    input balance,
+    input W_D_B,
     input [15:0] amount,
     output reg dispense_cash,
     output reg update_balance,
@@ -51,11 +49,11 @@ module ATM_FSM(
             end
 
             MENU: begin
-                if (withdraw)
+                if (W_D_B) //0
                     NS = WITHDRAW;
-                else if (deposit)
+                else if (W_D_B)//1
                     NS = DEPOSIT;
-                else if (balance)
+                else if (W_D_B)//2
                     NS = BALANCE_CHECK;
                 else
                     NS = MENU;
