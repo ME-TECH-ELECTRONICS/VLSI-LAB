@@ -10,9 +10,9 @@ module traffic_light_fsm (
 );
 
     parameter S1_NSG_EWR = 2'b00;
-    parameter S1_NSY_EWR = 2'b01;
-    parameter S1_NSR_EWG = 2'b10;
-    parameter S1_NSR_EWY = 2'b11;
+    parameter S2_NSY_EWR = 2'b01;
+    parameter S3_NSR_EWG  = 2'b10;
+    parameter S4_NSR_EWY = 2'b11;
 
     parameter GREEN_TIME = 10; 
     parameter YELLOW_TIME = 3; 
@@ -30,27 +30,27 @@ module traffic_light_fsm (
         case (PS)
             S1_NSG_EWR: 
                 if (timer == GREEN_TIME)
-                    NS = S1_NSY_EWR;
+                    NS = S2_NSY_EWR;
                 else
                     NS = S1_NSG_EWR;
 
-            S1_NSY_EWR: 
+            S2_NSY_EWR: 
                 if (timer == YELLOW_TIME)
-                    NS = S1_NSR_EWG;
+                    NS = S3_NSR_EWG ;
                 else
-                    NS = S1_NSY_EWR;
+                    NS = S2_NSY_EWR;
 
-            S1_NSR_EWG: 
+            S3_NSR_EWG : 
                 if (timer == GREEN_TIME)
-                    NS = S1_NSR_EWY;
+                    NS = S4_NSR_EWY;
                 else
-                    NS = S1_NSR_EWG;
+                    NS = S3_NSR_EWG ;
 
-            S1_NSR_EWY: 
+            S4_NSR_EWY: 
                 if (timer == YELLOW_TIME)
                     NS = S1_NSG_EWR;
                 else
-                    NS = S1_NSR_EWY;
+                    NS = S4_NSR_EWY;
 
             default: NS = S1_NSG_EWR;
         endcase
@@ -76,7 +76,7 @@ module traffic_light_fsm (
                 EW_red = 1;
             end
 
-            S1_NSY_EWR: begin
+            S2_NSY_EWR: begin
                 NS_green = 0;
                 NS_yellow = 1;
                 NS_red = 0;
@@ -85,7 +85,7 @@ module traffic_light_fsm (
                 EW_red = 1;
             end
 
-            S1_NSR_EWG: begin
+            S3_NSR_EWG : begin
                 NS_green = 0;
                 NS_yellow = 0;
                 NS_red = 1;
@@ -94,7 +94,7 @@ module traffic_light_fsm (
                 EW_red = 0;
             end
 
-            S1_NSR_EWY: begin
+            S4_NSR_EWY: begin
                 NS_green = 0;
                 NS_yellow = 0;
                 NS_red = 1;
