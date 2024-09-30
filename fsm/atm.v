@@ -114,7 +114,7 @@ module ATM_tb;
 
     // Inputs
     reg clk;
-    reg reset;
+    reg rst;
     reg card_inserted;
     reg pin_correct;
     reg withdraw;
@@ -128,7 +128,7 @@ module ATM_tb;
     wire print_receipt;
 
     // Instantiate the ATM FSM module
-    ATM_FSM uut (clk, reset, card_inserted, pin_correct, withdraw, deposit, balance, amount, dispense_cash, update_balance, print_receipt);
+    ATM_FSM uut (clk, rst, card_inserted, pin_correct, withdraw, deposit, balance, amount, dispense_cash, update_balance, print_receipt);
 
     // Clock generation
     initial begin
@@ -139,14 +139,14 @@ module ATM_tb;
     // Test procedure
     initial begin
         // Initialize inputs
-        reset = 1;
+        rst = 1;
         card_inserted = 0;
         pin_correct = 0;
         withdraw = 0;
         deposit = 0;
         balance = 0;
         amount = 16'd0;
-        #10 reset = 0;
+        #10 rst = 0;
 
         // Test case 1: Insert card, correct PIN, withdraw money
         #10 card_inserted = 1;
