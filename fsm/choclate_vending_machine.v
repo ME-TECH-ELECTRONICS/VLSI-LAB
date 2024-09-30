@@ -81,12 +81,10 @@ module choco_tb();
         rst = 1;
         coin = 2'b00;
         #10;
-        
-        // Release rst
         rst = 0;
 
-        // Test case 1: Insert 5
-        #10 coin = 2'b01;  // Insert 5 units
+        // Test case 1: Insert coin 5
+        #10 coin = 2'b01;
         #10 coin = 2'b00;  // Wait for chocolate to dispense
         $display("Inserted 5 units, Chocolate: %0b", chocolate);
 
