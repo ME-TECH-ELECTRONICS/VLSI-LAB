@@ -115,9 +115,7 @@ module ATM_tb;
     reg rst;
     reg card_inserted;
     reg pin_correct;
-    reg withdraw;
-    reg deposit;
-    reg balance;
+    reg W_D_B;
     reg [15:0] amount;
 
     // Outputs
@@ -126,7 +124,7 @@ module ATM_tb;
     wire print_receipt;
 
     // Instantiate the ATM FSM module
-    ATM_FSM uut (clk, rst, card_inserted, pin_correct, withdraw, deposit, balance, amount, dispense_cash, update_balance, print_receipt);
+    ATM_FSM uut (clk, rst, card_inserted, pin_correct, W_D_B, amount, dispense_cash, update_balance, print_receipt);
 
     // Clock generation
     initial begin
@@ -141,39 +139,33 @@ module ATM_tb;
         card_inserted = 0;
         pin_correct = 0;
         withdraw = 0;
-        deposit = 0;
-        balance = 0;
         amount = 16'd0;
         #10 rst = 0;
 
         // Test case 1: Insert card, correct PIN, withdraw money
         #10 card_inserted = 1;
         #10 pin_correct = 1; 
-        #10 withdraw = 1;
+        #10 W_D_B = 0;
         amount = 16'd500;  // Example withdrawal amount
         #30;
 
         // Test case 2: Insert card, correct PIN, check balance
         #10 card_inserted = 1;
         pin_correct = 1;
-        withdraw = 0;
-        deposit = 0;
-        balance = 1;
+        W_D_B = 2;
         #30;
 
         // Test case 3: Insert card, correct PIN, deposit money
         #10 card_inserted = 1;
         pin_correct = 1;
-        withdraw = 0;
-        balance = 0;
-        deposit = 1;
+        W_D_B = 1;
         amount = 16'd300;  // Example deposit amount
         #30;
     end
 
     // Monitor outputs
     initial begin
-        $monitor("Time = %0t | card_inserted = %b | pin_correct = %b | withdraw = %b | deposit = %b | amount = %0d | balance = %b | dispense_cash = %b | update_balance = %b | print_receipt = %b", $time, card_inserted, pin_correct, withdraw, deposit, amount, balance, dispense_cash, update_balance, print_receipt);
+        $monitor("Time = %0t | card_inserted = %b | pin_correct = %b | W_D_B = %b | amount = %0d | dispense_cash = %b | update_balance = %b | print_receipt = %b", $time, card_inserted, pin_correct, W_D_B,dispense_cash, update_balance, print_receipt);
     end
 
 endmodule
