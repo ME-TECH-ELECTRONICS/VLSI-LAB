@@ -1,6 +1,6 @@
 module ATM_FSM(
     input clk,
-    input reset,
+    input rst,
     input card_inserted,
     input pin_correct,
     input withdraw,
@@ -23,65 +23,65 @@ module ATM_FSM(
     parameter TRANSACTION_DONE = 3'b111;
 
     // Current and next state variables
-    reg [2:0] current_state, next_state;
+    reg [2:0] PS, NS;
 
     // State transition logic (sequential)
-    always @(posedge clk or posedge reset) begin
-        if (reset)
-            current_state <= IDLE;
+    always @(posedge clk) begin
+        if (rst)
+            PS <= IDLE;
         else
-            current_state <= next_state;
+            PS <= NS;
     end
 
     // Next state logic (combinational)
     always @(*) begin
-        case (current_state)
+        case (PS)
             IDLE: begin
                 if (card_inserted)
-                    next_state = CHECK_PIN;
+                    NS = CHECK_PIN;
                 else
-                    next_state = IDLE;
+                    NS = IDLE; //Card not inserted
             end
 
             CHECK_PIN: begin
                 if (pin_correct)
-                    next_state = MENU;
+                    NS = MENU;
                 else
-                    next_state = IDLE;  // Incorrect PIN, go back to idle
+                    NS = IDLE;  // Incorrect PIN, go back to idle
             end
 
             MENU: begin
                 if (withdraw)
-                    next_state = WITHDRAW;
+                    NS = WITHDRAW;
                 else if (deposit)
-                    next_state = DEPOSIT;
+                    NS = DEPOSIT;
                 else if (balance)
-                    next_state = BALANCE_CHECK;
+                    NS = BALANCE_CHECK;
                 else
-                    next_state = MENU;
+                    NS = MENU;
             end
 
             WITHDRAW: begin
-                next_state = DISPENSE_CASH;
+                NS = DISPENSE_CASH;
             end
 
             DEPOSIT: begin
-                next_state = TRANSACTION_DONE;
+                NS = TRANSACTION_DONE;
             end
 
             BALANCE_CHECK: begin
-                next_state = TRANSACTION_DONE;
+                NS = TRANSACTION_DONE;
             end
 
             DISPENSE_CASH: begin
-                next_state = TRANSACTION_DONE;
+                NS = TRANSACTION_DONE;
             end
 
             TRANSACTION_DONE: begin
-                next_state = IDLE;  
+                NS = IDLE;  
             end
 
-            default: next_state = IDLE;
+            default: NS = IDLE;
         endcase
     end
 
@@ -91,7 +91,7 @@ module ATM_FSM(
         update_balance <= 0;
         print_receipt <= 0;
 
-        case (current_state)
+        case (PS)
             WITHDRAW: begin
                 dispense_cash <= 1;
                 update_balance <= 1;
