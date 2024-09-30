@@ -16,57 +16,57 @@ module traffic_light_fsm (
 
     parameter GREEN_TIME = 10; 
     parameter YELLOW_TIME = 3; 
-    reg [1:0] current_state, next_state;
+    reg [1:0] PS, NS;
     reg [31:0] timer; 
     
 
     always @(posedge clk or posedge rst) begin
         if (rst)
-            current_state <= S1_NSG_EWR;
+            PS <= S1_NSG_EWR;
         else
-            current_state <= next_state;
+            PS <= NS;
     end
     always @(*) begin
-        case (current_state)
+        case (PS)
             S1_NSG_EWR: 
                 if (timer == GREEN_TIME)
-                    next_state = S1_NSY_EWR;
+                    NS = S1_NSY_EWR;
                 else
-                    next_state = S1_NSG_EWR;
+                    NS = S1_NSG_EWR;
 
             S1_NSY_EWR: 
                 if (timer == YELLOW_TIME)
-                    next_state = S1_NSR_EWG;
+                    NS = S1_NSR_EWG;
                 else
-                    next_state = S1_NSY_EWR;
+                    NS = S1_NSY_EWR;
 
             S1_NSR_EWG: 
                 if (timer == GREEN_TIME)
-                    next_state = S1_NSR_EWY;
+                    NS = S1_NSR_EWY;
                 else
-                    next_state = S1_NSR_EWG;
+                    NS = S1_NSR_EWG;
 
             S1_NSR_EWY: 
                 if (timer == YELLOW_TIME)
-                    next_state = S1_NSG_EWR;
+                    NS = S1_NSG_EWR;
                 else
-                    next_state = S1_NSR_EWY;
+                    NS = S1_NSR_EWY;
 
-            default: next_state = S1_NSG_EWR;
+            default: NS = S1_NSG_EWR;
         endcase
     end
 
     always @(posedge clk or posedge rst) begin
         if (rst)
             timer <= 0;
-        else if (current_state != next_state)
+        else if (PS != NS)
             timer <= 0;
         else
             timer <= timer + 1;
     end
 
     always @(*) begin
-        case (current_state)
+        case (PS)
             S1_NSG_EWR: begin
                 NS_green = 1;
                 NS_yellow = 0;
