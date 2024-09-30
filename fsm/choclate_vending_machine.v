@@ -32,6 +32,8 @@ always @(*) begin
                 NS = TEN;
             else if (coin == 2'b11)
                 NS = TWENTY;
+            else 
+                NS = IDLE;
         end
         
         FIVE: begin
