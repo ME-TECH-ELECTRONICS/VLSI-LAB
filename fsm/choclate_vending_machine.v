@@ -21,7 +21,7 @@ end
 
 // Next State Logic and Output Logic
 always @(*) begin
-    NS = PS; // Default to stay in current state
+    NS = PS;
     chocolate = 3'b000; // Default to no chocolate
     
     case (PS)
