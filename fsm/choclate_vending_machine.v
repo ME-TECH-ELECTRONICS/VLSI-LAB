@@ -85,17 +85,17 @@ module choco_tb();
 
         // Test case 1: Insert coin 5
         #10 coin = 2'b01;
-        #10 coin = 2'b00;  // Wait for chocolate to dispense
+        #10 coin = 2'b00;
         $display("Inserted 5 units, Chocolate: %0b", chocolate);
 
         // Test case 2: Insert 10
-        #10 coin = 2'b10;  // Insert 10 units
-        #10 coin = 2'b00;  // Wait for chocolate to dispense
+        #10 coin = 2'b10; 
+        #10 coin = 2'b00;
         $display("Inserted 10 units, Chocolate: %0b", chocolate);
 
         // Test case 3: Insert 20
-        #10 coin = 2'b11;  // Insert 20 units
-        #10 coin = 2'b00;  // Wait for chocolate to dispense
+        #10 coin = 2'b11;
+        #10 coin = 2'b00;
         $display("Inserted 20 units, Chocolate: %0b", chocolate);
 
     end
