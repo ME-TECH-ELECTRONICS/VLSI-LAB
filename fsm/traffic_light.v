@@ -20,7 +20,7 @@ module traffic_light_fsm (
     reg [31:0] timer; 
     
 
-    always @(posedge clk or posedge rst) begin
+    always @(posedge clk) begin
         if (rst)
             PS <= S1_NSG_EWR;
         else
@@ -56,7 +56,7 @@ module traffic_light_fsm (
         endcase
     end
 
-    always @(posedge clk or posedge rst) begin
+    always @(posedge clk) begin
         if (rst)
             timer <= 0;
         else if (PS != NS)
