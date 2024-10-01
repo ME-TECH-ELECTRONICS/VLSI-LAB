@@ -69,7 +69,7 @@ module FIFO_TB();
     wire [7:0] dout;
     wire full,empty;
 
-    FIFO dut(clk, rst, soft_rst, wr_en, rd_en, lfd_state, din, full, empty, dout);
+    fifo dut(clk, rst, soft_rst, wr_en, rd_en, lfd_state, din, full, empty, dout);
     always #5 clk = ~clk;
     integer i,j;
     initial begin
@@ -79,7 +79,7 @@ module FIFO_TB();
         wr_en = 0; rd_en = 0; din = 8'b0;
         #10;
         wr_en =1; lfd_state = 1;
-        soft_rst = 1
+        soft_rst = 1;
         for (i = 0; i<15; i=i+1) begin
             din = $urandom_range(0, 255);
             lfd_state = 0;
