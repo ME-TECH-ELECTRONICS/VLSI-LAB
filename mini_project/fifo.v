@@ -35,7 +35,7 @@ module FIFO (
 
     // Write operation
     always @(posedge clk) begin
-        if (rst && !soft_rst) begin
+        if (rst) begin
             if (wr_en && !full) begin
                 mem[wr_ptr] <= {lfd_state, din};  // Write lfd_state and data 110101010
                 wr_ptr <= wr_ptr + 1;
