@@ -7,54 +7,54 @@ module FIFO (
     input lfd_state,
     input[7:0] din,
     output full,
-    output  empty,
+    output empty,
     output reg[7:0] dout
 );
-    reg[8:0] mem [15:0];
-    reg[3:0] wr_ptr, rd_ptr, count;
+    reg[8:0] mem [15:0];   // 9-bit wide memory, 16 deep
+    reg[3:0] wr_ptr, rd_ptr, count;  // 4-bit pointers and counter
+    reg[6:0] intCount;
     integer i;
-    
-    //Reset and counting algorithm
+
+    // Reset and counting algorithm
     always @(posedge clk) begin
         if(!rst || soft_rst) begin
             dout <= 0;
             wr_ptr <= 0;
             rd_ptr <= 0;
             count <= 0;
-            for(i=0;i<16;i=i+1) begin
+            for(i = 0; i < 16; i = i + 1) begin
                 mem[i] <= 0;
             end
         end
-        else begin
-            if (wr_en && !full && rd_en && !empty) begin
-                count <= count;   // When both read and write occur simultaneously
-            end else if (wr_en && !full) begin
-                count <= count + 1;  // Increment count on write
-            end else if (rd_en && !empty) begin
-                count <= count - 1;  // Decrement count on read
-            end
-        end
     end
-    
-    assign full = (count == 15);
-    assign empty = (count == 0);
-    
-    //Write operation
+
+    assign full = (count == 16);  // Full when all 16 positions are occupied
+    assign empty = (count == 0);  // Empty when count is zero
+
+    // Write operation
     always @(posedge clk) begin
-        if(rst || !soft_rst) begin
+        if (rst && !soft_rst) begin
             if (wr_en && !full) begin
-                mem[wr_ptr] <= {lfd_state, din};
+                mem[wr_ptr] <= {lfd_state, din};  // Write lfd_state and data 110101010
                 wr_ptr <= wr_ptr + 1;
+                count <= count + 1; 
             end
         end
     end
-    
-    //Read operation
+
+    // Read operation
     always @(posedge clk) begin
-        if(rst || !soft_rst) begin
+        if (rst && !soft_rst) begin
             if (rd_en && !empty) begin
-                dout <= mem[rd_ptr][7:0];
+                if(mem[rd_ptr][8] == 1'b1) begin
+                    intCount = mem[rd_ptr][7:2] + 1'b1;
+                end
+                else if(intCount != 0) begin
+                    intCount = intCount - 1;
+                end
+                dout <= mem[rd_ptr][7:0];         // Read only the data part
                 rd_ptr <= rd_ptr + 1;
+                count <= count - 1;      // Wrap around the read pointer
             end
         end
     end
@@ -75,18 +75,18 @@ module FIFO_TB();
     initial begin
         rst = 0; #10;
         rst = 1;
-        soft_rst = 0;
+        soft_rst = 1;
         wr_en = 0; rd_en = 0; din = 8'b0;
         #10;
-        wr_en =1; lfd_state = 1;
-        soft_rst = 1;
+        wr_en =1; 
+        soft_rst = 0; lfd_state = 1;
         for (i = 0; i<15; i=i+1) begin
-            din = $urandom_range(0, 255);
-            lfd_state = 0;
+            din = $urandom_range(0, 255); 
 		  #10;
+		  lfd_state = 0;
         end
-        rd_en = 1;
-        for (j = 0; j<15; j=j+1) begin
+         wr_en =0; rd_en = 1;
+        for (j = 0; j<16; j=j+1) begin
             $display("D[%d]: %h", j, dout);
 		  #10;
         end
