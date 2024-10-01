@@ -17,12 +17,12 @@ module FIFO (
     //Reset and counting algorithm
     always @(posedge clk) begin
         if(!rst || soft_rst) begin
-            dout = 0;
-            wr_ptr = 0;
-            rd_ptr = 0;
-            count = 0;
+            dout <= 0;
+            wr_ptr <= 0;
+            rd_ptr <= 0;
+            count <= 0;
             for(i=0;i<16;i=i+1) begin
-                mem[i] = 0;
+                mem[i] <= 0;
             end
         end
         else begin
@@ -44,7 +44,7 @@ module FIFO (
         if(rst || !soft_rst) begin
             if (wr_en && !full) begin
                 mem[wr_ptr] <= {lfd_state, din};
-                wr_ptr = wr_ptr + 1;
+                wr_ptr <= wr_ptr + 1;
             end
         end
     end
@@ -53,8 +53,8 @@ module FIFO (
     always @(posedge clk) begin
         if(rst || !soft_rst) begin
             if (rd_en && !empty) begin
-                dout = mem[rd_ptr][7:0];
-                rd_ptr = rd_ptr + 1;
+                dout <= mem[rd_ptr][7:0];
+                rd_ptr <= rd_ptr + 1;
             end
         end
     end
