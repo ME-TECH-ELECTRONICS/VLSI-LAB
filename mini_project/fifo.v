@@ -17,7 +17,7 @@ module FIFO (
 
     // Reset and counting algorithm
     always @(posedge clk) begin
-        if(!rst || soft_rst) begin
+        if(!rst) begin
             dout <= 0;
             wr_ptr <= 0;
             rd_ptr <= 0;
@@ -26,6 +26,8 @@ module FIFO (
                 mem[i] <= 0;
             end
         end
+        if(soft_rst)
+            dout <= 8'bx;
     end
 
     assign full = (count == 16);  // Full when all 16 positions are occupied
