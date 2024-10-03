@@ -71,7 +71,7 @@ module FIFO_TB();
     wire [7:0] dout;
     wire full,empty;
 
-    fifo dut(clk, rst, soft_rst, wr_en, rd_en, lfd_state, din, full, empty, dout);
+    FIFO dut(clk, rst, soft_rst, wr_en, rd_en, lfd_state, din, full, empty, dout);
     always #5 clk = ~clk;
     integer i,j;
     initial begin
