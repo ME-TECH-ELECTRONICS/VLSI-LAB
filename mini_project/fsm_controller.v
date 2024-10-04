@@ -100,10 +100,10 @@ module fsm_controller(
 endmodule
 
 
-module fsm_controller_tb();
-    reg clk, rst, pkt_valid, fifo_full, fifo_empty_0, fifo_empty_1, fifo_empty_2, soft_rst_0, soft_rst_1, soft_rst_2, parity_done, low_pkt_valid;
+module fsm_tb();
+    reg clk, rst, pkt_valid, fifo_full, fifo_empty_0, fifo_empty_1, fifo_empty_2, soft_rst_0, soft_rst_1, soft_rst_2, parity_done, low_pkt_valid; 
     reg[1:0] din;
-    wire wr_en_req, detect_addr, lfd_state, laf_state, lfd_state, full_state, rst_int_req, busy;
+    wire wr_en_req, detect_addr, lfd_state, laf_state, full_state, rst_int_req, busy;
 
     fsm_controller uut (
         .clk(clk),
@@ -165,7 +165,6 @@ module fsm_controller_tb();
         #10 low_pkt_valid = 1;
         #10 low_pkt_valid = 0;
         #10 din = 1;
-        #10 din = 0;
         #10 pkt_valid = 1;
         #10 pkt_valid = 0;
         #10 fifo_full = 1;
