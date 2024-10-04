@@ -23,6 +23,14 @@ module synchronizer (
     output reg soft_reset_2
 );
 
-    reg [4:0] count0, count1, count2;
+    reg[4:0] count0, count1, count2;
+    reg[1:0] tmp_din;
+    
+    always @(posedge clk) begin 
+        if(!rst)
+            tmp_din <= 0;
+        if(detect_addr)
+            tmp_din <= din;
+    end
     
 endmodule
