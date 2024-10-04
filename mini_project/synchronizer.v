@@ -33,4 +33,31 @@ module synchronizer (
             tmp_din <= din;
     end
     
+    always @(*) begin 
+        case(tmp_din)
+            2'b00: begin
+                fifo_full <= full_0;
+                if(wr_en_reg)
+                    wr_en <= 3'b001;
+                else
+                    wr_en <= 0;
+            end
+            2'b00: begin
+                fifo_full <= full_0;
+                if(wr_en_reg)
+                    wr_en <= 3'b001;
+                else
+                    wr_en <= 0;
+                    
+            end
+            2'b00: begin
+                fifo_full <= full_0;
+                if(wr_en_reg)
+                    wr_en <= 3'b001;
+                else
+                    wr_en <= 0;
+            end
+        endcase
+    end
+    
 endmodule
