@@ -13,14 +13,14 @@ module synchronizer (
     input rd_en_0,
     input rd_en_1,
     input rd_en_2,
-    output[2:0] wr_en,
-    output fifo_full,
+    output reg[2:0] wr_en,
+    output reg fifo_full,
     output vld_out_0,
     output vld_out_1,
     output vld_out_2,
-    output soft_reset_0,
-    output soft_reset_1,
-    output soft_reset_2
+    output reg soft_reset_0,
+    output reg soft_reset_1,
+    output reg soft_reset_2
 );
 
     
