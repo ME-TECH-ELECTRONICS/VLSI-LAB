@@ -23,6 +23,6 @@ module synchronizer (
     output reg soft_reset_2
 );
 
-    
+    reg [4:0] count0, count1, count2;
     
 endmodule
