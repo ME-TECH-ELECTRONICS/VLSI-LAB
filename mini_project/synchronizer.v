@@ -64,4 +64,7 @@ module synchronizer (
         endcase
     end
     
+    assign vld_out_0 = ~empty_0;
+    assign vld_out_1 = ~empty_1;
+    assign vld_out_2 = ~empty_2;
 endmodule
