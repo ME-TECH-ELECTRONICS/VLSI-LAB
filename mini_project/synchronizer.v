@@ -91,43 +91,43 @@ module synchronizer (
     
     always @(posedge clk) begin
         if(!rst) begin 
-            count0 <= 0;
-            soft_reset_0 <= 0;
+            count1 <= 0;
+            soft_reset_1 <= 0;
         end
-        if(vld_out_0) begin 
-            if(!rd_en_0) begin 
-                if(count0 == 29) begin
-                    soft_reset_0 <= 1;
-                    count0 <= 0;
+        if(vld_out_1) begin 
+            if(!rd_en_1) begin 
+                if(count1 == 29) begin
+                    soft_reset_1 <= 1;
+                    count1 <= 0;
                 end
                 else begin
-                    soft_reset_0 <= 0;
-                    count0 <= count0 + 1;
+                    soft_reset_1 <= 0;
+                    count1 <= count1 + 1;
                 end
             end
             else 
-                count0 <= 0;
+                count1 <= 0;
         end
     end
     
     always @(posedge clk) begin
         if(!rst) begin 
-            count0 <= 0;
-            soft_reset_0 <= 0;
+            count2 <= 0;
+            soft_reset_2 <= 0;
         end
-        if(vld_out_0) begin 
-            if(!rd_en_0) begin 
-                if(count0 == 29) begin
-                    soft_reset_0 <= 1;
-                    count0 <= 0;
+        if(vld_out_2) begin 
+            if(!rd_en_2) begin 
+                if(count2 == 29) begin
+                    soft_reset_2 <= 1;
+                    count2 <= 0;
                 end
                 else begin
-                    soft_reset_0 <= 0;
-                    count0 <= count0 + 1;
+                    soft_reset_2 <= 0;
+                    count2 <= count2 + 1;
                 end
             end
             else 
-                count0 <= 0;
+                count2 <= 0;
         end
     end
 endmodule
