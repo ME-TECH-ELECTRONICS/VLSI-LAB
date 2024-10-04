@@ -22,5 +22,7 @@ module synchronizer (
     output soft_reset_1,
     output soft_reset_2
 );
+
+    
     
 endmodule
