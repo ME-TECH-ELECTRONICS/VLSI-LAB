@@ -67,4 +67,67 @@ module synchronizer (
     assign vld_out_0 = ~empty_0;
     assign vld_out_1 = ~empty_1;
     assign vld_out_2 = ~empty_2;
+    
+    always @(posedge clk) begin
+        if(!rst) begin 
+            count0 <= 0;
+            soft_reset_0 <= 0;
+        end
+        if(vld_out_0) begin 
+            if(!rd_en_0) begin 
+                if(count0 == 29) begin
+                    soft_reset_0 <= 1;
+                    count0 <= 0;
+                end
+                else begin
+                    soft_reset_0 <= 0;
+                    count0 <= count0 + 1;
+                end
+            end
+            else 
+                count0 <= 0;
+        end
+    end
+    
+    always @(posedge clk) begin
+        if(!rst) begin 
+            count0 <= 0;
+            soft_reset_0 <= 0;
+        end
+        if(vld_out_0) begin 
+            if(!rd_en_0) begin 
+                if(count0 == 29) begin
+                    soft_reset_0 <= 1;
+                    count0 <= 0;
+                end
+                else begin
+                    soft_reset_0 <= 0;
+                    count0 <= count0 + 1;
+                end
+            end
+            else 
+                count0 <= 0;
+        end
+    end
+    
+    always @(posedge clk) begin
+        if(!rst) begin 
+            count0 <= 0;
+            soft_reset_0 <= 0;
+        end
+        if(vld_out_0) begin 
+            if(!rd_en_0) begin 
+                if(count0 == 29) begin
+                    soft_reset_0 <= 1;
+                    count0 <= 0;
+                end
+                else begin
+                    soft_reset_0 <= 0;
+                    count0 <= count0 + 1;
+                end
+            end
+            else 
+                count0 <= 0;
+        end
+    end
 endmodule
