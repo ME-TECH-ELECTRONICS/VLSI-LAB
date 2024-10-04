@@ -42,20 +42,24 @@ module synchronizer (
                 else
                     wr_en <= 0;
             end
-            2'b00: begin
-                fifo_full <= full_0;
+            2'b01: begin
+                fifo_full <= full_1;
                 if(wr_en_reg)
-                    wr_en <= 3'b001;
+                    wr_en <= 3'b010;
                 else
                     wr_en <= 0;
                     
             end
-            2'b00: begin
-                fifo_full <= full_0;
+            2'b10: begin
+                fifo_full <= full_2;
                 if(wr_en_reg)
-                    wr_en <= 3'b001;
+                    wr_en <= 3'b100;
                 else
                     wr_en <= 0;
+            end
+            default: begin 
+                fifo_full <= 0;
+                wr_en <= 0;
             end
         endcase
     end
