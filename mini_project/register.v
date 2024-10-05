@@ -74,23 +74,23 @@ module register (
     //ERROR LOGIC
     always@(posedge clock) begin
         if(!resetn)
-                          err<=0;
-            else if(parity_done)begin
-                         if (int_parity == ext_parity)
-                            err <= 0;
-                         else 
-                            err <= 1;
-                 end else
-                    err <= 0;
-        end
+            err<=0;
+        else if(parity_done)begin
+            if (int_parity == ext_parity)
+                err <= 0;
+            else 
+                err <= 1;
+        end else
+            err <= 0;
+    end
 
     //EXTERNAL PARITY LOGIC
     always@(posedge clock) begin
         if(!resetn)
-                      ext_parity <= 0;
+            ext_parity <= 0;
         else if(detect_add)
-                          ext_parity <= 0;
+            ext_parity <= 0;
         else if((ld_state && !fifo_full && ~pkt_valid) || (laf_state && ~parity_done && low_packet_valid))
-                          ext_parity <= data_in;
+            ext_parity <= data_in;
         end
 endmodule
