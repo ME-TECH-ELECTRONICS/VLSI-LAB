@@ -73,7 +73,7 @@ module register (
 
     //ERROR LOGIC
     always@(posedge clock) begin
-        if(!resetn)
+        if(!rst)
             err<=0;
         else if(parity_done)begin
             if (int_parity == ext_parity)
@@ -86,7 +86,7 @@ module register (
 
     //EXTERNAL PARITY LOGIC
     always@(posedge clock) begin
-        if(!resetn)
+        if(!rst)
             ext_parity <= 0;
         else if(detect_add)
             ext_parity <= 0;
