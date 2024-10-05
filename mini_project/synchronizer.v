@@ -134,9 +134,12 @@ endmodule
 
 
 module sync_tb();
-    reg clk, rst, detect_addr, full_0, full_1, full_2, empty_0, empty_1, empty_2, wr_en_reg, rd_en_0, rd_en_1, rd_en_2;
+    reg clk = 0, rst, detect_addr, full_0, full_1, full_2, empty_0, empty_1, empty_2, wr_en_reg, rd_en_0, rd_en_1, rd_en_2;
     reg[1:0] din;
     
     wire fifo_full, vld_out_0, vld_out_1, vld_out_2, soft_reset_0, soft_reset_1, soft_reset_2;
     wire[2:0] wr_en;
+    
+    
+    always #5 clk = ~clk;
 endmodule
