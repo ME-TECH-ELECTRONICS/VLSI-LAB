@@ -45,7 +45,7 @@ module fifo (
 
   // Read operation
   always @(posedge clk) begin
-    if (rst && !soft_rst) begin
+    if (rst) begin
       if (rd_en && !empty) begin
         if (mem[rd_ptr][8] == 1'b1) begin
           intCount = mem[rd_ptr][7:2] + 1'b1;
