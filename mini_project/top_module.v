@@ -6,7 +6,7 @@ module router (
     input rd_en_0,
     input rd_en_1,
     input rd_en_2,
-    output vld_out_0
+    output vld_out_0,
     output vld_out_1,
     output vld_out_2,
     output err,
