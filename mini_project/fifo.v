@@ -26,7 +26,7 @@ module fifo (
         mem[i] <= 0;
       end
     end
-    if (soft_rst) dout <= 8'bx;
+    if (soft_rst || (intCount==0)) dout <= 8'bz;
   end
 
   assign full  = (count == 16);  // Full when all 16 positions are occupied
@@ -54,7 +54,7 @@ module fifo (
         end
         dout   <= mem[rd_ptr][7:0];  // Read only the data part
         rd_ptr <= rd_ptr + 1;
-        count  <= count - 1;  // Wrap around the read pointer
+        count  <= count - 1;  
       end
     end
   end
