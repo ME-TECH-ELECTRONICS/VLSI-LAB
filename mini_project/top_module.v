@@ -135,7 +135,7 @@ module router_tb(); // Testbench for the router
     
     initial begin
         // Initialize signals
-        rst = 0;
+        rst = 0; //Apply reset
         pkt_valid = 0;
         rd_en_0 = 0;
         rd_en_1 = 0;
