@@ -17,8 +17,8 @@ module router (
 );
 
     wire soft_rst_0, full_0, empty_0, soft_rst_1, full_1, empty_1, soft_rst_2, full_2, empty_2, fifo_full, detect_addr, ld_state,laf_state, full_state, lfd_state, rst_int_reg, parity_done, low_pkt_valid, write_enb_reg;
-wire[2:0] wr_en;
-wire[7:0] din;
+    wire[2:0] wr_en;
+    wire[7:0] din;
 
     //INSTANCSTATIONS OF FIFOS
     fifo FIFO_0 (clk, rst, soft_rst_0, wr_en[0], rd_en_0, lfd_state, din, full_0, empty_0, dout_0);
@@ -35,3 +35,4 @@ wire[7:0] din;
     fsm_controller FSM (clk, rst, pkt_valid, fifo_full, fifo_empty_0, fifo_empty_1, fifo_empty_2, soft_rst_0, soft_rst_1, soft_rst_2, parity_done, low_pkt_valid, d_in[1:0], wr_en_req, detect_addr, ld_state, laf_state, lfd_state, full_state, rst_int_req, busy);
 
 endmodule
+
