@@ -141,7 +141,7 @@ module router_tb(); // Testbench for the router
         rd_en_1 = 0;
         rd_en_2 = 0;
         din = 0;
-        #10 rst = 1; // Apply reset
+        #10 rst = 1; // De assert reset
         
         // Test cases with different payload lengths and read addresses
         #10 payload_XB(6'd8, 1, 2'b0, 0); // Payload Length = 8Bytes, Address = 0
