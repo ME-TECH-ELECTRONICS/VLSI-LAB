@@ -14,6 +14,7 @@ module fifo (
   reg [3:0] wr_ptr, rd_ptr, count;  // 4-bit pointers and counter
   reg [6:0] intCount;
   integer i;
+  reg tmp_lfd_state;
 
   // Reset and counting algorithm
   always @(posedge clk) begin
@@ -34,7 +35,9 @@ module fifo (
             2'b00, 2'b11: count = count;
     end
   end
-
+  always @(lfd_state) begin
+    tmp_lfd_state <= lfd_state
+  end
   assign full  = (count == 16);  // Full when all 16 positions are occupied
   assign empty = (count == 0);  // Empty when count is zero
 
