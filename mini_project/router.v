@@ -146,12 +146,12 @@ module router_tb(); // Testbench for the router
         
         // Test cases with different payload lengths and read addresses
         #10 payload_XB(6'd8, 1, 2'b0, 0); // Payload Length = 8Bytes, Address = 0
-       rst = 0; #10; rst = 1;
-       #10 payload_XB(6'd16, 1, 2'b1, 0); // Payload Length = 16Bytes, Address = 1
-       rst = 0; #10; rst = 1;
-       #10 payload_XB(6'd17, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled
-       rst = 0; #10; rst = 1;
-       #10 payload_XB(6'd16, 0, 2'b10, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet
+        rst = 0; #10; rst = 1;
+        #10 payload_XB(6'd16, 1, 2'b1, 0); // Payload Length = 16Bytes, Address = 1
+        rst = 0; #10; rst = 1;
+        #10 payload_XB(6'd17, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled
+        rst = 0; #10; rst = 1;
+        #10 payload_XB(6'd16, 0, 2'b10, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet
     end
      
 endmodule
