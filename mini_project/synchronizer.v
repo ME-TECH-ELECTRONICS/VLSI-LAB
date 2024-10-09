@@ -1,4 +1,3 @@
-
 module synchronizer (
     input clk,
     input rst,
@@ -29,7 +28,7 @@ module synchronizer (
 
   always @(posedge clk) begin
     if (!rst) tmp_din <= 0;
-    if (detect_addr) tmp_din <= din;
+    else if (detect_addr) tmp_din <= din;
   end
 
   always @(*) begin
@@ -57,9 +56,9 @@ module synchronizer (
     endcase
   end
 
-  assign vld_out_0 = ~empty_0;
-  assign vld_out_1 = ~empty_1;
-  assign vld_out_2 = ~empty_2;
+  assign vld_out_0 = (~empty_0);
+  assign vld_out_1 = (~empty_1);
+  assign vld_out_2 = (~empty_2);
 
   always @(posedge clk) begin
     if (!rst) begin

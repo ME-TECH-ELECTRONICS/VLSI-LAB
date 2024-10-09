@@ -38,7 +38,7 @@ module register (
       dout <= 0;
       header <= 0;
       int_reg <= 0;
-    end else if (detect_addr && pkt_valid && din != 2'b11) header <= din;
+    end else if (detect_addr && pkt_valid && din[1:0] != 2'b11) header <= din;
     else if (lfd_state) dout <= header;
     else if (ld_state && ~fifo_full) dout <= din;
     else if (ld_state && fifo_full) int_reg <= din;
