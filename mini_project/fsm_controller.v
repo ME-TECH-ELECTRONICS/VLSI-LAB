@@ -65,7 +65,6 @@ module fsm_controller (
 
       WAIT_TILL_EMPTY: begin
         if (fifo_empty_0 || fifo_empty_1 || fifo_empty_2) NS = LOAD_FIRST_DATA;
-        if ((~fifo_empty_0) || (~fifo_empty_1) || (~fifo_empty_2)) NS = WAIT_TILL_EMPTY;
         else NS = WAIT_TILL_EMPTY;
       end
 
