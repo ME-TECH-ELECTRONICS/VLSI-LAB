@@ -36,14 +36,6 @@ module fsm_controller (
 
   always @(posedge clk) begin
     if (!rst) begin
-      // wr_en_req <= 0;
-      // detect_addr <= 0;
-      // ld_state <= 0;
-      // laf_state <= 0;
-      // lfd_state <= 0;
-      // full_state <= 0;
-      // rst_int_reg <= 0;
-      // busy <= 0;
       PS <= DECODE_ADDRESS;
     end
     else if (soft_rst_0 || soft_rst_1 || soft_rst_2) PS <= DECODE_ADDRESS;
@@ -53,8 +45,6 @@ module fsm_controller (
   always @(*) begin
     case (PS)
       DECODE_ADDRESS: begin
-        // detect_addr <= 1;
-        // busy <= 0;
         if ((pkt_valid && din == 0 && fifo_empty_0) || (pkt_valid && din == 1 && fifo_empty_1) || (pkt_valid && din == 2 && fifo_empty_2))
           NS = LOAD_FIRST_DATA;
         else if ((pkt_valid && din == 0 && ~fifo_empty_0) || (pkt_valid && din == 1 && !fifo_empty_1) || (pkt_valid && din == 2 && !fifo_empty_2))
@@ -63,15 +53,10 @@ module fsm_controller (
       end
 
       LOAD_FIRST_DATA: begin
-        // lfd_state <= 1;
-        // busy <= 1;
         NS = LOAD_DATA;
       end
 
       LOAD_DATA: begin
-        // ld_state <= 1;
-        // busy <= 0;
-        // wr_en_req <= 1;
         if (fifo_full) begin
           NS = FIFO_FULL_STATE;
         end else if (!fifo_full && !pkt_valid) NS = LOAD_PARITY;
