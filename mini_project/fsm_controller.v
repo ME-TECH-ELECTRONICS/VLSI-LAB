@@ -80,14 +80,14 @@ module fsm_controller (
       end
 
       LOAD_PARITY: begin
-        NS <= CHECK_PARITY_ERROR;
+        NS = CHECK_PARITY_ERROR;
       end
       CHECK_PARITY_ERROR: begin
         if (fifo_full) NS = FIFO_FULL_STATE;
         else NS = DECODE_ADDRESS;
       end
 
-      default: PS = DECODE_ADDRESS;
+      default: PS <= DECODE_ADDRESS;
     endcase
   end
 
