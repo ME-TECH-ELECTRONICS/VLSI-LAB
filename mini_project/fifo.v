@@ -26,7 +26,7 @@ module fifo (
         mem[i] <= 0;
       end
     end
-    if (soft_rst || (intCount==0)) dout <= 8'bz;
+    else if (soft_rst || (intCount==0)) dout <= 8'bz;
   end
 
   assign full  = (count == 16);  // Full when all 16 positions are occupied
@@ -59,5 +59,3 @@ module fifo (
     end
   end
 endmodule
-
-

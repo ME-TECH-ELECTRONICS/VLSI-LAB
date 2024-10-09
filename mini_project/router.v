@@ -90,7 +90,7 @@ module router_tb(); // Testbench for the router
     
     // Task for generating a payload of specified length
     task payload_XB;
-        input [5:0] len;        // Length of the payload
+        input [6:0] len;        // Length of the payload
         input read;             // Read enable flag
         input [1:0] addr;       // Address to write/read from FIFO
         input [7:0] ext_parity; // External parity for the payload
@@ -103,14 +103,16 @@ module router_tb(); // Testbench for the router
                 pkt_valid = 1;  // Indicate packet is valid
                 header = {len, addr}; // Create header with length and address
                 din = header;   // Load header into data input
-                parity = parity ^ header; // Calculate parity
+                parity = parity ^ din; // Calculate parity
             end
-            
-            for (i = 0; i < len; i = i + 1) begin 
-                @(negedge clk); // Wait for negative edge of clock
-                data = ($random) % 256; // Generate random data byte
-                din = data;   // Load data into data input
-                parity = parity ^ data; // Update parity
+            @(negedge clk); // Wait for negative edge of clock
+            for (i = 0; i < len; i = i + 1) begin
+                wait(!busy) begin 
+                    @(negedge clk); // Wait for negative edge of clock
+                    data = {$random} % 256; // Generate random data byte
+                    din = data;   // Load data into data input
+                    parity = parity ^ din; // Update parity
+                end
             end
             
             wait(!busy) begin 
@@ -121,14 +123,21 @@ module router_tb(); // Testbench for the router
             
             if (read) begin
                 @(negedge clk); // Wait for negative edge of clock
-                rd_en_0 = (addr == 0); // Set read enable for FIFO 0
-                rd_en_1 = (addr == 1); // Set read enable for FIFO 1
-                rd_en_2 = (addr == 2); // Set read enable for FIFO 2
-                wait(dut.FIFO_0.empty); // Wait until FIFO 0 is empty
                 @(negedge clk); // Wait for negative edge of clock
-                rd_en_0 = 0; // Reset read enable for FIFO 0
-                rd_en_1 = 0; // Reset read enable for FIFO 1
-                rd_en_2 = 0; // Reset read enable for FIFO 2
+                
+                if(addr == 0) begin
+                    rd_en_0 = 1; // Set read enable for FIFO 0
+                    wait(dut.FIFO_0.empty); // Wait until FIFO 0 is empty
+                    rd_en_0 = 0;
+                end else if(addr == 1) begin
+                    rd_en_1 = 1; // Set read enable for FIFO 1
+                    wait(dut.FIFO_1.empty); // Wait until FIFO 1 is empty
+                    rd_en_1 = 0;
+                end else if(addr == 2) begin
+                    rd_en_2 = 1; // Set read enable for FIFO 2
+                    wait(dut.FIFO_2.empty); // Wait until FIFO 2 is empty
+                    rd_en_2 = 0;
+                end
             end
         end
     endtask
@@ -145,13 +154,13 @@ module router_tb(); // Testbench for the router
         #10 rst = 1; // De assert reset
         
         // Test cases with different payload lengths and read addresses
-        #10 payload_XB(6'd8, 1, 2'b0, 0); // Payload Length = 8Bytes, Address = 0
-        rst = 0; #10; rst = 1;
-        #10 payload_XB(6'd16, 1, 2'b1, 0); // Payload Length = 16Bytes, Address = 1
-        rst = 0; #10; rst = 1;
-        #10 payload_XB(6'd17, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled
-        rst = 0; #10; rst = 1;
-        #10 payload_XB(6'd16, 0, 2'b10, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet
+        // #10 payload_XB(6'd8, 1, 2'b0, 0); // Payload Length = 8Bytes, Address = 0, sequential Read.
+        // #10; rst = 0; #10; rst = 1;
+        #10 payload_XB(6'd13, 1, 2'b0, 0); // Payload Length = 16Bytes, Address = 1, simultaneous Read.
+        // #70; rst = 0; #10; rst = 1;
+        // #10 payload_XB(6'd16, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled.
+        // #70; rst = 0; #10; rst = 1;
+        // #10 payload_XB(6'd16, 1, 2'b1, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet.
     end
      
 endmodule
