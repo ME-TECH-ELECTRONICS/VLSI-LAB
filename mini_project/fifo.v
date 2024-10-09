@@ -26,7 +26,13 @@ module fifo (
         mem[i] <= 0;
       end
     end
-    else if (soft_rst || (intCount==0)) dout <= 8'bz;
+    else begin 
+        if (soft_rst || (intCount==0)) dout <= 8'bz;
+        case({wr_ptr,rd_ptr})
+            2'b01: count = count - 1;
+            2'b10: count = count + 1;
+            2'b00, 2'b11: count = count;
+    end
   end
 
   assign full  = (count == 16);  // Full when all 16 positions are occupied
