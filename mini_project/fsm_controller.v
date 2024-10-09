@@ -79,38 +79,26 @@ module fsm_controller (
       end
 
       WAIT_TILL_EMPTY: begin
-        // wr_en_req <= 0;
-        // busy <= 1;
         if (fifo_empty_0 || fifo_empty_1 || fifo_empty_2) NS = LOAD_FIRST_DATA;
         if ((~fifo_empty_0) || (~fifo_empty_1) || (~fifo_empty_2)) NS = WAIT_TILL_EMPTY;
         else NS = WAIT_TILL_EMPTY;
       end
 
       FIFO_FULL_STATE: begin
-        // busy <= 1;
-        // wr_en_req <= 0;
-        // full_state <= 1;
         if (!fifo_full) NS = LOAD_AFTER_FULL;
         else NS = FIFO_FULL_STATE;
       end
 
       LOAD_AFTER_FULL: begin
-        // wr_en_req <= 1;
-        // busy <= 1;
-        // laf_state <= 1;
         if ((!parity_done) && (!low_pkt_valid)) NS = LOAD_DATA;
         else if (!parity_done && low_pkt_valid) NS = LOAD_PARITY;
         else if (parity_done) NS = DECODE_ADDRESS;
       end
 
       LOAD_PARITY: begin
-        // busy <= 1;
-        // wr_en_req <= 1;
         NS <= CHECK_PARITY_ERROR;
       end
       CHECK_PARITY_ERROR: begin
-        // rst_int_reg <= 1;
-        // busy <= 1;
         if (fifo_full) NS = FIFO_FULL_STATE;
         else NS = DECODE_ADDRESS;
       end
@@ -120,7 +108,7 @@ module fsm_controller (
   end
 
   assign detect_addr = ((PS == DECODE_ADDRESS) ? 1 : 0);
-  assign wr_en_req = (((PS == LOAD_DATA) || (PS == LOAD_PARITY) || (PS == LOAD_AFTER_FULL)) ? 1 : 0);  //|| (((PS == FIFO_FULL_STATE) || (PS == WAIT_TILL_EMPTY) || (PS == DECODE_ADDRESS) || (PS == LOAD_FIRST_DATA) || (PS == CHECK_PARITY_ERROR)) ? 0 : 1);
+  assign wr_en_req = (((PS == LOAD_DATA) || (PS == LOAD_PARITY) || (PS == LOAD_AFTER_FULL)) ? 1 : 0);
   assign full_state = ((PS == FIFO_FULL_STATE) ? 1 : 0);
   assign lfd_state = ((PS == LOAD_FIRST_DATA) ? 1 : 0);
   assign busy = (((PS == LOAD_FIRST_DATA) || (PS == LOAD_PARITY) || (PS == FIFO_FULL_STATE) ||(PS == LOAD_AFTER_FULL) || (PS == WAIT_TILL_EMPTY) || (PS == CHECK_PARITY_ERROR)) ? 1 : 0) || (((PS == LOAD_DATA) || (PS == DECODE_ADDRESS)) ? 0 : 1);
