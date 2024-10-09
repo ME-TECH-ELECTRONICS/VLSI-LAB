@@ -44,7 +44,7 @@ module fifo (
       if (wr_en && !full) begin
         mem[wr_ptr] <= {lfd_state, din};  // Write lfd_state and data 110101010
         wr_ptr <= wr_ptr + 1;
-        count <= count + 1;
+    
       end
     end
   end
@@ -60,7 +60,7 @@ module fifo (
         end
         dout   <= mem[rd_ptr][7:0];  // Read only the data part
         rd_ptr <= rd_ptr + 1;
-        count  <= count - 1;  
+    
       end
     end
   end
