@@ -87,7 +87,7 @@ module fsm_controller (
   end
   assign detect_addr = (PS == DECODE_ADDRESS);
   assign lfd_state = (PS == LOAD_FIRST_DATA);
-  assign busy = (PS == LOAD_FIRST_DATA) || !(PS == LOAD_DATA) || (PS == LOAD_PARITY) || (PS == FIFO_FULL_STATE) ||(PS == LOAD_AFTER_FULL) || (PS == WAIT_TILL_EMPTY) || (PS == CHECK_PARITY_ERROR);
+  assign busy = (((PS == LOAD_FIRST_DATA) || (PS == LOAD_PARITY) || (PS == FIFO_FULL_STATE) ||(PS == LOAD_AFTER_FULL) || (PS == WAIT_TILL_EMPTY) || (PS == CHECK_PARITY_ERROR)) ? 1 : 0) || (((PS == LOAD_DATA) || (PS == DECODE_ADDRESS)) ? 0 : 1);
   assign ld_state = (PS == LOAD_DATA);
   assign wr_en_req = (PS == LOAD_DATA) || (PS == LOAD_PARITY) || !(PS == FIFO_FULL_STATE) || (PS == LOAD_AFTER_FULL) || !(PS == WAIT_TILL_EMPTY);
   assign full_state = (PS == FIFO_FULL_STATE);

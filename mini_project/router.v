@@ -29,7 +29,7 @@ module router (
     wire soft_rst_2, full_2, empty_2; 
     wire fifo_full, detect_addr, ld_state, laf_state; 
     wire full_state, lfd_state, rst_int_reg; 
-    wire parity_done, low_pkt_valid, write_enb_reg;
+    wire parity_done, low_pkt_valid, wr_en_reg;
     wire [2:0] wr_en;               // Write enable for the FIFOs
     wire [7:0] din;                 // Data input to FIFOs
 
@@ -57,24 +57,24 @@ module router (
         rst_int_reg, din, err, 
         parity_done, low_pkt_valid
     );
-
+    
     // Instantiate FSM controller to manage router states and operations
     fsm_controller FSM (
         clk, rst, pkt_valid, fifo_full, 
         empty_0, empty_1, empty_2, 
         soft_rst_0, soft_rst_1, soft_rst_2, 
         parity_done, low_pkt_valid, 
-        d_in[1:0], wr_en_req, 
+        d_in[1:0], wr_en_reg, 
         detect_addr, ld_state, laf_state, 
         lfd_state, full_state, 
-        rst_int_req, busy
+        rst_int_reg, busy
     );
 
 endmodule
 
 module router_tb(); // Testbench for the router
 
-    reg clk = 0;               // Clock signal
+    reg clk=0;               // Clock signal
     reg rst;                   // Reset signal
     reg pkt_valid;            // Packet validity signal
     reg rd_en_0, rd_en_1, rd_en_2; // Read enable signals for FIFOs
@@ -95,9 +95,9 @@ module router_tb(); // Testbench for the router
         input [1:0] addr;       // Address to write/read from FIFO
         input [7:0] ext_parity; // External parity for the payload
         reg [7:0] header, data; // Header and data variables
-        reg [7:0] parity = 0;   // Parity accumulator
+        reg [7:0] parity;   // Parity accumulator
         begin
-        
+            parity = 0;
             wait(!busy) begin 
                 @(negedge clk); // Wait for negative edge of clock
                 pkt_valid = 1;  // Indicate packet is valid
@@ -135,19 +135,23 @@ module router_tb(); // Testbench for the router
     
     initial begin
         // Initialize signals
-        rst = 0; //Apply reset
+        
         pkt_valid = 0;
         rd_en_0 = 0;
         rd_en_1 = 0;
         rd_en_2 = 0;
         din = 0;
+        rst = 0; //Apply reset
         #10 rst = 1; // De assert reset
         
         // Test cases with different payload lengths and read addresses
         #10 payload_XB(6'd8, 1, 2'b0, 0); // Payload Length = 8Bytes, Address = 0
-        #10 payload_XB(6'd16, 1, 2'b1, 0); // Payload Length = 16Bytes, Address = 1
-        #10 payload_XB(6'd17, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled
-        #10 payload_XB(6'd16, 0, 2'b10, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet
+       rst = 0; #10; rst = 1;
+       #10 payload_XB(6'd16, 1, 2'b1, 0); // Payload Length = 16Bytes, Address = 1
+       rst = 0; #10; rst = 1;
+       #10 payload_XB(6'd17, 0, 2'b1, 0); // Payload Length = 16Bytes, Address = 1, Reading Disabled
+       rst = 0; #10; rst = 1;
+       #10 payload_XB(6'd16, 0, 2'b10, 8'h28); // Payload Length = 16Bytes, Address = 2, Corrupted packet
     end
-    
+     
 endmodule
