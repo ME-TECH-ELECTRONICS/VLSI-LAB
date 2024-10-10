@@ -29,15 +29,8 @@ module fifo (
     end
     else begin 
         if (soft_rst || (intCount==0)) dout <= 8'bz;
-        case({wr_ptr,rd_ptr})
-            2'b01: count = count - 1;
-            2'b10: count = count + 1;
-            2'b00, 2'b11: count = count;
     end
   end
-  /*always @(lfd_state) begin
-    tmp_lfd_state <= lfd_state
-  end*/
   assign full  = (count == 16);  // Full when all 16 positions are occupied
   assign empty = (count == 0);  // Empty when count is zero
 
@@ -67,4 +60,16 @@ module fifo (
       end
     end
   end
+
+  always @(posedge clk or negedge rst) begin
+        if (!rst) begin
+            count <= 0;
+        end else if (wr_en && !full && rd_en && !empty) begin
+            count <= count;   // When both read and write occur simultaneously
+        end else if (wr_en && !full) begin
+            count <= count + 1;  // Increment count on write
+        end else if (rd_en && !empty) begin
+            count <= count - 1;  // Decrement count on read
+        end
+    end
 endmodule
