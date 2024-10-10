@@ -87,7 +87,7 @@ module fsm_controller (
         else NS = DECODE_ADDRESS;
       end
 
-      default: PS <= DECODE_ADDRESS;
+      default: NS <= DECODE_ADDRESS;
     endcase
   end
 
@@ -95,9 +95,8 @@ module fsm_controller (
   assign wr_en_req = (((PS == LOAD_DATA) || (PS == LOAD_PARITY) || (PS == LOAD_AFTER_FULL)) ? 1 : 0);
   assign full_state = ((PS == FIFO_FULL_STATE) ? 1 : 0);
   assign lfd_state = ((PS == LOAD_FIRST_DATA) ? 1 : 0);
-  assign busy = (((PS == LOAD_FIRST_DATA) || (PS == LOAD_PARITY) || (PS == FIFO_FULL_STATE) ||(PS == LOAD_AFTER_FULL) || (PS == WAIT_TILL_EMPTY) || (PS == CHECK_PARITY_ERROR)) ? 1 : 0) || (((PS == LOAD_DATA) || (PS == DECODE_ADDRESS)) ? 0 : 1);
+  assign busy = (((PS == LOAD_FIRST_DATA) || (PS == LOAD_PARITY) || (PS == FIFO_FULL_STATE) ||(PS == LOAD_AFTER_FULL) || (PS == WAIT_TILL_EMPTY) || (PS == CHECK_PARITY_ERROR)) ? 1 : 0);
   assign ld_state = ((PS == LOAD_DATA) ? 1 : 0);
   assign laf_state = ((PS == LOAD_AFTER_FULL) ? 1 : 0);
   assign rst_int_reg = ((PS == CHECK_PARITY_ERROR) ? 1 : 0);
 endmodule
-

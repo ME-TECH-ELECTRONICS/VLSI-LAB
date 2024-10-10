@@ -38,6 +38,15 @@ module router (
     fifo FIFO_1 (clk, rst, soft_rst_1, wr_en[1], rd_en_1, lfd_state, din, full_1, empty_1, dout_1);
     fifo FIFO_2 (clk, rst, soft_rst_2, wr_en[2], rd_en_2, lfd_state, din, full_2, empty_2, dout_2);
 
+    // Instantiate registers to store data and manage errors
+    register REG_0 (
+        clk, rst, pkt_valid, d_in, 
+        fifo_full, detect_addr, 
+        ld_state, laf_state, full_state, lfd_state, 
+        rst_int_reg, din, err, 
+        parity_done, low_pkt_valid
+    );
+
     // Instantiate synchronizer to manage input data and FIFO states
     synchronizer SYNC (
         clk, rst, d_in[1:0], detect_addr, 
@@ -47,15 +56,6 @@ module router (
         wr_en, fifo_full, 
         vld_out_0, vld_out_1, vld_out_2, 
         soft_rst_0, soft_rst_1, soft_rst_2
-    );
-
-    // Instantiate registers to store data and manage errors
-    register REG_0 (
-        clk, rst, pkt_valid, d_in, 
-        fifo_full, detect_addr, 
-        ld_state, laf_state, full_state, lfd_state, 
-        rst_int_reg, din, err, 
-        parity_done, low_pkt_valid
     );
     
     // Instantiate FSM controller to manage router states and operations

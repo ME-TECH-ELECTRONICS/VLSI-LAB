@@ -71,5 +71,3 @@ module register (
       ext_parity <= din;
   end
 endmodule
-
-

@@ -39,7 +39,7 @@ module fifo (
     if (rst) begin
       if (wr_en && !full) begin
         mem[wr_ptr] <= {lfd_state, din};  // Write lfd_state and data 110101010
-        wr_ptr <= wr_ptr + 1;
+        wr_ptr <= (wr_ptr + 1) % 16;
     
       end
     end
@@ -47,17 +47,14 @@ module fifo (
 
   // Read operation
   always @(posedge clk) begin
-    if (rst) begin
-      if (rd_en && !empty) begin
-        if (mem[rd_ptr][8] == 1'b1) begin
-          intCount = mem[rd_ptr][7:2] + 1'b1;
-        end else if (intCount != 0) begin
-          intCount = intCount - 1;
-        end
-        dout   <= mem[rd_ptr][7:0];  // Read only the data part
-        rd_ptr <= rd_ptr + 1;
-    
+    if (rst && rd_en && !empty) begin
+      if (mem[rd_ptr][8] == 1'b1) begin
+        intCount <= mem[rd_ptr][7:2] + 1'b1;
+      end else if (intCount != 0) begin
+        intCount <= intCount - 1;
       end
+      dout   <= mem[rd_ptr][7:0];  // Read only the data part
+      rd_ptr <= (rd_ptr + 1) % 16;
     end
   end
 
