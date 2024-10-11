@@ -11,10 +11,9 @@ module fifo (
     output reg [7:0] dout
 );
   reg [8:0] mem[15:0];  // 9-bit wide memory, 16 deep
-  reg [3:0] wr_ptr, rd_ptr, count;  // 4-bit pointers and counter
+  reg [4:0] wr_ptr, rd_ptr, count;  // 4-bit pointers and counter
   reg [6:0] intCount;
   integer i;
-  //reg tmp_lfd_state;
 
   // Reset and counting algorithm
   always @(posedge clk) begin
@@ -27,10 +26,9 @@ module fifo (
         mem[i] <= 0;
       end
     end
-    else begin 
-        if (soft_rst || (intCount==0)) dout <= 8'bz;
-    end
+    else if (soft_rst || (intCount==0)) dout <= 8'bz;
   end
+
   assign full  = (count == 16);  // Full when all 16 positions are occupied
   assign empty = (count == 0);  // Empty when count is zero
 
@@ -40,7 +38,7 @@ module fifo (
       if (wr_en && !full) begin
         mem[wr_ptr] <= {lfd_state, din};  // Write lfd_state and data 110101010
         wr_ptr <= wr_ptr + 1;
-    
+        count <= count + 1;
       end
     end
   end
@@ -56,20 +54,8 @@ module fifo (
         end
         dout   <= mem[rd_ptr][7:0];  // Read only the data part
         rd_ptr <= rd_ptr + 1;
-    
+        count  <= count - 1;  
       end
     end
   end
-
-  always @(posedge clk or negedge rst) begin
-        if (!rst) begin
-            count <= 0;
-        end else if (wr_en && !full && rd_en && !empty) begin
-            count <= count;   // When both read and write occur simultaneously
-        end else if (wr_en && !full) begin
-            count <= count + 1;  // Increment count on write
-        end else if (rd_en && !empty) begin
-            count <= count - 1;  // Decrement count on read
-        end
-    end
 endmodule
