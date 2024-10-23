@@ -24,7 +24,7 @@ module array_types();
         end
         $display("/**** Associative Array ****/");
         foreach(arr3[i]) begin 
-            $display("arr3[%0d]: %0d",i, arr3[i]);
+            $display("arr3[%0s]: %0d",i, arr3[i]);
         end
         $display("RGB: #%0h%0h%0h",arr3["RED"], arr3["GREEN"], arr3["BLUE"]);
         
