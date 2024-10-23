@@ -12,7 +12,7 @@ module mux_2x1_tb ();
     mux_2x1 dut(a,b,s,y);
     initial begin
         $dumpfile("out.vcd");
-        $dumpvars();
+        $dumpvars(0, mux_2x1_tb);
         $monitor("a=%0d b=%0d s=%0d y=%0d",a,b,s,y);
         a=0; b=0; s=0; #10;
         a=0; b=1; s=0; #10;
