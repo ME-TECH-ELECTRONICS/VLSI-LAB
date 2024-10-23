@@ -7,9 +7,9 @@ module array_types();
     initial begin
         arr2 = new[4];
         arr2 = {"Hello","vlsi","world"};
-        arr3[RED] = 128;
-        arr3[GREEN] = 230;
-        arr3[BLUE] = 10;
+        arr3["RED"] = 128;
+        arr3["GREEN"] = 230;
+        arr3["BLUE"] = 10;
         $display("/**** Simple Integer Array ****/");
         foreach(arr[i]) begin 
             $display("arr[%0d]: %0d",i, arr[i]);
@@ -26,7 +26,7 @@ module array_types();
         foreach(arr3[i]) begin 
             $display("arr3[%0d]: %0d",i, arr3[i]);
         end
-        $display("RGB: #%0h%0h%0h",arr3[RED], arr3[GREEN], arr3[BLUE]);
+        $display("RGB: #%0h%0h%0h",arr3["RED"], arr3["GREEN"], arr3["BLUE"]);
         
     end
 endmodule
