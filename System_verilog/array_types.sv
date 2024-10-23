@@ -16,17 +16,17 @@ module array_types();
         end
         $display("/**** Simple String Array ****/");
         foreach(arr1[i]) begin 
-            $display("arr1[%0d]: %0d",i, arr1[i]);
+            $display("arr1[%0d]: %0s",i, arr1[i]);
         end
         $display("/**** Dynamic Array ****/");
         foreach(arr2[i]) begin 
-            $display("arr2[%0d]: %0d",i, arr2[i]);
+            $display("arr2[%0d]: %0s",i, arr2[i]);
         end
         $display("/**** Associative Array ****/");
         foreach(arr3[i]) begin 
             $display("arr3[%0s]: %0d",i, arr3[i]);
         end
-        $display("RGB: #%0h%0h%0h",arr3["RED"], arr3["GREEN"], arr3["BLUE"]);
+        
         
     end
 endmodule
