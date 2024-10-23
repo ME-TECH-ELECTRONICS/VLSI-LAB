@@ -1,0 +1,112 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_00000272847c67e0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_00000272847c6970 .scope module, "basicGates_tb" "basicGates_tb" 3 17;
+ .timescale 0 0;
+v000002728480fd90_0 .var "a", 0 0;
+v000002728480fe30_0 .net "ay", 0 0, v00000272847c6b00_0;  1 drivers
+v000002728480fed0_0 .var "b", 0 0;
+v000002728480ff70_0 .net "nay", 0 0, v0000027284776720_0;  1 drivers
+v0000027284810010_0 .net "noy", 0 0, v00000272847767c0_0;  1 drivers
+v00000272847c34e0_0 .net "ny", 0 0, v0000027284776860_0;  1 drivers
+v00000272847c2c20_0 .net "oy", 0 0, v0000027284776900_0;  1 drivers
+v00000272847c3300_0 .net "xny", 0 0, v000002728480fc50_0;  1 drivers
+v00000272847c33a0_0 .net "xoy", 0 0, v000002728480fcf0_0;  1 drivers
+S_0000027284776590 .scope module, "dut" "basicGates" 3 21, 3 1 0, S_00000272847c6970;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "ny";
+    .port_info 3 /OUTPUT 1 "ay";
+    .port_info 4 /OUTPUT 1 "oy";
+    .port_info 5 /OUTPUT 1 "nay";
+    .port_info 6 /OUTPUT 1 "noy";
+    .port_info 7 /OUTPUT 1 "xoy";
+    .port_info 8 /OUTPUT 1 "xny";
+v000002728477beb0_0 .net "a", 0 0, v000002728480fd90_0;  1 drivers
+v00000272847c6b00_0 .var "ay", 0 0;
+v00000272847c6ba0_0 .net "b", 0 0, v000002728480fed0_0;  1 drivers
+v0000027284776720_0 .var "nay", 0 0;
+v00000272847767c0_0 .var "noy", 0 0;
+v0000027284776860_0 .var "ny", 0 0;
+v0000027284776900_0 .var "oy", 0 0;
+v000002728480fc50_0 .var "xny", 0 0;
+v000002728480fcf0_0 .var "xoy", 0 0;
+E_00000272847c8ad0 .event anyedge, v000002728477beb0_0, v00000272847c6ba0_0;
+    .scope S_0000027284776590;
+T_0 ;
+    %wait E_00000272847c8ad0;
+    %load/vec4 v000002728477beb0_0;
+    %inv;
+    %store/vec4 v0000027284776860_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %and;
+    %store/vec4 v00000272847c6b00_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %and;
+    %inv;
+    %store/vec4 v0000027284776720_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %or;
+    %store/vec4 v0000027284776900_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %or;
+    %inv;
+    %store/vec4 v00000272847767c0_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %xor;
+    %store/vec4 v000002728480fcf0_0, 0, 1;
+    %load/vec4 v000002728477beb0_0;
+    %load/vec4 v00000272847c6ba0_0;
+    %xor;
+    %inv;
+    %store/vec4 v000002728480fc50_0, 0, 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_00000272847c6970;
+T_1 ;
+    %vpi_call/w 3 23 "$dumpfile", "out.vcd" {0 0 0};
+    %vpi_call/w 3 24 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000272847c6970 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002728480fd90_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002728480fed0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002728480fd90_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002728480fed0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002728480fd90_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002728480fed0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002728480fd90_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002728480fed0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call/w 3 30 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "behavioral\basicgates.v";

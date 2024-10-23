@@ -23,6 +23,8 @@ module d_latch_tb ();
 
     d_latch dut(d,en,rst,q,q_bar);
     initial begin
+        $dumpfile("out.vcd");
+        $dumpvars();
         rst = 1; en=1; #10;
         rst = 0; en=0; d=0; #10;
         rst = 0; en=0; d=1; #10;
