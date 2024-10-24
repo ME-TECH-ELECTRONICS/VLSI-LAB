@@ -26,7 +26,5 @@ module array_types();
         foreach(arr3[i]) begin 
             $display("arr3[%0s]: %0d",i, arr3[i]);
         end
-        
-        
     end
 endmodule
