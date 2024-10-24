@@ -23,8 +23,8 @@ module array_types();
             $display("arr2[%0d]: %0s",i, arr2[i]);
         end
         $display("/**** Associative Array ****/");
-        foreach(arr3[i]) begin 
-            $display("arr3[%0s]: %0d",i, arr3[i]);
-        end
+        $display("arr3[RED]: %0d", arr3["RED"]);
+        $display("arr3[GREEN]: %0d", arr3["GREEN"]);
+        $display("arr3[BLUE]: %0d", arr3["BLUE"]);
     end
 endmodule

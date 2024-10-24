@@ -12,9 +12,6 @@ module dataTypes_tb ();
         e = $sformatf("%0d", f); //converts bit value to string
         $display("a=%0d b=%0d c=%0d d=%d e=%0s f=0x%0h",a,b,c,d,e,f);
         $display("Len: %0d",e.len());
-        for ( int i = 40; i<50; i++) begin
-            if(char === i) 
-                $display("ASCII of A is %0d", i);
-        end
+
     end
 endmodule
