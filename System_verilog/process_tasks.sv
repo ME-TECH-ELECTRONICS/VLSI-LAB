@@ -9,7 +9,7 @@ module process_task();
     task t2(int x, int y);
         begin
             #10;
-            $display("Sum: %0d", a+b);
+            $display("Difference: %0d", a-b);
         end
     endtask
     function int f1(int x, int y, int z);
