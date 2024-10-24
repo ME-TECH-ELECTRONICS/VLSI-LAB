@@ -21,6 +21,6 @@ module process_task();
     initial begin
         a = 37; b = 8; c = 66; #10;
         $display("/***** Initial Values ****/");
-        $display("a = %0d b = %0d c = %0d");
+        $display("a = %0d b = %0d c = %0d", a,b,c);
     end
 endmodule
