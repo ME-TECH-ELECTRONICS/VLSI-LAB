@@ -10,10 +10,11 @@ module dataTypes_tb ();
         int BLUE;
     } RGB_color;
     
-    struct packed {
+    typedef struct{
         int RED;
         int GREEN;
         int BLUE;
+        string ALPHA;
     } RGBA_color;
 
     typedef union packed {
@@ -28,7 +29,7 @@ module dataTypes_tb ();
     endclass 
 
     RGB_color rgb; //struct
-    RGB_color rgba; //struct
+    RGBA_color rgba; //unpacked struct
     something some; //union
     Printer console; //class
 
@@ -40,13 +41,19 @@ module dataTypes_tb ();
         rgb.RED = 122;
         rgb.GREEN = 233;
         rgb.BLUE = 111;
+
+        rgba.RED = 122;
+        rgba.GREEN = 233;
+        rgba.BLUE = 111;
+        rgba.ALPHA = "120";
         some.i = 0;
         
         e = $sformatf("%0d", f); //converts bit value to string
         $display("a=%0d b=%0d c=%0d d=%d e=%0s f=0x%0h",a,b,c,d,e,f);
         $display("Len: %0d",e.len());
         $display("RGB: #%0h%0h%0h", rgb.RED, rgb.GREEN, rgb.BLUE);
-        $display("union: {i: %0d, s: %0d}", some.i,some.s);
+      $display("RGBA: #%0h%0h%0h%0s", rgba.RED, rgba.GREEN, rgba.BLUE, rgba.ALPHA); //unpacked struct
+        $display("u %0dnion: {i:, s: %0d}", some.i,some.s);
         some.s = 255;
         $display("union: {i: %0d, s: %0d}", some.i,some.s);
         console.log("Hello World!");
