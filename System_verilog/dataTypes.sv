@@ -26,6 +26,9 @@ module dataTypes_tb ();
         function void log(string msg);
             $display(msg);
         endfunction 
+        function void error(string msg);
+            $display(msg);
+        endfunction 
     endclass 
 
     RGB_color rgb; //struct
@@ -53,10 +56,11 @@ module dataTypes_tb ();
         $display("Len: %0d",e.len());
         $display("RGB: #%0h%0h%0h", rgb.RED, rgb.GREEN, rgb.BLUE);
       $display("RGBA: #%0h%0h%0h%0s", rgba.RED, rgba.GREEN, rgba.BLUE, rgba.ALPHA); //unpacked struct
-        $display("u %0dnion: {i:, s: %0d}", some.i,some.s);
+        $display("union: {i: %0d, s: %0d}", some.i,some.s);
         some.s = 255;
         $display("union: {i: %0d, s: %0d}", some.i,some.s);
         console.log("Hello World!");
+        console.error("Error");
 
     end
 endmodule
