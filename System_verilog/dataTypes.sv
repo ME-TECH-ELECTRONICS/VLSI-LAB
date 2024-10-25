@@ -9,6 +9,12 @@ module dataTypes_tb ();
         int GREEN;
         int BLUE;
     } RGB_color;
+    
+    struct packed {
+        int RED;
+        int GREEN;
+        int BLUE;
+    } RGBA_color;
 
     typedef union packed {
         int i; 
@@ -21,9 +27,10 @@ module dataTypes_tb ();
         endfunction 
     endclass 
 
-    RGB_color rgb;
-    something some;
-    Printer console;
+    RGB_color rgb; //struct
+    RGB_color rgba; //struct
+    something some; //union
+    Printer console; //class
 
     initial begin
         a=5; b=10;

@@ -3,14 +3,14 @@ module events_mgmt ();
     initial begin
         fork
             begin
-                 #60;  
-                 $display($time,"\t Triggring Event");
-                 -> ev1;
+                #40;  
+                $display($time,"\t Triggring Event");
+                -> ev1;
             end
             begin
                $display($time,"\t Waitingg for event trigger");
-               #20;
-              @(ev1);
+               #60;
+              wait(ev1);
                $display($time,"\t Event Triggered");
             end
         join
