@@ -28,4 +28,9 @@ module demux_1x4_tb;
 		d=0; s0=1; s1=0; #10;  d=1; s0=1; s1=0; #10;
 		d=0; s0=1; s1=1; #10;  d=1; s0=1; s1=1; #10;
 	end
+	initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
+        #1000; $finish;
+    end
 endmodule 

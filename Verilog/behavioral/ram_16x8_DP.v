@@ -67,5 +67,10 @@ module ram_16x8_DP_tb ();
 	        #10;
             $display("mem[%0h]: %0h", rd_addr, dout);
         end
+    end
+    initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
+        #1000; $finish;
     end 
 endmodule

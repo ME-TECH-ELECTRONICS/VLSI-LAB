@@ -7,7 +7,7 @@ module decade_counter (
         if (rst)
             q <= 0;
         else begin 
-            if(q > 4'b1001) 
+            if(q >= 4'b1001) 
                 q <= 0;
             else 
                 q <= q+1;
@@ -23,5 +23,10 @@ module decade_counter_tb ();
     initial begin
         rst = 1; #10;
         rst = 0; #10;
+    end
+    initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
+        #1000; $finish;
     end
 endmodule

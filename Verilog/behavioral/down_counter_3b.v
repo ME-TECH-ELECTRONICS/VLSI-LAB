@@ -20,4 +20,9 @@ module down_counter_3b_tb ();
         rst = 1; #10;
         rst = 0;
     end
+    initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
+        #1000; $finish;
+    end
 endmodule

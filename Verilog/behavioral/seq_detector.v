@@ -66,4 +66,9 @@ module seq_detector_tb();
         din = 0; #10;
         din = 1; #10;
     end
+    initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
+        #1000; $finish;
+    end
 endmodule
