@@ -1,0 +1,40 @@
+module circuit(
+    input [7:0] din,
+    input clk,
+    input rst,
+    input ld,
+    output reg[7:0] q
+    );
+    reg[7:0] mem, q_next=0;
+    always @(posedge clk) begin 
+        if (rst) begin
+           mem <= 0;
+        end
+        else begin
+            q_next <= (ld) ? din : q;
+            mem <= q_next;
+        
+            q <= mem;
+           
+        end
+    end
+   
+endmodule
+
+module circuit_tb();
+    reg clk=0, rst, ld=0;
+    reg[7:0] din;
+    wire[7:0] q;
+    circuit dut(din,clk,rst,ld,q);
+    always #5 clk = ~clk; 
+    initial begin 
+        rst = 1; 
+        #10;  
+        rst = 0;
+        #10;
+        ld = 1;
+        din = 8'h65;
+        #20;
+        ld = 0;
+    end
+endmodule

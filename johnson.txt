@@ -1,0 +1,45 @@
+module dff(
+    input d,
+    input clk,
+    input rst,
+    output reg q
+);
+    always @(posedge clk) begin 
+        if (!rst) begin
+            q <= 0;
+        end
+        else begin
+            q <= d;
+        end
+    end
+endmodule
+
+module johnson_counter(
+    input clk,
+    input rst,
+    output [3:0] q
+);
+    wire [3:0] d; 
+    assign d[0] = ~q[3]; 
+    assign d[1] = q[0];
+    assign d[2] = q[1];
+    assign d[3] = q[2];
+
+    dff dff3(d[3], clk, rst, q[3]); 
+    dff dff2(d[2], clk, rst, q[2]); 
+    dff dff1(d[1], clk, rst, q[1]); 
+    dff dff0(d[0], clk, rst, q[0]); 
+endmodule
+
+module counter_tb();
+    reg clk = 0, rst = 1;
+    wire [3:0] q;
+
+    johnson_counter dut(clk, rst, q);
+    always #5 clk = ~clk; 
+    initial begin 
+        rst = 0; 
+        #10;  
+        rst = 1;
+    end
+endmodule
