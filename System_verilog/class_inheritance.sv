@@ -41,11 +41,11 @@ module test;
     Circle c;
     Rectangle r;
     initial begin
-        c = new(5.0);
+        c = new(5.89);
         c.print();
         $display("Area of %s: %0.2f", c.name, c.calculate_area());
 
-        r = new(4.0, 7.0);
+        r = new(4.25, 7.16);
         r.print();
         $display("Area of %s: %0.2f", r.name, r.calculate_area());
     end
