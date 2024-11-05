@@ -38,12 +38,14 @@ class Rectangle extends Shape;
 endclass
 
 module test;
+    Circle c;
+    Rectangle r;
     initial begin
-        Circle c = new(5.0);
+        c = new(5.0);
         c.print();
         $display("Area of %s: %0.2f", c.name, c.calculate_area());
 
-        Rectangle r = new(4.0, 7.0);
+        r = new(4.0, 7.0);
         r.print();
         $display("Area of %s: %0.2f", r.name, r.calculate_area());
     end
