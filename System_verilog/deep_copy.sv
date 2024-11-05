@@ -28,11 +28,11 @@ module tb();
         s2 = new();
         s1.ds = 34;
         s2 = s1.copy();
-        $display("S2_DS: %0d", s2.data);
+      $display("S2_DS: %0d", s2.ds);
         s2.ds = 26;
-        $display("S1_DS: %0d", s1.data);
+      $display("S1_DS: %0d", s1.ds);
         s2.f1.data = 68;
-        $display("S1_F1_DATA: %0d", s2.data);
+      $display("S1_F1_DATA: %0d", s2.f1.data);
         
     end
 endmodule
