@@ -18,7 +18,7 @@ class Circle extends Shape;
         this.radius = radius;
     endfunction
 
-    function real calculate_area();
+    function real calc_area();
         return 3.1416 * radius * radius;
     endfunction
 endclass
@@ -32,7 +32,7 @@ class Rectangle extends Shape;
         this.width = width;
     endfunction
 
-    function real calculate_area();
+    function real calc_area();
         return length * width;
     endfunction
 endclass
@@ -43,10 +43,10 @@ module test;
     initial begin
         c = new(5.89);
         c.print();
-        $display("Area of %s: %0.2f", c.name, c.calculate_area());
-
+        $display("Area of %s: %0.2f", c.name, c.calc_area());
+        
         r = new(4.25, 7.16);
         r.print();
-        $display("Area of %s: %0.2f", r.name, r.calculate_area());
+        $display("Area of %s: %0.2f", r.name, r.calc_area());
     end
 endmodule
