@@ -40,11 +40,11 @@ endclass
 module test;
     initial begin
         Circle c = new(5.0);
-        c.display();
+        c.print();
         $display("Area of %s: %0.2f", c.name, c.calculate_area());
 
         Rectangle r = new(4.0, 7.0);
-        r.display();
+        r.print();
         $display("Area of %s: %0.2f", r.name, r.calculate_area());
     end
 endmodule
