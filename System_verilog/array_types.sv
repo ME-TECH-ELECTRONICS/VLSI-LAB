@@ -1,8 +1,9 @@
 module array_types();
-    int arr[3] = {20,40,34};
-    string arr1[3] = {"Hello","World","!"};
+    int arr[5] = {20,40,34};
+    string arr1[5] = {"Hello","World","!"};
     string arr2[];
-    int arr3[string];
+    // int arr3[string];
+    
     
     initial begin
         arr2 = new[4];
