@@ -1,0 +1,200 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_0000017d31f86fd0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+C0000017d31f88f00  .class "Circle" [2]
+   0: "name", "S"
+   1: "radius", "r"
+ ;
+C0000017d31e1aca0  .class "Rectangle" [3]
+   0: "name", "S"
+   1: "length", "r"
+   2: "width", "r"
+ ;
+C0000017d31f88e80  .class "Shape" [1]
+   0: "name", "S"
+ ;
+S_0000017d31fce510 .scope class, "Circle" "Circle" 3 13, 3 13 0, S_0000017d31f86fd0;
+ .timescale 0 0;
+S_0000017d31fce6a0 .scope autofunction.real, "calc_area" "calc_area" 3 21, 3 21 0, S_0000017d31fce510;
+ .timescale 0 0;
+v0000017d31fcf040_0 .var/cobj "@";
+; Variable calc_area is REAL return value of scope S_0000017d31fce6a0
+TD_$unit.Circle.calc_area ;
+    %pushi/real 1686633657, 4067; load=3.14160
+    %pushi/real 583847, 4045; load=3.14160
+    %add/wr;
+    %load/obj v0000017d31fcf040_0;
+    %prop/r 1;
+    %pop/obj 1, 0;
+    %mul/wr;
+    %load/obj v0000017d31fcf040_0;
+    %prop/r 1;
+    %pop/obj 1, 0;
+    %mul/wr;
+    %ret/real 0; Assign to calc_area
+    %disable/flow S_0000017d31fce6a0;
+    %end;
+S_0000017d31fcf180 .scope autofunction.obj, "new" "new" 3 16, 3 16 0, S_0000017d31fce510;
+ .timescale 0 0;
+v0000017d31fcf310_0 .var/cobj "@";
+v0000017d31fcf3b0_0 .var/real "radius", 0 0;
+TD_$unit.Circle.new ;
+    %alloc S_0000017d31fd0d20;
+    %load/obj v0000017d31fcf310_0;
+    %pushi/str "Circle";
+    %store/str v0000017d31fd01c0_0;
+    %store/obj v0000017d31fcfd60_0;
+    %callf/obj TD_$unit.Shape.new, S_0000017d31fd0d20;
+    %load/obj v0000017d31fcfd60_0;
+    %free S_0000017d31fd0d20;
+    %store/obj v0000017d31fcf310_0;
+    %load/obj v0000017d31fcf310_0;
+    %prop/r 1;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fcf310_0;
+    %store/prop/r 1;
+    %pop/obj 1, 0;
+    %end;
+S_0000017d31fcf450 .scope class, "Rectangle" "Rectangle" 3 26, 3 26 0, S_0000017d31f86fd0;
+ .timescale 0 0;
+S_0000017d31fcf5e0 .scope autofunction.real, "calc_area" "calc_area" 3 35, 3 35 0, S_0000017d31fcf450;
+ .timescale 0 0;
+v0000017d31fcf770_0 .var/cobj "@";
+; Variable calc_area is REAL return value of scope S_0000017d31fcf5e0
+TD_$unit.Rectangle.calc_area ;
+    %load/obj v0000017d31fcf770_0;
+    %prop/r 1;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fcf770_0;
+    %prop/r 2;
+    %pop/obj 1, 0;
+    %mul/wr;
+    %ret/real 0; Assign to calc_area
+    %disable/flow S_0000017d31fcf5e0;
+    %end;
+S_0000017d31fd0820 .scope autofunction.obj, "new" "new" 3 29, 3 29 0, S_0000017d31fcf450;
+ .timescale 0 0;
+v0000017d31fd0300_0 .var/cobj "@";
+v0000017d31fd03a0_0 .var/real "length", 0 0;
+v0000017d31fcf860_0 .var/real "width", 0 0;
+TD_$unit.Rectangle.new ;
+    %alloc S_0000017d31fd0d20;
+    %load/obj v0000017d31fd0300_0;
+    %pushi/str "Rectangle";
+    %store/str v0000017d31fd01c0_0;
+    %store/obj v0000017d31fcfd60_0;
+    %callf/obj TD_$unit.Shape.new, S_0000017d31fd0d20;
+    %load/obj v0000017d31fcfd60_0;
+    %free S_0000017d31fd0d20;
+    %store/obj v0000017d31fd0300_0;
+    %load/obj v0000017d31fd0300_0;
+    %prop/r 1;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fd0300_0;
+    %store/prop/r 1;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fd0300_0;
+    %prop/r 2;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fd0300_0;
+    %store/prop/r 2;
+    %pop/obj 1, 0;
+    %end;
+S_0000017d31fd1810 .scope class, "Shape" "Shape" 3 1, 3 1 0, S_0000017d31f86fd0;
+ .timescale 0 0;
+S_0000017d31fd0d20 .scope autofunction.obj, "new" "new" 3 4, 3 4 0, S_0000017d31fd1810;
+ .timescale 0 0;
+v0000017d31fcfd60_0 .var/cobj "@";
+v0000017d31fd01c0_0 .var/str "name";
+TD_$unit.Shape.new ;
+    %load/obj v0000017d31fcfd60_0;
+    %prop/str 0;
+    %pop/obj 1, 0;
+    %load/obj v0000017d31fcfd60_0;
+    %store/prop/str 0;
+    %pop/obj 1, 0;
+    %end;
+S_0000017d31fd1680 .scope autofunction.void, "print" "print" 3 8, 3 8 0, S_0000017d31fd1810;
+ .timescale 0 0;
+v0000017d31fd0260_0 .var/cobj "@";
+TD_$unit.Shape.print ;
+    %load/obj v0000017d31fd0260_0;
+    %prop/str 0;
+    %pop/obj 1, 0;
+    %vpi_call/w 3 9 "$display", "Shape: %s", S<0,str> {0 0 1};
+    %end;
+S_0000017d31f87160 .scope module, "test" "test" 3 40;
+ .timescale 0 0;
+v0000017d31fcfea0_0 .var/cobj "c";
+v0000017d31fd0620_0 .var/cobj "r";
+    .scope S_0000017d31f87160;
+T_6 ;
+    %alloc S_0000017d31fcf180;
+    %new/cobj C0000017d31f88f00;
+    %pushi/real 1581084835, 4068; load=5.89000
+    %pushi/real 3523215, 4046; load=5.89000
+    %add/wr;
+    %store/real v0000017d31fcf3b0_0;
+    %store/obj v0000017d31fcf310_0;
+    %callf/obj TD_$unit.Circle.new, S_0000017d31fcf180;
+    %load/obj v0000017d31fcf310_0;
+    %free S_0000017d31fcf180;
+    %store/obj v0000017d31fcfea0_0;
+    %alloc S_0000017d31fd1680;
+    %load/obj v0000017d31fcfea0_0;
+    %store/obj v0000017d31fd0260_0;
+    %callf/void TD_$unit.Shape.print, S_0000017d31fd1680;
+    %free S_0000017d31fd1680;
+    %load/obj v0000017d31fcfea0_0;
+    %prop/str 0;
+    %pop/obj 1, 0;
+    %alloc S_0000017d31fce6a0;
+    %load/obj v0000017d31fcfea0_0;
+    %store/obj v0000017d31fcf040_0;
+    %callf/real TD_$unit.Circle.calc_area, S_0000017d31fce6a0;
+    %free S_0000017d31fce6a0;
+    %vpi_call/w 3 46 "$display", "Area of %s: %0.2f", S<0,str>, W<0,r> {0 1 1};
+    %alloc S_0000017d31fd0820;
+    %new/cobj C0000017d31e1aca0;
+    %pushi/real 1140850688, 4068; load=4.25000
+    %pushi/real 1921997864, 4068; load=7.16000
+    %pushi/real 4026532, 4046; load=7.16000
+    %add/wr;
+    %store/real v0000017d31fcf860_0;
+    %store/real v0000017d31fd03a0_0;
+    %store/obj v0000017d31fd0300_0;
+    %callf/obj TD_$unit.Rectangle.new, S_0000017d31fd0820;
+    %load/obj v0000017d31fd0300_0;
+    %free S_0000017d31fd0820;
+    %store/obj v0000017d31fd0620_0;
+    %alloc S_0000017d31fd1680;
+    %load/obj v0000017d31fd0620_0;
+    %store/obj v0000017d31fd0260_0;
+    %callf/void TD_$unit.Shape.print, S_0000017d31fd1680;
+    %free S_0000017d31fd1680;
+    %load/obj v0000017d31fd0620_0;
+    %prop/str 0;
+    %pop/obj 1, 0;
+    %alloc S_0000017d31fcf5e0;
+    %load/obj v0000017d31fd0620_0;
+    %store/obj v0000017d31fcf770_0;
+    %callf/real TD_$unit.Rectangle.calc_area, S_0000017d31fcf5e0;
+    %free S_0000017d31fcf5e0;
+    %vpi_call/w 3 50 "$display", "Area of %s: %0.2f", S<0,str>, W<0,r> {0 1 1};
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "System_verilog\class_inheritance.sv";
