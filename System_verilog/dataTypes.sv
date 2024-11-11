@@ -55,7 +55,7 @@ module dataTypes_tb ();
         $display("a=%0d b=%0d c=%0d d=%d e=%0s f=0x%0h",a,b,c,d,e,f);
         $display("Len: %0d",e.len());
         $display("RGB: #%0h%0h%0h", rgb.RED, rgb.GREEN, rgb.BLUE);
-      $display("RGBA: #%0h%0h%0h%0s", rgba.RED, rgba.GREEN, rgba.BLUE, rgba.ALPHA); //unpacked struct
+        $display("RGBA: #%0h%0h%0h%0s", rgba.RED, rgba.GREEN, rgba.BLUE, rgba.ALPHA); //unpacked struct
         $display("union: {i: %0d, s: %0d}", some.i,some.s);
         some.s = 255;
         $display("union: {i: %0d, s: %0d}", some.i,some.s);
