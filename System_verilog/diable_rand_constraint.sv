@@ -19,6 +19,8 @@ module testbench;
         obj.dis_con();
         if (obj.randomize()) begin
             $display("Randomization successful.");
+            if(!obj.a_con.constraint_mode())
+                $display("Constraints Disabled!")
         end else begin
             $display("Randomization failed.");
         end
