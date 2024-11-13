@@ -64,6 +64,8 @@ module fifo_16x8_tb();
     always #5 clk = ~clk;
     integer i,j;
     initial begin
+        // $dumpfile("out.vcd");
+        // $dumpvars(1);
         rst = 0; #10;
         rst = 1; 
         wr_en = 0; rd_en = 0; din = 8'b0;
@@ -75,8 +77,9 @@ module fifo_16x8_tb();
         end
         rd_en = 1;
         for (j = 0; j<15; j=j+1) begin
-            $display("D[%d]: %h", j, dout);
+            $display("D[%0d]: %0h", j, dout);
 		  #10;
         end
+        $finish;
     end
 endmodule
