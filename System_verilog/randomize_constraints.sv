@@ -13,8 +13,8 @@ module constr_inside;
 
         repeat(3) begin
             pkt.randomize();
-            $display("\tstart_addr = %0d,end_addr = %0d",pkt.start_addr,pkt.end_addr);
-            $display("\taddr = %0d",pkt.addr);
+            $display("\tstart_addr = 0x%0h,end_addr = 0x%0h",pkt.start_addr,pkt.end_addr);
+            $display("\taddr = 0x%0h",pkt.addr);
             $display("------------------------------------");
         end
     end
