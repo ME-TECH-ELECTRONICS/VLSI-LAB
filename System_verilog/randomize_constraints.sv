@@ -2,7 +2,9 @@ class packet;
     rand bit [3:0] addr;
     rand bit [3:0] start_addr;
     rand bit [3:0] end_addr;
-    constraint addr_1_range { !(addr inside {[start_addr:end_addr]}); }
+    constraint con1 { !(start_addr inside {[0:6]}); }
+    constraint con2 { !(end_addr inside {[6:9],11,[15:20]}); }
+    constraint con3 { !(addr inside {[start_addr:end_addr]}); }
 endclass
 module constr_inside;
     initial begin
