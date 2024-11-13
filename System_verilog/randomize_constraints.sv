@@ -1,9 +1,9 @@
 class packet;
-    rand bit [3:0] addr;
-    rand bit [3:0] start_addr;
-    rand bit [3:0] end_addr;
-    constraint con1 { !(start_addr inside {[0:6]}); }
-    constraint con2 { !(end_addr inside {[6:9],11,[15:20]}); }
+    rand bit [7:0] addr;
+    rand bit [7:0] start_addr;
+    rand bit [7:0] end_addr;
+    constraint con2 { start_addr inside {0:5, 8, 10:12}; }
+    constraint con1 { !(end_addr inside {[0:20]}); }
     constraint con3 { !(addr inside {[start_addr:end_addr]}); }
 endclass
 module constr_inside;
@@ -18,4 +18,4 @@ module constr_inside;
             $display("------------------------------------");
         end
     end
-Endmodule
+endmodule
