@@ -4,7 +4,7 @@ class myClass;
 
     constraint a_con { a > 5; }
     constraint b_con { b < 10; }
-    function void disable_a_constraint();
+    function void dis_con();
         a_constraint.constraint_mode(0); 
     endfunction
 
@@ -16,7 +16,7 @@ endclass
 module testbench;
     initial begin
         MyClass obj = new();
-        obj.disable_a_constraint();
+        obj.dis_con();
         if (obj.randomize()) begin
             $display("Randomization successful.");
         end else begin
