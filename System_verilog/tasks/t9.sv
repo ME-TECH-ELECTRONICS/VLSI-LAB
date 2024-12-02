@@ -1,3 +1,5 @@
+`timescale 1ps/1ps
+
 module tb();
     int arr1[512];
     logic[8:0] address;
@@ -7,7 +9,7 @@ module tb();
     endtask
     
     function void print_int(int val);
-        $display("%0t: Value = %0d", $time, val);
+        $display("%0tps: Value = %0d", $time, val);
     endfunction
     
     initial begin
@@ -17,7 +19,7 @@ module tb();
         end
         arr1[511] = 5;
         address = $urandom();
-        
+        #10;
         myTask(arr1, address);
         
     end
