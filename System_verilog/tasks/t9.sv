@@ -3,9 +3,7 @@ module tb();
     logic[8:0] address;
     
     task myTask(ref int arr[512], ref logic[8:0] addr);
-        for(int i = arr.size(); i >= 0; i= i - 1) begin
-            print_int(arr[i]);
-        end
+        print_int(arr[addr]);
     endtask
     
     function void print_int(int val);
@@ -13,6 +11,14 @@ module tb();
     endfunction
     
     initial begin
+        
+        for(int i = 510; i >= 0; i= i - 1) begin
+            arr1[i] = $urandom_range(20, 255);
+        end
+        arr1[511] = 5;
+        address = $urandom();
+        
+        myTask(arr1, address);
         
     end
 endmodule
