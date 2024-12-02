@@ -2,7 +2,7 @@ module tb();
     int arr1[512];
     logic[8:0] address;
     
-    task myTask(ref int arr[512], ref logic[8:0] addr);
+    task automatic myTask(ref int arr[512], ref logic[8:0] addr);
         print_int(arr[addr]);
     endtask
     
