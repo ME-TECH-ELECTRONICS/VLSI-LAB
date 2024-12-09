@@ -50,3 +50,10 @@ module test;
         $display("Area of %s: %0.2f", r.name, r.calc_area());
     end
 endmodule
+
+
+// OUTPUT
+// # KERNEL: Shape: Circle
+// # KERNEL: Area of Circle: 108.99
+// # KERNEL: Shape: Rectangle
+// # KERNEL: Area of Rectangle: 30.43

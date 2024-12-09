@@ -1,13 +1,13 @@
-//12. generate the below pattern
-//1
-//12
-//123
-//1234
-//12345
-//123456
-//1234567
-//12345678
+//14. generate the below pattern
 //123456789
+//12345678
+//1234567
+//123456
+//12345
+//1234
+//123
+//12
+//1
 
 class PatternGen;
     rand int num_rows;
@@ -22,7 +22,7 @@ class PatternGen;
         int i, j;
         string row_pattern;
 
-        for (i = 1; i <= num_rows; i++) begin
+        for (i = num_rows; i > 0; i--) begin
             row_pattern = "";
             for (j = 1; j <= i; j++) begin
               row_pattern = {row_pattern, $sformatf("%0d", j)};
@@ -41,12 +41,12 @@ module pattern_generator;
 endmodule
 
 //OUTPUT
-// # KERNEL: 1
-// # KERNEL: 12
-// # KERNEL: 123
-// # KERNEL: 1234
-// # KERNEL: 12345
-// # KERNEL: 123456
-// # KERNEL: 1234567
-// # KERNEL: 12345678
 // # KERNEL: 123456789
+// # KERNEL: 12345678
+// # KERNEL: 1234567
+// # KERNEL: 123456
+// # KERNEL: 12345
+// # KERNEL: 1234
+// # KERNEL: 123
+// # KERNEL: 12
+// # KERNEL: 1

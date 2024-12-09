@@ -46,3 +46,21 @@ module process_ipc_semaphore ();
 endmodule
 
 
+
+
+// # KERNEL: [0]: Process P1 trying to access semaphore key.
+// # KERNEL: [0]: Process P1 accessed semaphore key.
+// # KERNEL: [0]: Process P2 trying to access semaphore key.
+// # KERNEL: [0]: Process P2 accessed semaphore key.
+// # KERNEL: [0]: Process P3 trying to access semaphore key.
+// # KERNEL: [0]: Process P4 trying to acquire 3 keys
+// # KERNEL: [0]: Process P4 acquired 3 keys
+// # KERNEL: [0]: Process P5 trying to acquire 2 keys
+// # KERNEL: [10]: Process P3 released semaphore key.
+// # KERNEL: [10]: Process P3 released semaphore key.
+// # KERNEL: [10]: Process P4 released 1 key
+// # KERNEL: [10]: Process P3 accessed semaphore key.
+// # KERNEL: [10]: Process P5 acquired 2 keys
+// # KERNEL: [20]: Process P3 released semaphore key.
+// # KERNEL: [20]: Process P5 released 1 key
+// # KERNEL: [20]: Process P4 released 2 key
