@@ -23,3 +23,20 @@ module task1_tb;
         end
     end
 endmodule
+
+//OUTPUT
+// # KERNEL: ODD: 40
+// # KERNEL: EVEN: 51
+// # KERNEL: =======================
+// # KERNEL: ODD: 80
+// # KERNEL: EVEN: 95
+// # KERNEL: =======================
+// # KERNEL: ODD: 78
+// # KERNEL: EVEN: 79
+// # KERNEL: =======================
+// # KERNEL: ODD: 44
+// # KERNEL: EVEN: 27
+// # KERNEL: =======================
+// # KERNEL: ODD: 26
+// # KERNEL: EVEN: 31
+// # KERNEL: =======================

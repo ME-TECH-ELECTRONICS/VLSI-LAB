@@ -24,6 +24,7 @@ module task1_tb;
     end
 endmodule
 
+// OUTPUT
 // # KERNEL: ODD: 35
 // # KERNEL: EVEN: 46
 // # KERNEL: =======================

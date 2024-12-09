@@ -21,6 +21,12 @@ module tb();
         address = $urandom();
         #10;
         myTask(arr1, address);
+        address = $urandom();
+        #10;
+        myTask(arr1, address);
         
     end
 endmodule
+
+// # KERNEL: 10ps: Value = 157
+// # KERNEL: 20ps: Value = 212
