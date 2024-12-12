@@ -4,5 +4,4 @@ interface adder_intf();
     logic c;
     bit sum;
     bit carry;
-    
 endinterface
