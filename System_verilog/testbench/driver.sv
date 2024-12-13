@@ -2,13 +2,11 @@ class Driver;
     event drv_done;
     mailbox mbx;
     virtual adder_intf vif;
-    Packet item;
     
-    function new(event drv_done, mailbox mbx, virtual adder_intf vif, Packet item);
+    function new(event drv_done, mailbox mbx, virtual adder_intf vif);
         this.drv_done = drv_done;
         this.mbx = mbx;
         this.vif = vif;
-        this.item = item;
     endfunction
     
     task run();
@@ -19,7 +17,6 @@ class Driver;
             mbx.get(item);
             vif.a <= item.a;
             vif.b <= item.b;
-            vif.c <= item.c;
             ->drv_done;
         end
         
