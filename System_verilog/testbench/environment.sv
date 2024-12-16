@@ -16,8 +16,8 @@ class environment;
     
     function new();
         gen = new(drv_done, drv_mbx);
-        mon = new(vif, sbd_mbx);
         drv = new(drv_done, drv_mbx, vif);
+        mon = new(vif, sbd_mbx);
         sbd = new(sbd_mbx);
     endfunction
     
