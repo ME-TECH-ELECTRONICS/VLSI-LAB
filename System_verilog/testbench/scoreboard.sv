@@ -1,3 +1,4 @@
+`include "transaction.sv"
 class Scoreboard;
     mailbox mbx;
     function new(mailbox mbx);
