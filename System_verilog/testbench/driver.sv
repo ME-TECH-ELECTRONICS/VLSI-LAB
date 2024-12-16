@@ -1,4 +1,5 @@
 `include "transaction.sv"
+`include "interface.sv"
 class Driver;
     event drv_done;
     mailbox mbx;
