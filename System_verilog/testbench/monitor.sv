@@ -16,7 +16,7 @@ class Monitor;
             item.sum = vif.sum;
             item.carry = vif.carry;
             item.print("Monitor");
-            scb_mbx.put(item);
+            mbx.put(item);
         end
     endtask 
 endclass 
