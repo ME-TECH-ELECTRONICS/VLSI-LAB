@@ -1,8 +1,9 @@
 class Monitor;
     virtual adder_intf vif;
-    mailbox mbx
+    mailbox mbx;
     function new(virtual adder_intf vif, mailbox mbx);
         this.vif = vif;
+        this.mbx = mbx;
     endfunction
 
     task run();
