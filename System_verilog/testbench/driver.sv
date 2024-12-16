@@ -12,7 +12,7 @@ class Driver;
     task run();
         $display("[%0tps] Driver: Starting...", $time);
         forever begin
-            Packet item;
+            Packet item = new();
             $display("[%0tps] Driver: Waiting for input...", $time);
             mbx.get(item);
             vif.a <= item.a;
