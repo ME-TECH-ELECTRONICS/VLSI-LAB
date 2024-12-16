@@ -1,3 +1,4 @@
+`include "transaction.sv"
 class Monitor;
     virtual adder_intf vif;
     mailbox mbx;
