@@ -1,3 +1,4 @@
+`include "transaction.sv"
 class Generator;
     int loop = 5;
     mailbox mbx;
