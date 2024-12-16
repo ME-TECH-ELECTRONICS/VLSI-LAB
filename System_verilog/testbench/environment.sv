@@ -20,4 +20,13 @@ class environment;
         drv = new(drv_done, drv_mbx, vif);
         sbd = new(sbd_mbx);
     endfunction
+    
+    task run();
+        fork
+            gen.run();
+            mon.run();
+            drv.run();
+            sbd.run();
+        join_any
+    endtask
 endclass
