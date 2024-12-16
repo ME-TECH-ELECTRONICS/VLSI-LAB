@@ -2,6 +2,7 @@
 `include "driver.sv"
 `include "monitor.sv"
 `include "scoreboard.sv"
+`include "interface.sv"
 
 class environment;
     Generator gen;
