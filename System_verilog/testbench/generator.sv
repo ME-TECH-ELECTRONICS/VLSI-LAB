@@ -3,10 +3,9 @@ class Generator;
     mailbox mbx;
     event drv_done;
 
-    function new(event drv_done, mailbox mbx, Packet item);
+    function new(event drv_done, mailbox mbx);
         this.drv_done = drv_done;
         this.mbx = mbx;
-        this.item = item;
     endfunction
 
     task run();
