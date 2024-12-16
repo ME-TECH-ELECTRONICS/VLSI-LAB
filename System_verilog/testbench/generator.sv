@@ -1,5 +1,5 @@
 class Generator;
-    int loop = 256;
+    int loop = 5;
     mailbox mbx;
     event drv_done;
 
