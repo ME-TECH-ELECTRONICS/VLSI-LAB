@@ -8,9 +8,9 @@ class Packet;
     endfunction
     
     function void copy(Packet tmp);
-        this.a = tmp.a;
-        this.b = tmp.b;
-        this.sum = tmp.sum;
-        this.carry = tmp.carry;
+        a = tmp.a;
+        b = tmp.b;
+        sum = tmp.sum;
+        carry = tmp.carry;
     endfunction
 endclass

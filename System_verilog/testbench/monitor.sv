@@ -1,13 +1,8 @@
-`include "transaction.sv"
-`include "interface.sv"
+
 class Monitor;
     virtual adder_intf vif;
-    mailbox mbx;
-    function new(virtual adder_intf vif, mailbox mbx);
-        this.vif = vif;
-        this.mbx = mbx;
-    endfunction
-
+    mailbox sbd_mbx;
+    
     task run();
         $display("[%0tps] Monitor: starting...", $time);
 
@@ -18,7 +13,7 @@ class Monitor;
             item.sum = vif.sum;
             item.carry = vif.carry;
             item.print("Monitor");
-            mbx.put(item);
+            sbd_mbx.put(item);
         end
     endtask 
 endclass 

@@ -1,14 +1,11 @@
-`include "transaction.sv"
+
 class Scoreboard;
-    mailbox mbx;
-    function new(mailbox mbx);
-        this.mbx = mbx;
-    endfunction
+    mailbox sbd_mbx;
     
     task run();
         forever begin 
             Packet item, ref_item;
-            mbx.get(item);
+            sbd_mbx.get(item);
             ref_item = new();
             ref_item.copy(item);
             

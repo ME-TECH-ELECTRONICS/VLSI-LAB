@@ -3,8 +3,9 @@
 `include "monitor.sv"
 `include "scoreboard.sv"
 `include "interface.sv"
+`include "transaction.sv"
 
-class environment;
+class Environment;
     Generator gen;
     Driver drv;
     Monitor mon;
@@ -13,16 +14,30 @@ class environment;
     mailbox drv_mbx;
     mailbox sbd_mbx;
     event drv_done;
-    virtual adder_intf vif;
+    virtual adder_intf adder_vif;
     
     function new();
-        gen = new(drv_done, drv_mbx);
-        drv = new(drv_done, drv_mbx, vif);
-        mon = new(vif, sbd_mbx);
-        sbd = new(sbd_mbx);
+        gen = new();
+        drv = new();
+        mon = new();
+        sbd = new();
+        drv_mbx = new();
+        sbd_mbx = new();
     endfunction
     
     task run();
+        gen.drv_done = drv_done;
+        drv.drv_done = drv_done;
+        
+        gen.drv_mbx = drv_mbx;
+        drv.drv_mbx = drv_mbx;
+        
+        mon.sbd_mbx = sbd_mbx;
+        sbd.sbd_mbx = sbd_mbx;
+        
+        drv.vif = adder_vif;
+        mon.vif = adder_vif;
+        
         fork
             gen.run();
             mon.run();
