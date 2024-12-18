@@ -2,7 +2,11 @@ class Driver;
     event drv_done;
     mailbox drv_mbx;
     virtual adder_intf vif;
-    
+    function new(virtual adder_intf vif,mailbox drv_mbx);
+        this.vif=vif;
+        this.drv_mbx=drv_mbx;
+    endfunction
+
     task run();
         $display("[%0tps] Driver: Starting...", $time);
         forever begin
@@ -14,6 +18,5 @@ class Driver;
             #1;
             ->drv_done;
         end
-        
     endtask
 endclass

@@ -2,6 +2,10 @@ class Scoreboard;
     mailbox sbd_mbx;
     event drv_done;
     
+    function new(mailbox sbd_mbx);
+        this.sbd_mbx = sbd_mbx;
+    endfunction
+
     task run();
         forever begin 
             Packet item, ref_item;

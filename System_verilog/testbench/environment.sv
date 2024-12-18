@@ -1,3 +1,9 @@
+
+`include "transaction.sv"
+`include "generator.sv"
+`include "driver.sv"
+`include "monitor.sv"
+`include "scoreboard.sv"
 class Environment;
     Generator gen;
     Driver drv;
@@ -9,28 +15,19 @@ class Environment;
     event drv_done;
     virtual adder_intf adder_vif;
     
-    function new();
-        gen = new();
-        drv = new();
-        mon = new();
-        sbd = new();
+  function new(virtual adder_intf adder_vif);
         drv_mbx = new();
         sbd_mbx = new();
+        gen = new(drv_mbx);
+        drv = new(adder_vif, drv_mbx);
+        mon = new(adder_vif, sbd_mbx);
+        sbd = new(sbd_mbx);
     endfunction
     
     task run();
         gen.drv_done = drv_done;
         drv.drv_done = drv_done;
         mon.drv_done = drv_done;
-        
-        gen.drv_mbx = drv_mbx;
-        drv.drv_mbx = drv_mbx;
-        
-        mon.sbd_mbx = sbd_mbx;
-        sbd.sbd_mbx = sbd_mbx;
-        
-        drv.vif = adder_vif;
-        mon.vif = adder_vif;
         
         fork
             gen.run();

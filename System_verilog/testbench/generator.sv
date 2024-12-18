@@ -3,6 +3,10 @@ class Generator;
     mailbox drv_mbx;
     event drv_done;
 
+    function new(mailbox drv_mbx);
+        this.drv_mbx=drv_mbx;
+    endfunction
+
     task run();
         for (int i = 0; i < loop; i++) begin
             Packet item = new();
