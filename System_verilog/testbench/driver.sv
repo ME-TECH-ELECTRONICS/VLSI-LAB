@@ -1,7 +1,6 @@
-
 class Driver;
     event drv_done;
-    mailbox mbx;
+    mailbox drv_mbx;
     virtual adder_intf vif;
     
     task run();
@@ -9,9 +8,10 @@ class Driver;
         forever begin
             Packet item = new();
             $display("[%0tps] Driver: Waiting for input...", $time);
-            mbx.get(item);
-            vif.a <= item.a;
-            vif.b <= item.b;
+            drv_mbx.get(item);
+            vif.a = item.a;
+            vif.b = item.b;
+            #1;
             ->drv_done;
         end
         

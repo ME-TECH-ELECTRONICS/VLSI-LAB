@@ -1,5 +1,3 @@
-
-
 class Environment;
     Generator gen;
     Driver drv;
@@ -23,6 +21,7 @@ class Environment;
     task run();
         gen.drv_done = drv_done;
         drv.drv_done = drv_done;
+        mon.drv_done = drv_done;
         
         gen.drv_mbx = drv_mbx;
         drv.drv_mbx = drv_mbx;

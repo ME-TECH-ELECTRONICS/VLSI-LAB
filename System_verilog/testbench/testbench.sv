@@ -12,6 +12,7 @@ module tb();
     adder_8bit dut(intf);
     
     initial begin 
+        env.adder_vif= intf;
         env.run();
         #50 $finish;
     end

@@ -68,8 +68,8 @@ class Monitor;
         $display("[%0tps] Monitor: starting...", $time);
 
         forever begin
-            //@(drv_done);
-          Packet item = new();  
+            
+            Packet item = new();  
             item.a = vif.a;
             item.b = vif.b;
             item.sum = vif.sum;

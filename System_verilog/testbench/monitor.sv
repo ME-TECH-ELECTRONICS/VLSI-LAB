@@ -1,12 +1,12 @@
-
 class Monitor;
     virtual adder_intf vif;
     mailbox sbd_mbx;
-    
+    event drv_done;
     task run();
         $display("[%0tps] Monitor: starting...", $time);
 
         forever begin
+            
             Packet item = new();  
             item.a = vif.a;
             item.b = vif.b;
@@ -14,11 +14,7 @@ class Monitor;
             item.carry = vif.carry;
             item.print("Monitor");
             sbd_mbx.put(item);
+          @(drv_done);
         end
     endtask 
 endclass 
-
-
-
-  
-  

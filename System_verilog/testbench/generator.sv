@@ -1,4 +1,3 @@
-
 class Generator;
     int loop = 5;
     mailbox drv_mbx;

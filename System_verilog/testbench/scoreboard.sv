@@ -1,6 +1,6 @@
-
 class Scoreboard;
     mailbox sbd_mbx;
+    event drv_done;
     
     task run();
         forever begin 
