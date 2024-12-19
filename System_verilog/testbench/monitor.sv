@@ -14,8 +14,10 @@ class Monitor;
         $display("[%0tps] Monitor: starting...", $time);
 
         forever begin
-            @(posedge clk_vif.clk);
+            
             Packet item = new();  
+          	@(posedge clk_vif.clk);
+          	#1;
             item.a = vif.a;
             item.b = vif.b;
             item.sum = vif.sum;

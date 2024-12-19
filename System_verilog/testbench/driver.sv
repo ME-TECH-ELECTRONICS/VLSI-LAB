@@ -13,8 +13,9 @@ class Driver;
     task run();
         $display("[%0tps] Driver: Starting...", $time);
         forever begin
-            @(posedge clk_vif.clk);
+            
             Packet item = new();
+          	@(posedge clk_vif.clk);
             $display("[%0tps] Driver: Waiting for input...", $time);
             drv_mbx.get(item);
             vif.a = item.a;

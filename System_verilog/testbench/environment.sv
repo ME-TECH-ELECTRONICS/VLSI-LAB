@@ -22,7 +22,7 @@ class Environment;
         gen = new(drv_mbx);
         drv = new(adder_vif, drv_mbx, clk_vif);
         mon = new(adder_vif, sbd_mbx, clk_vif);
-        sbd = new(sbd_mbx);
+    sbd = new(sbd_mbx);
     endfunction
     
     task run();

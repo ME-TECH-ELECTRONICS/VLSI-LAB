@@ -12,8 +12,8 @@ module tb();
         env.run();
         #50 $finish;
     end
-    initial begin
-        $dumpfile("dump.vcd");
-        dumpvars();
+  	initial begin
+        $dumpfile("out.vcd");
+        $dumpvars(1);
     end
 endmodule

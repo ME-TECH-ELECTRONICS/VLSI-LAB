@@ -1,13 +1,13 @@
 class Scoreboard;
     mailbox sbd_mbx;
     event drv_done;
-    
-    function new(mailbox sbd_mbx);
+  function new(mailbox sbd_mbx);
         this.sbd_mbx = sbd_mbx;
     endfunction
 
     task run();
         forever begin 
+           
             Packet item, ref_item;
             sbd_mbx.get(item);
             ref_item = new();
@@ -27,5 +27,6 @@ class Scoreboard;
                 $display("[%0tps] Scoreboard: Pass:- Sum match ref_item.sum = %0d, item.sum = %0d", $time, ref_item.sum, item.sum);
             end
         end
+      
     endtask
 endclass
