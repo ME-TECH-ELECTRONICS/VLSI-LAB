@@ -14,13 +14,14 @@ class Environment;
     mailbox sbd_mbx;
     event drv_done;
     virtual adder_intf adder_vif;
+    virtual clk_intf clk_vif;
     
-  function new(virtual adder_intf adder_vif);
+  function new(virtual adder_intf adder_vif, virtual clk_intf clk_vif);
         drv_mbx = new();
         sbd_mbx = new();
         gen = new(drv_mbx);
-        drv = new(adder_vif, drv_mbx);
-        mon = new(adder_vif, sbd_mbx);
+        drv = new(adder_vif, drv_mbx, clk_vif);
+        mon = new(adder_vif, sbd_mbx, clk_vif);
         sbd = new(sbd_mbx);
     endfunction
     

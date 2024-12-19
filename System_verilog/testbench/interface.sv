@@ -5,6 +5,8 @@ interface adder_intf();
     bit carry;
 endinterface
 
-interface ;
-    
+interface clk_intf;
+    logic clk;
+    initial clk <= 0;
+    always #10 clk <= ~clk;
 endinterface
