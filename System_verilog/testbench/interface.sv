@@ -4,3 +4,7 @@ interface adder_intf();
     bit[7:0] sum;
     bit carry;
 endinterface
+
+interface ;
+    
+endinterface
