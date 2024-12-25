@@ -12,9 +12,10 @@ class Payload;
     bit [7:0] dout_0;
     bit [7:0] dout_1;
     bit [7:0] dout_2;
+    logic[7:0] parity;
 
     function void print(string comp);
-        $display("[%0tps] %0s: Data = 0x%0h, pkk_valid = %0b, rd_en_0 = %0b, rd_en_1 = %0b, rd_en_2 = %0b, vld_out_0 = %0b, vld_out_1 = %0b, vld_out_2 = %0b, err = %0b, busy = %0b, dout_0 = 0x%0h, dout_1 = 0x%0h, dout_2 = 0x%0h", $time, comp, data, pkt_valid, rd_en_0, rd_en_1, rd_en_2, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_0, dout_1, dout_2);
+        $display("[%0tps] %0s: Data = 0x%0h, pkk_valid = %0b, rd_en_0 = %0b, rd_en_1 = %0b, rd_en_2 = %0b, vld_out_0 = %0b, vld_out_1 = %0b, vld_out_2 = %0b, err = %0b, busy = %0b, dout_0 = 0x%0h, dout_1 = 0x%0h, dout_2 = 0x%0h, parity = 0x%0h", $time, comp, data, pkt_valid, rd_en_0, rd_en_1, rd_en_2, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_0, dout_1, dout_2, parity);
     endfunction
     
      function void copy(Payload tmp);
@@ -31,6 +32,7 @@ class Payload;
         dout_0 = tmp.dout_0;
         dout_1 = tmp.dout_1;
         dout_2 = tmp.dout_2;
+        parity = tmp.parity;
     endfunction
 
 endclass
@@ -46,7 +48,8 @@ class Header;
     endfunction
 
     function void print(string comp);
-        $display("[%0tps] %0s: addr = %0b, len = %0b", $time, comp, addr, len);
+        $display("[%0tps] %0s: addr = 0x%0h, len = 0x%0h, header = %0x%0h", $time, comp, addr, len, header);
     endfunction
 
 endclass
+
