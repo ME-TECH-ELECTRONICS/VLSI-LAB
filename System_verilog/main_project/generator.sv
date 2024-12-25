@@ -10,16 +10,16 @@
     endfunction
 
     task run();
-        Payload pld = new();
-        Header hdr = new();
-        if(!hdr.randomize()) $error("Header randomization failed");
-        hdr.print("generator");
-        mbx.put(hdr);
+        Packet pld = new();
+        if(!pld.randomize()) $error("Packet randomization failed");
+        pld.print("generator");
+        mbx.put(pld.header);
+      #3;
         ->headerByte;
-        for (int i = 0; i <= hdr.len; i++) begin
+        for (int i = 0; i <= pld.header[7:2]; i++) begin
             if(!pld.randomize()) $error("Payload randomization failed");
             pld.print("generator");
-            mbx.put(pld, hdr);
+            mbx.put(pld);
             @(drv_done);
         end
     endtask

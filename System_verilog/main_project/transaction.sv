@@ -1,4 +1,5 @@
-class Payload;
+class Packet;
+    rand bit[7:0] header;
     rand bit[7:0] data;
     rand bit pkt_valid;
     rand bit rd_en_0;
@@ -14,11 +15,13 @@ class Payload;
     bit [7:0] dout_2;
     logic[7:0] parity;
 
+    constraint con1 { header[1:0] != 2'b11; }
+
     function void print(string comp);
-        $display("[%0tps] %0s: Data = 0x%0h, pkk_valid = %0b, rd_en_0 = %0b, rd_en_1 = %0b, rd_en_2 = %0b, vld_out_0 = %0b, vld_out_1 = %0b, vld_out_2 = %0b, err = %0b, busy = %0b, dout_0 = 0x%0h, dout_1 = 0x%0h, dout_2 = 0x%0h, parity = 0x%0h", $time, comp, data, pkt_valid, rd_en_0, rd_en_1, rd_en_2, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_0, dout_1, dout_2, parity);
+        $display("[%0tps] %0s: Header = %0h, Data = 0x%0h, pkk_valid = %0b, rd_en_0 = %0b, rd_en_1 = %0b, rd_en_2 = %0b, vld_out_0 = %0b, vld_out_1 = %0b, vld_out_2 = %0b, err = %0b, busy = %0b, dout_0 = 0x%0h, dout_1 = 0x%0h, dout_2 = 0x%0h, parity = 0x%0h", $time, comp, header, data, pkt_valid, rd_en_0, rd_en_1, rd_en_2, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_0, dout_1, dout_2, parity);
     endfunction
     
-     function void copy(Payload tmp);
+  function void copy(Packet tmp);
         data = tmp.data;
         pkt_valid = tmp.pkt_valid;
         rd_en_0 = tmp.rd_en_0;
@@ -36,20 +39,3 @@ class Payload;
     endfunction
 
 endclass
-
-class Header;
-    rand bit[1:0] addr;
-    rand bit[5:0] len;
-    bit[7:0] header;
-    constraint con1 { addr inside {0, 1, 2}; }
-
-    function void post_randomize();
-        header = {len, addr};
-    endfunction
-
-    function void print(string comp);
-        $display("[%0tps] %0s: addr = 0x%0h, len = 0x%0h, header = %0x%0h", $time, comp, addr, len, header);
-    endfunction
-
-endclass
-

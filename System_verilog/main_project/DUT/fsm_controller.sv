@@ -22,7 +22,7 @@ module fsm_controller (
 
     output logic wr_en_req,       // Write enable request signal
     output logic detect_addr,     // Signal to detect packet address
-    output logicbld_state,        // Load data state indicator
+    output logic ld_state,        // Load data state indicator
     output logic laf_state,       // Load after full state indicator
     output logic lfd_state,       // Load first data state indicator
     output logic full_state,      // FIFO full state indicator

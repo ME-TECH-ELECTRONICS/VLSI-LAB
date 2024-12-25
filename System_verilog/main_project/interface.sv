@@ -1,7 +1,7 @@
 interface router_if();
     logic clk;           
     logic rst;           
-    logic [7:0] d_in;    
+    logic [7:0] data;    
     logic pkt_valid;    
     logic rd_en_0;       
     logic rd_en_1;       
@@ -19,5 +19,5 @@ endinterface
 interface router_clk();
     logic clk;
     initial clk <= 0;
-    always #10 clk <= ~clk;
+    always #5 clk <= ~clk;
 endinterface

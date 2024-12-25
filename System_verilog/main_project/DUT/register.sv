@@ -15,7 +15,7 @@ module register (
     input logic ld_state,           // Signal indicating load state is active
     input logic laf_state,          // Signal indicating load after full state
     input logic full_state,         // Signal indicating the full state of the system
-    input logiclfd_state,          // Signal indicating load first data state
+    input logic lfd_state,          // Signal indicating load first data state
     input logic rst_int_reg,        // Signal to reset the internal register
     output logic [7:0] dout,    // 8-bit data output
     output logic err,           // Error signal output
