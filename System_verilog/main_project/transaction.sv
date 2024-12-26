@@ -1,3 +1,5 @@
+typedef enum {RESET, HEADER, PAYLOAD, PARITY} pkt_type_t;
+
 class Packet;
     rand bit[7:0] header;
     rand bit[7:0] data;
@@ -14,6 +16,7 @@ class Packet;
     bit [7:0] dout_1;
     bit [7:0] dout_2;
     logic[7:0] parity;
+    pkt_type_t pkt_type;
 
     constraint con1 { header[1:0] != 2'b11; }
 

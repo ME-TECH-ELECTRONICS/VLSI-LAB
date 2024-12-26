@@ -76,7 +76,7 @@ endclass
 class generator;
 
   packet ref_pkt;
-    mailbox #(packet) mbx;
+  mailbox #(packet) mbx;
   bit [15:0] pkt_count;
 
   function new(input mailbox #(packet) mbx_org, bit [31:0] pkt_count_arg);
