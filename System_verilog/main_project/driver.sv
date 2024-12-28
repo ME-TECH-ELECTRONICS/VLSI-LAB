@@ -14,13 +14,12 @@ class Driver;
         $display("[%0tps] Driver: Starting...", $time);
         
         forever begin
-            Packet pld = new();
-            mbx.get(pld);
-            pld.print("Driver");
-            drive(pld);
-            vif.rd_en_0 = pld.rd_en_0;
-            vif.rd_en_1 = pld.rd_en_1;
-            vif.rd_en_2 = pld.rd_en_2;
+            Packet pkt = new();
+            mbx.get(pkt);
+            drive(pkt);
+            vif.rd_en_0 = pkt.rd_en_0;
+            vif.rd_en_1 = pkt.rd_en_1;
+            vif.rd_en_2 = pkt.rd_en_2;
             ->drv_done;
         end
     endtask
@@ -39,12 +38,13 @@ class Driver;
         vif.rst = 0;
         @(posedge vif.clk);
         vif.rst = 1;
-      vif.pkt_valid = 0;
-      @(posedge vif.clk);
+        vif.pkt_valid = 0;
+        @(posedge vif.clk);
     endtask
 
     task drive_header(Packet pkt);
-       $display("[%0tps] Driver: Sending header byte.", $time);
+        pkt.print("Driver");
+        $display("[%0tps] Driver: Sending header byte.", $time);
        
         wait(vif.busy == 0);
         @(negedge vif.clk);
@@ -53,7 +53,8 @@ class Driver;
     endtask
 
     task drive_payload(Packet pkt);
-       $display("[%0tps] Driver: Sending payload byte.", $time);
+        pkt.print("Driver");
+        $display("[%0tps] Driver: Sending payload byte.", $time);
        
         wait(vif.busy == 0);
         @(negedge vif.clk);
@@ -62,6 +63,7 @@ class Driver;
     endtask
     
     task drive_parity(Packet pkt);
+        pkt.print("Driver");
         $display("[%0tps] Driver: Sending parity byte.", $time);
         
         wait(vif.busy == 0);
