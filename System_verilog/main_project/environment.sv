@@ -10,17 +10,16 @@ class Environment;
     // Monitor mon;
     // Scoreboard sbd;
     
-    mailbox #(Packet) drv_mbx;
+  mailbox #(Packet) drv_mbx;
     // mailbox sbd_mbx;
     event drv_done;
-    event headerByte;
-    virtual router_if.tb_mod_port router_vif;
+    virtual router_if vif;
     
-  function new(virtual router_if.tb_mod_port router_vif);
+  function new(virtual router_if vif);
         drv_mbx = new();
         // sbd_mbx = new();
         gen = new(drv_mbx, drv_done);
-        drv = new(drv_mbx, drv_done, router_vif);
+        drv = new(drv_mbx, drv_done, vif);
         // mon = new(adder_vif, sbd_mbx);
         // sbd = new(sbd_mbx);
     endfunction
