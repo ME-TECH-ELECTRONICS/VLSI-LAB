@@ -1,4 +1,4 @@
-typedef enum logic[1:0]{RESET = 0, HEADER = 1, PAYLOAD = 2, PARITY = 3} pkt_type_t;
+typedef enum logic[1:0] {RESET = 0, HEADER = 1, PAYLOAD = 2, PARITY = 3} pkt_type_t;
 
 class Packet;
     rand bit[7:0] header;
@@ -27,7 +27,7 @@ class Packet;
         $display("[%0tps] %0s: Data = 0x%0h, pkk_valid = %0b, rd_en = [%0b, %0b, %0b], vld_out = [%0b, %0b, %0b], err = %0b, busy = %0b, dout = [0x%0h, 0x%0h, 0x%0h], parity = 0x%0h, pkt_type = %0d", $time, comp, data, pkt_valid, rd_en_2, rd_en_1, rd_en_0, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_2, dout_1, dout_1, parity, pkt_type);
     endfunction
     
-  function void copy(Packet tmp);
+    function void copy(Packet tmp);
         data = tmp.data;
         pkt_valid = tmp.pkt_valid;
         rd_en_0 = tmp.rd_en_0;

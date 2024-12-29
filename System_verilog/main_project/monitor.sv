@@ -15,8 +15,7 @@ class Monitor;
 
         forever begin
             Payload pld = new();
-            header hdr = new();
-            @(headerByte);
+            
             @(posedge clk_vif.clk);
             $display("[%0tps] Monitor: Starting...", $time);
             pld.pkk_valid = vif.pkk_valid;
