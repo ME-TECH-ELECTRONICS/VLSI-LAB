@@ -50,6 +50,8 @@ class Driver;
         @(negedge vif.clk);
         vif.pkt_valid = 1;
         vif.data = pkt.header;
+        @(posedge vif.clk);
+        @(posedge vif.clk);
     endtask
 
     task drive_payload(Packet pkt);
