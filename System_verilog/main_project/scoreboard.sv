@@ -25,8 +25,7 @@ class Scoreboard;
                     pushData(item);
                     
                 end
-                PAYLOAD: drive_payload(pkt);
-                PARITY: drive_parity(pkt);
+                PAYLOAD: push_back(pkt);
                 default: ;
             endcase
             if(item.pkt_type == HEADER) begin
