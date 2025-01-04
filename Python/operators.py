@@ -1,0 +1,10 @@
+a = int(input("Enter a 1st num"))
+b = int(input("Enter a 2nd num"))
+
+print(f"{a} | {b} = {a|b}")
+print(f"{a} & {b} = {a&b}")
+print(f"{a} ^ {b} = {a^b}")
+print(f"{a} >> {b} = {a>>b}")
+print(f"{a} << {b} = {a<<b}")
+print(f"Binary of {a} = {bin(a)}")
+print(f"Hex of {a} = {hex(a)}")
