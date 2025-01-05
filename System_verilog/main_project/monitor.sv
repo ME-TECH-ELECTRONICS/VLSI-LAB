@@ -1,12 +1,14 @@
 class Monitor;
     local bit[7:0] header;
-    mailbox #(Packet) mbx;
+    mailbox #(Packet) mbx_in;
+    mailbox #(Packet) mbx_out;
     event drv_done;
     virtual router_if vif;
   	int count = 0;
 
-    function new(mailbox #(Packet) mbx, event drv_done, virtual router_if vif);
-        this.mbx = mbx;
+    function new(mailbox #(Packet) mbx_in, mailbox #(Packet) mbx_out, event drv_done, virtual router_if vif);
+        this.mbx_in = mbx_in;
+        this.mbx_out = mbx_out;
         this.drv_done = drv_done;
         this.vif = vif;
     endfunction
@@ -15,26 +17,34 @@ class Monitor;
         $display("[%0tps] Monitor: Starting...", $time);
      
         forever begin
-            checkPacket(count);
-            count++;
+            checkPacket(header);
         end
     endtask
 
-    task checkPacket(ref int counter);
+
+    task checkPacket(ref bit[7:0] header);
         Packet item = new();
-      	@(drv_done);
+        if(count < header[7:2] + 1)
+      	    @(drv_done);
         @(posedge vif.clk);
         #1;
         item = parsePacket();
-        case (counter)
-            0 : item.pkt_type = RESET;
-            1 : item.pkt_type = HEADER;
-            2 : item.pkt_type = PAYLOAD;
-            3 : item.pkt_type = PARITY;
-            default: counter = 0;
-        endcase
+        if(!header && item.pkt_valid) begin
+            item.pkt_type = HEADER;
+            header = item.data;
+        end
+        else if(header && item.pkt_valid) begin
+            item.pkt_type = PAYLOAD;
+        end
+        else if(header && !item.pkt_valid) begin
+            item.pkt_type = PARITY;
+            header = 0;
+        end
+        else begin
+            item.pkt_type = RESET;
+        end
         item.print("Monitor");
-        mbx.put(item);
+        mbx_in.put(item);
         
     endtask
 
