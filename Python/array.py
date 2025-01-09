@@ -36,10 +36,7 @@ print(v[d])
 first = [1, 36, 2, 90, 67, 3, 7, 8, 9]
 second = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-second.extend(first)
-result = []
-for i in second:
-    if i not in result:
-        result.append(i)
-
-print(result)
+for i in first:
+    if i not in second:
+        second.append(i)
+print(second)
