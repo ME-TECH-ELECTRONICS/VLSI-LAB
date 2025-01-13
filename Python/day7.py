@@ -45,3 +45,48 @@ for key, val in d6.items():
         result[key] = val
 
 print(result)
+
+def fib(lim:int = 5) -> None: 
+    r:int = 0
+    a:int = 0 
+    b:int = 1
+    for i in range(lim):
+        if i == 0:
+            print(a)
+            print(b)
+        else:
+            r = a + b
+            a = b
+            b = r
+            print(r)
+
+fib()
+
+def process_data(data):
+    if isinstance(data, list):
+        print("processting list")
+        for i in data:
+            print(i)
+    elif isinstance(data, tuple):
+        print("processting tuple")
+        for i in data:
+            print(i)
+    elif isinstance(data, dict):
+        print("processting dict")
+        for i,j in data.items():
+            print(f"{i}: {j}")
+    elif isinstance(data, set):
+        print("processting set")
+        for i in data:
+            print(i)
+    else:
+        print("unknown type")
+        
+arr = [1,2,3,4, 5]
+tup = (1,2,3,4,5)
+dic = {"a":"apple", "m": "mango"}
+sets = set({1,2,3,4,5})
+process_data(arr)
+process_data(tup)
+process_data(dic)
+process_data(sets)
