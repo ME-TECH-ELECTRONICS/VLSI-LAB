@@ -1,4 +1,3 @@
-@echo off
 :: BatchGotAdmin
 :-------------------------------------
 REM  --> Check for permissions
@@ -100,38 +99,32 @@ if exist "%gtkwave_install_dir%" (
 echo Cleaning up temporary files...
 rd /s /q "%temp_dir%"
 
-:: Check if Python is installed
-python --version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo Python is not installed. Please install Python first.
-    pause
-    exit /b 1
-) else (
-    echo Python is installed. Version:
-    python --version
-)
-mkdir "C:\cocotb"
-cd "C:\cocotb"
-py -m venv .venv
-.\.venv\Scripts\activate
-cmd /K
+:: make a sh file with below commands
+echo #!/bin/bash > C:\cocotb\setup.sh
+echo echo "Checking if Python is installed..." >> C:\cocotb\setup.sh
+echo python --version >> C:\cocotb\setup.sh
+echo if [ %errorlevel% -ne 0 ]; then >> C:\cocotb\setup.sh
+echo echo "Python is not installed. Please install Python first." >> C:\cocotb\setup.sh
+echo exit 1 >> C:\cocotb\setup.sh
+echo else >> C:\cocotb\setup.sh
+echo echo "Python is installed. Version: $(python --version)" >> C:\cocotb\setup.sh
+echo fi >> C:\cocotb\setup.sh
+
+echo mkdir -p /c/cocotb >> C:\cocotb\setup.sh
+echo cd /c/cocotb >> C:\cocotb\setup.sh
+echo python -m venv .venv >> C:\cocotb\setup.sh
+echo source .venv/bin/activate >> C:\cocotb\setup.sh
 
 :: Install cocotb and cocotb-bus using pip
-echo Installing cocotb...
-pip install cocotb || (
-    echo Error: Failed to install cocotb.
-    pause
-    exit /b 1
-)
+echo pip install cocotb >> C:\cocotb\setup.sh
+echo pip install cocotb-bus >> C:\cocotb\setup.sh
 
-echo Installing cocotb-bus...
-pip install cocotb-bus || (
-    echo Error: Failed to install cocotb-bus.
-    pause
-    exit /b 1
-)
+:: Make the sh file executable
+echo chmod +x C:\cocotb\setup.sh >> C:\cocotb\setup.sh
+
+:: End
 cls
-echo Installation complete. Vist https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB/tree/main/Python/cocotb/Counter for cocotb example
+echo Installation complete. Visit https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB/tree/main/Python/cocotb/Counter for cocotb example
 pause
 exit
 
