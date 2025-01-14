@@ -5,6 +5,7 @@ class Monitor;
     event drv_done;
     virtual router_if vif;
   	int count = 0;
+  	int count_1 = 0;
 
     function new(mailbox #(Packet) mbx_in, mailbox #(Packet) mbx_out, event drv_done, virtual router_if vif);
         this.mbx_in = mbx_in;
@@ -17,12 +18,12 @@ class Monitor;
         $display("[%0tps] Monitor: Starting...", $time);
      
         forever begin
-            checkPacket(header);
+            checkPacket_in(header);
         end
     endtask
 
 
-    task checkPacket(ref bit[7:0] header);
+    task checkPacket_in(ref bit[7:0] header);
         Packet item = new();
         if(count < header[7:2] + 1)
       	    @(drv_done);
@@ -45,7 +46,20 @@ class Monitor;
         end
         item.print("Monitor");
         mbx_in.put(item);
+        count = count + 1;
         
+    endtask
+    
+    task checkPacket_out()
+        Packet item = new();
+        if(count_1 < header[7:2] + 1) begin
+            @(posedge vif.clk);
+            #1;
+            @(posedge vif.rd_en_0 or posedge rd_en_1 or posedge rd_en_2);
+            item = parsePacket();
+            mbx_out.put(item);
+            count_1 = count_1 + 1; 
+      	end
     endtask
 
     function Packet parsePacket();
