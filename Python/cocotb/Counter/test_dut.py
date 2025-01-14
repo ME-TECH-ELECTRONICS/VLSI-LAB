@@ -4,7 +4,7 @@ from cocotb.triggers import RisingEdge
 
 @cocotb.test()
 async def basic_count(dut):
-    cocotb.start_soon(Clock(dut.clk, l, units="ns").start())
+    cocotb.start_soon(Clock(dut.clk, 1, units="ns").start())
     dut.rst.value = 1
     for _ in range(2):
         await RisingEdge(dut.clk)
@@ -14,4 +14,4 @@ async def basic_count(dut):
         dut_cnt = dut.count.value
         predict_val = cnt % 16
         assert dut_cnt == predict_val, \
-          "error %s != %s" % (str(fut.count.value), predict_val)
+          "error %s != %s" % (str(dut.count.value), predict_val)

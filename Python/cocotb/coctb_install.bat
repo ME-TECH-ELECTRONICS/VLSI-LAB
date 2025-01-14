@@ -1,4 +1,3 @@
-@echo off
 :: BatchGotAdmin
 :-------------------------------------
 REM  --> Check for permissions
@@ -39,100 +38,124 @@ set "make_install_dir=C:\Program Files (x86)\GnuWin32\bin"
 set "gitbash_install_dir=C:\Program Files\Git\bin"
 set "icarus_install_dir=C:\iverilog\bin"
 set "gtkwave_install_dir=C:\iverilog\gtkwave\bin"
-
+set "folder_path=C:\cocotb"
+set "samples_path=C:\cocotb\sample"
 if not exist "%temp_dir%" mkdir "%temp_dir%"
 cd /d "%temp_dir%"
 
 
 
-:: Download and install Make
-echo %make_url%
-call :download %make_url% %temp_dir%\%make_installer%
-echo Installing Make...
-start /wait "%make_url%" "%temp_dir%\%make_installer%" /silent || (
-    echo Error: Make installation failed.
-    pause
-    exit /b 1
-)
+@REM :: Download and install Make
+@REM echo %make_url%
+@REM call :download %make_url% %temp_dir%\%make_installer%
+@REM echo Installing Make...
+@REM start /wait "%make_url%" "%temp_dir%\%make_installer%" /silent || (
+@REM     echo Error: Make installation failed.
+@REM     pause
+@REM     exit /b 1
+@REM )
 
-:: Add Make to PATH
-if exist "%make_install_dir%" (
-    echo Adding Make to PATH...
-    setx PATH "%make_install_dir%;%PATH%"
-) else (
-    echo Warning: Make installation directory not found.
-)
+@REM :: Add Make to PATH
+@REM if exist "%make_install_dir%" (
+@REM     echo Adding Make to PATH...
+@REM     setx PATH "%make_install_dir%;%PATH%"
+@REM ) else (
+@REM     echo Warning: Make installation directory not found.
+@REM )
 
-:: Download and install Git Bash
-call :download "%gitbash_url%" "%temp_dir%\%gitbash_installer%"
-echo Installing Git Bash...
-start /wait "" "%temp_dir%\%gitbash_installer%" /SILENT || (
-    echo Error: Git Bash installation failed.
-    pause
-    exit /b 1
-)
+@REM :: Download and install Git Bash
+@REM call :download "%gitbash_url%" "%temp_dir%\%gitbash_installer%"
+@REM echo Installing Git Bash...
+@REM start /wait "" "%temp_dir%\%gitbash_installer%" /SILENT || (
+@REM     echo Error: Git Bash installation failed.
+@REM     pause
+@REM     exit /b 1
+@REM )
 
-:: Add Git Bash to PATH
-if exist "%gitbash_install_dir%" (
-    echo Adding Git Bash to PATH...
-    setx PATH "%gitbash_install_dir%;%PATH%" /M
-) else (
-    echo Warning: Git Bash installation directory not found.
-)
+@REM :: Add Git Bash to PATH
+@REM if exist "%gitbash_install_dir%" (
+@REM     echo Adding Git Bash to PATH...
+@REM     setx PATH "%gitbash_install_dir%;%PATH%" /M
+@REM ) else (
+@REM     echo Warning: Git Bash installation directory not found.
+@REM )
 
-:: Add Icarus Verilog to PATH
-if exist "%icarus_install_dir%" (
-    echo Adding Icarus Verilog to PATH...
-    setx PATH "%icarus_install_dir%;%PATH%" /M
-) else (
-    echo Warning: Icarus Verilog installation directory not found.
-)
+@REM :: Add Icarus Verilog to PATH
+@REM if exist "%icarus_install_dir%" (
+@REM     echo Adding Icarus Verilog to PATH...
+@REM     setx PATH "%icarus_install_dir%;%PATH%" /M
+@REM ) else (
+@REM     echo Warning: Icarus Verilog installation directory not found.
+@REM )
 
-:: Add GTKWave to PATH
-if exist "%gtkwave_install_dir%" (
-    echo Adding GTKWave to PATH...
-    setx PATH "%gtkwave_install_dir%;%PATH%" /M
-) else (
-    echo Warning: GTKWave installation directory not found.
-)
+@REM :: Add GTKWave to PATH
+@REM if exist "%gtkwave_install_dir%" (
+@REM     echo Adding GTKWave to PATH...
+@REM     setx PATH "%gtkwave_install_dir%;%PATH%" /M
+@REM ) else (
+@REM     echo Warning: GTKWave installation directory not found.
+@REM )
 
-:: Cleanup
-echo Cleaning up temporary files...
-rd /s /q "%temp_dir%"
+@REM :: Cleanup
+@REM echo Cleaning up temporary files...
+@REM rd /s /q "%temp_dir%"
 
-:: Check if Python is installed
-python --version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo Python is not installed. Please install Python first.
-    pause
-    exit /b 1
-) else (
-    echo Python is installed. Version:
-    python --version
-)
-mkdir "C:\cocotb"
-cd "C:\cocotb"
-py -m venv .venv
-.\.venv\Scripts\activate
-cmd /K
+if not exist %folder_path% mkdir %folder_path%
+if not exist %samples_path% mkdir %samples_path%
+cd %folder_path%
 
-:: Install cocotb and cocotb-bus using pip
-echo Installing cocotb...
-pip install cocotb || (
-    echo Error: Failed to install cocotb.
-    pause
-    exit /b 1
-)
+:: make a sh file with below commands
+echo #!/bin/bash > C:\cocotb\setup.sh
+echo echo "Checking if Python is installed..." >> C:\cocotb\setup.sh
+echo py --version >> C:\cocotb\setup.sh
+echo if [ $? -ne 0 ]; then >> C:\cocotb\setup.sh
+echo    echo "Python is not installed. Please install Python first." >> C:\cocotb\setup.sh
+echo    exit 1 >> C:\cocotb\setup.sh
+echo else >> C:\cocotb\setup.sh
+echo    echo "Python is installed. Version: $(py --version)" >> C:\cocotb\setup.sh
+echo fi >> C:\cocotb\setup.sh
 
-echo Installing cocotb-bus...
-pip install cocotb-bus || (
-    echo Error: Failed to install cocotb-bus.
-    pause
-    exit /b 1
-)
+echo mkdir -p /c/cocotb >> C:\cocotb\setup.sh
+echo cd /c/cocotb >> C:\cocotb\setup.sh
+
+echo if [ ! -d ".venv" ]; then >> C:\cocotb\setup.sh
+echo    echo "Creating virtual environment..." >> /cocotb/setup.sh
+echo    py -m venv .venv >> /cocotb/setup.sh
+echo    echo "Created virtual environment" >> /cocotb/setup.sh
+echo else >> C:\cocotb\setup.sh
+echo    echo "Virtual environment already exists. Skipping" >> /cocotb/setup.sh
+echo fi >> C:\cocotb\setup.sh
+
+echo source .venv/Scripts/activate >> C:\cocotb\setup.sh
+
+echo echo "Installing cocotb..." >> C:\cocotb\setup.sh
+echo if ! pip install cocotb-bus; then >> C:\cocotb\setup.sh
+echo    echo "Error: Failed to install cocotb-bus." >> C:\cocotb\setup.sh
+echo    read -p "Press Enter to exit..." >> C:\cocotb\setup.sh  
+echo    exit 1 >> C:\cocotb\setup.sh
+echo fi >> C:\cocotb\setup.sh
+
+echo echo "Installing cocotb-bus..." >> C:\cocotb\setup.sh
+echo if ! pip install cocotb-bus; then >> C:\cocotb\setup.sh
+echo    echo "Error: Failed to install cocotb-bus." >> C:\cocotb\setup.sh
+echo    read -p "Press Enter to exit..." >> C:\cocotb\setup.sh  
+echo    exit 1 >> C:\cocotb\setup.sh
+echo fi >> C:\cocotb\setup.sh
+echo git clone "https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB.git" >> C:\cocotb\setup.sh
+echo mv "VLSI-LAB/Python/cocotb/Counter/" "./sample" >> C:\cocotb\setup.sh
+echo rm -rf "VLSI-LAB" >> C:\cocotb\setup.sh
+echo clear >> C:\cocotb\setup.sh
+echo echo "Installation complete." >> C:\cocotb\setup.sh
+echo rm -f setup.sh >> C:\cocotb\setup.sh
+echo read -p "Press Enter to continue..." >> C:\cocotb\setup.sh
+echo explorer . >> C:\cocotb\setup.sh 
+
+:: Run the sh file
+start "" "C:\Program Files\Git\bin\bash.exe" -c "bash C:/cocotb/setup.sh"
+
+
+:: End
 cls
-echo Installation complete. Vist https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB/tree/main/Python/cocotb/Counter for cocotb example
-pause
 exit
 
 :: Function to download files
