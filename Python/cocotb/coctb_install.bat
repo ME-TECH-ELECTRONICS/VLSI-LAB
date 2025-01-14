@@ -110,6 +110,11 @@ if %errorlevel% neq 0 (
     echo Python is installed. Version:
     python --version
 )
+mkdir "C:\cocotb"
+cd "C:\cocotb"
+py -m venv .venv
+.\.venv\Scripts\activate
+
 
 :: Install cocotb and cocotb-bus using pip
 echo Installing cocotb...
