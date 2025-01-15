@@ -145,7 +145,7 @@ echo git clone "https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB.git" >> C:\cocot
 echo mv "VLSI-LAB/Python/cocotb/Counter/" "./sample" >> C:\cocotb\setup.sh
 echo rm -rf "VLSI-LAB" >> C:\cocotb\setup.sh
 echo clear >> C:\cocotb\setup.sh
-echo echo "Installation complete." >> C:\cocotb\setup.sh
+echo echo "Installation complete. Visit https://github.com/ME-TECH-ELECTRONICS/VLSI-LAB/tree/main/Python/cocotb for usage guide." >> C:\cocotb\setup.sh
 echo rm -f setup.sh >> C:\cocotb\setup.sh
 echo read -p "Press Enter to continue..." >> C:\cocotb\setup.sh
 echo explorer . >> C:\cocotb\setup.sh 
