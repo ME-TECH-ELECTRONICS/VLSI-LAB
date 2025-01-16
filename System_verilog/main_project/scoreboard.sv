@@ -2,27 +2,35 @@ class Scoreboard;
     local bit[7:0] header;
     mailbox #(Packet) mbx_in;
     mailbox #(Packet) mbx_out;
-    event drv_done;
     virtual router_if vif;
     bit[7:0] in_stream[$], out_stream[$];
     logic TX_done = 0;
     logic RX_done = 0;
     
-    function new(mailbox #(Packet) mbx_in, mailbox #(Packet) mbx_out, event drv_done, virtual router_if vif);
+    function new(mailbox #(Packet) mbx_in, mailbox #(Packet) mbx_out);
         this.mbx_in = mbx_in;
         this.mbx_out = mbx_out;
-        this.drv_done = drv_done;
-        this.vif = vif;
     endfunction
     
     task in_run();
-        Packet pkt;
-        mbx_in.get(pkt);
+        forever begin
+            Packet pkt;
+            mbx_in.get(pkt);
+            checkPacket(pkt);
+        end
     endtask
     
     task out_run();
-        Packet pkt;
-        mbx_out.get(pkt);
+        int count = 1
+        forever begin
+            Packet pkt;
+            mbx_out.get(pkt);
+            checkPacket_1(pkt);
+            if(count >= header[7:2] + 1)
+                $display("End of scoreboard");
+            else
+                count = count + 1;
+        end
     endtask
     
     task checkPacket(Packet item);

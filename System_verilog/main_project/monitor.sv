@@ -21,6 +21,12 @@ class Monitor;
             checkPacket_in(header);
         end
     endtask
+    task run1();
+     
+        forever begin
+            checkPacket_out();
+        end
+    endtask
 
 
     task checkPacket_in(ref bit[7:0] header);
