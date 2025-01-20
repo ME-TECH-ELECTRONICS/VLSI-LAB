@@ -24,4 +24,3 @@ except KeyboardInterrupt:
         print("\nSIGINT received. Quitting...")
         sleep(3)
         exit()
-            
