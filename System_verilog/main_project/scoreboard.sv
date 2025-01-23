@@ -3,7 +3,7 @@ class Scoreboard;
     mailbox #(Packet) mbx_in;
     mailbox #(Packet) mbx_out;
     virtual router_if vif;
-    bit[7:0] in_stream[$], out_stream[$];
+    bit[7:0] in_stream[], out_stream[];
     logic TX_done = 0;
     logic RX_done = 0;
     
@@ -21,7 +21,8 @@ class Scoreboard;
     endtask
     
     task out_run();
-        int count = 1
+        int count = 1;
+        //int c = 0;
         forever begin
             Packet pkt;
             mbx_out.get(pkt);
@@ -38,11 +39,13 @@ class Scoreboard;
             
             if(item.pkt_type == HEADER) begin
                 header = item.data;
-                in_stream = new[header[7:0] + 2];
+                bit[8:0] cnt; 
+                cnt = header[7:2] + 2;
+                in_stream = new[cnt];
                 in_stream.push_back(header);
             end
             if(item.pkt_type == PAYLOAD || item.pkt_type == PARITY) begin
-                in_stream.push_back(item.data)
+              in_stream.push_back(item.data);
             end
         end
     endtask
