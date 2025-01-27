@@ -1,5 +1,5 @@
 class Monitor;
-    local bit[7:0] header;
+    local bit[7:0] header = 0;
     mailbox #(Packet) mbx_in;
     mailbox #(Packet) mbx_out;
     event drv_done;
@@ -31,8 +31,8 @@ class Monitor;
 
     task checkPacket_in(ref bit[7:0] header);
         Packet item = new();
-        if(count < header[7:2] + 1)
-      	    @(drv_done);
+        // if(count < header[7:2] + 1)
+      	@(drv_done);
         @(posedge vif.clk);
         #1;
         item = parsePacket();
@@ -56,12 +56,12 @@ class Monitor;
         
     endtask
     
-    task checkPacket_out()
+  task checkPacket_out();
         Packet item = new();
         if(count_1 < header[7:2] + 1) begin
             @(posedge vif.clk);
             #1;
-            @(posedge vif.rd_en_0 or posedge rd_en_1 or posedge rd_en_2);
+            @(posedge vif.rd_en_0 or posedge vif.rd_en_1 or posedge vif.rd_en_2);
             item = parsePacket();
             mbx_out.put(item);
             count_1 = count_1 + 1; 

@@ -41,6 +41,4 @@ class Generator;
             mbx.put(pkt);
         end
     endtask
-
-
-endclass 
+ endclass 

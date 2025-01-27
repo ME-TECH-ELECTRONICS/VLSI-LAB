@@ -11,7 +11,8 @@ class Packet;
     bit vld_out_1;   
     bit vld_out_2;   
     bit err;         
-    bit busy;        
+    bit busy;
+  bit rst;
     bit [7:0] dout_0;
     bit [7:0] dout_1;
     bit [7:0] dout_2;
@@ -21,6 +22,7 @@ class Packet;
     constraint con1 { 
         header[1:0] != 2'b11; 
         header[7:2] != 0; 
+      header[7:2] <= 20;
     }
 
     function void print(string comp);

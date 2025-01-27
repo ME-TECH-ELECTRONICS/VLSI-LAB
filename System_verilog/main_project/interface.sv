@@ -19,4 +19,3 @@ interface router_if();
     always #5 clk = ~clk;
 
 endinterface
-
