@@ -50,7 +50,7 @@ class Monitor;
         else begin
             item.pkt_type = RESET;
         end
-        item.print("Monitor");
+//         item.print("Monitor");
         mbx_in.put(item);
         count = count + 1;
         
@@ -69,7 +69,8 @@ class Monitor;
     endtask
 
     function Packet parsePacket();
-        Packet pkt = new(); 
+        Packet pkt = new();
+      	pkt.rst = vif.rst;
         pkt.pkt_valid = vif.pkt_valid;
         pkt.data = vif.data;
         pkt.rd_en_0 = vif.rd_en_0;

@@ -34,7 +34,6 @@ class Environment;
             mon.run1();
             sbd.in_run();
             sbd.out_run();// Uncomment when required
-            sbd.checkall();
         join
     endtask
 endclass

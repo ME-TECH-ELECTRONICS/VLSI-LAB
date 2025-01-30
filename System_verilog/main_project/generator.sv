@@ -20,17 +20,17 @@ class Generator;
             @(drv_done);
             
             if(!pkt.randomize()) $error("Randomization failed");
-            pkt.print("Generator");
+//             pkt.print("Generator");
             pkt.pkt_type = HEADER;
             header = pkt.header;
             pkt.parity = pkt.parity ^ pkt.header;
-            pkt.print("Generator");
+//             pkt.print("Generator");
             mbx.put(pkt);
             @(drv_done);
             
             for (int i = 0; i < header[7:2]; i++) begin
                 if(!pkt.randomize()) $error("Randomization failed");
-                pkt.print("Generator");
+//                 pkt.print("Generator");
                 pkt.parity = pkt.parity ^ pkt.data;
                 pkt.pkt_type = PAYLOAD;
                 mbx.put(pkt);
@@ -41,4 +41,6 @@ class Generator;
             mbx.put(pkt);
         end
     endtask
+
+
  endclass 
