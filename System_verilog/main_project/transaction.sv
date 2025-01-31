@@ -1,35 +1,49 @@
+// Packet type enumeration for defining packet states
 typedef enum logic[1:0]{RESET = 0, HEADER = 1, PAYLOAD = 2, PARITY = 3} pkt_type_t;
 
+// Packet class definition
 class Packet;
+    // Randomizable fields representing packet attributes
     rand bit[7:0] header;
     rand bit[7:0] data;
     rand bit pkt_valid;
     randc bit rd_en_0;
     randc bit rd_en_1;
     randc bit rd_en_2;
+    
+    // Status signals
     bit vld_out_0;   
     bit vld_out_1;   
     bit vld_out_2;   
     bit err;         
     bit busy;
-  bit rst;
+    bit rst;
+    
+    // Data output signals
     bit [7:0] dout_0;
     bit [7:0] dout_1;
     bit [7:0] dout_2;
+    
+    // Parity check logic
     logic[7:0] parity;
+    
+    // Packet type enumeration variable
     pkt_type_t pkt_type;
 
+    // Constraints to ensure valid header values
     constraint con1 { 
         header[1:0] != 2'b11; 
         header[7:2] != 0; 
-      header[7:2] <= 20;
+        header[7:2] <= 20;
     }
 
+    // Function to print packet details for debugging
     function void print(string comp);
         $display("[%0tps] %0s: Data = 0x%0h, pkk_valid = %0b, rd_en = [%0b, %0b, %0b], vld_out = [%0b, %0b, %0b], err = %0b, busy = %0b, dout = [0x%0h, 0x%0h, 0x%0h], parity = 0x%0h, pkt_type = %0d", $time, comp, data, pkt_valid, rd_en_2, rd_en_1, rd_en_0, vld_out_0, vld_out_1, vld_out_2, err, busy, dout_2, dout_1, dout_1, parity, pkt_type);
     endfunction
     
-  function void copy(Packet tmp);
+    // Function to copy data from another Packet instance
+    function void copy(Packet tmp);
         data = tmp.data;
         pkt_valid = tmp.pkt_valid;
         rd_en_0 = tmp.rd_en_0;

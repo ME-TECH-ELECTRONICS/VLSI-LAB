@@ -1,31 +1,34 @@
 class Scoreboard;
-    bit[7:0] header = 0;
-    mailbox #(Packet) mbx_in;
-    mailbox #(Packet) mbx_out;
-    virtual router_if vif;
-    bit[7:0] in_stream[$], out_stream[$];
-    logic TX_done = 0;
-    logic RX_done = 0;
-    int prev_val = 0;
+    bit[7:0] header = 0; // Stores the packet header
+    mailbox #(Packet) mbx_in; // Mailbox for input packets
+    mailbox #(Packet) mbx_out; // Mailbox for output packets
+    virtual router_if vif; // Virtual interface for router
+    bit[7:0] in_stream[$], out_stream[$]; // Queues to store input and output data streams
+    logic TX_done = 0; // Transmission done flag
+    logic RX_done = 0; // Reception done flag
+    int prev_val = 0; // Stores previous value to prevent duplicates
     
+    // Constructor: Initializes mailboxes
     function new(mailbox #(Packet) mbx_in, mailbox #(Packet) mbx_out);
         this.mbx_in = mbx_in;
         this.mbx_out = mbx_out;
     endfunction
     
+    // Task to process incoming packets
     task in_run();
         $display("[%0tps] Scoreboard: Starting...", $time);
         forever begin
             Packet pkt;
             if(mbx_in.num() > 0) begin
                 mbx_in.get(pkt);
-              checkPacket(pkt, this.header);
+                checkPacket(pkt, this.header);
             end else begin
-                #10; 
+                #10; // Wait to avoid busy-waiting
             end
         end
     endtask
     
+    // Task to process outgoing packets
     task out_run();
         int count = 1;
         forever begin
@@ -43,6 +46,7 @@ class Scoreboard;
         end
     endtask
     
+    // Task to check incoming packets and store them
     task checkPacket(Packet item, ref bit[7:0] header);
         bit[8:0] cnt; 
         if(item.pkt_valid && item.rst) begin
@@ -57,8 +61,9 @@ class Scoreboard;
         end
     endtask
    
+    // Task to check outgoing packets and store them
     task checkPacket_1(Packet item);
-        if(item.rd_en_0 && (item.dout_0 != 0) && (prev_val != item.dout_0) ) begin
+        if(item.rd_en_0 && (item.dout_0 != 0) && (prev_val != item.dout_0)) begin
             out_stream.push_back(item.dout_0);
             prev_val = item.dout_0;
         end
@@ -72,29 +77,32 @@ class Scoreboard;
         end
     endtask
      
+    // Task to compare input and output streams for verification
     task checkall();
         int in_parity = 0;
         int out_parity = 0;
         if((in_stream.size() == header[7:2] + 1) && (out_stream.size() == header[7:2] + 1)) begin
-        
+            
             foreach(in_stream[i]) begin
                 in_parity = in_parity ^ in_stream[i];
             end
             in_stream.push_back(in_parity);
+            
             foreach(out_stream[i]) begin
                 out_parity = out_parity ^ out_stream[i];
             end
             out_stream.push_back(out_parity);
+            
             if(in_parity == out_parity) begin
                 $display("/******************************************************************************************/");
-                $display("/* Sucessfully verified Router 1x3");
+                $display("/* Successfully verified Router 1x3");
                 $display("/* Input: %0p", in_stream);
                 $display("/* Output: %0p", out_stream);
                 $display("/******************************************************************************************/");
             end
-                
-            else $display("unsuccessfull %0h, %0h", in_parity, out_parity);
-
+            else begin
+                $display("Verification unsuccessful: in_parity = %0h, out_parity = %0h", in_parity, out_parity);
+            end
         end
     endtask
 endclass
