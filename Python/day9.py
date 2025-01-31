@@ -13,14 +13,14 @@ class Employee:
         print(f"Company name: {cls.company_name}")
         cls.company_name = "Vipro"
         print(f"Company name: {cls.company_name}")
-"""
+        
 em = Employee()
 em.display()
 print(Employee.company_name)
 Employee.company_name = "TCS"
 print(Employee.company_name)
 Employee.get_company_name()
-"""
+
 
 class Computer:
     cpu_clock = 28e8
@@ -53,7 +53,8 @@ class User(ABC):
     def getusername(self):
         pass
     
-    def __get_screct_key(self):        return self.__screct_key
+    def __get_screct_key(self):        
+        return self.__screct_key
 
 class Login(User):
     def __init__(self):
