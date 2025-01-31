@@ -14,6 +14,7 @@ class Scoreboard;
     endfunction
     
     task in_run();
+        $display("[%0tps] Scoreboard: Starting...", $time);
         forever begin
             Packet pkt;
             if(mbx_in.num() > 0) begin
@@ -32,7 +33,6 @@ class Scoreboard;
             if (mbx_out.num() > 0) begin
                 mbx_out.get(pkt);
                 checkPacket_1(pkt);
-                $display("[%0t] data: {%0d, %0d, %0d}", $time, pkt.dout_0, pkt.dout_1, pkt.dout_2);
                 checkall();
                 if (!(count > header[7:2] + 1)) begin
                    count = count + 1;
@@ -54,7 +54,6 @@ class Scoreboard;
             if(item.pkt_type == PAYLOAD || item.pkt_type == PARITY) begin
                 in_stream.push_back(item.data);
             end
-            $display("[%0t] in_stream: ", $time, in_stream);
         end
     endtask
    
@@ -71,13 +70,31 @@ class Scoreboard;
             out_stream.push_back(item.dout_2);
             prev_val = item.dout_2;
         end
-        $display("[%0t] out_stream: ", $time, out_stream);
     endtask
      
     task checkall();
-        if((in_stream.size() == header[7:2] + 1) && (out_stream.size() == header[7:2] + 1))
-          $display("Scoreboard is complete", header[7:2] + 1);
-        else
-          $display("[%0t] Scoreboard is not complete %0d/%0d", $time, out_stream.size(), in_stream.size(), header[7:2] + 1);
+        int in_parity = 0;
+        int out_parity = 0;
+        if((in_stream.size() == header[7:2] + 1) && (out_stream.size() == header[7:2] + 1)) begin
+        
+            foreach(in_stream[i]) begin
+                in_parity = in_parity ^ in_stream[i];
+            end
+            in_stream.push_back(in_parity);
+            foreach(out_stream[i]) begin
+                out_parity = out_parity ^ out_stream[i];
+            end
+            out_stream.push_back(out_parity);
+            if(in_parity == out_parity) begin
+                $display("/******************************************************************************************/");
+                $display("/* Sucessfully verified Router 1x3");
+                $display("/* Input: %0p", in_stream);
+                $display("/* Output: %0p", out_stream);
+                $display("/******************************************************************************************/");
+            end
+                
+            else $display("unsuccessfull %0h, %0h", in_parity, out_parity);
+
+        end
     endtask
 endclass

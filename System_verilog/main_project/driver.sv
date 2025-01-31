@@ -42,10 +42,7 @@ class Driver;
         @(posedge vif.clk);
     endtask
 
-    task drive_header(Packet pkt);
-//         pkt.print("Driver");
-        $display("[%0tps] Driver: Sending header byte.", $time);
-       
+    task drive_header(Packet pkt);  
         wait(vif.busy == 0);
         @(negedge vif.clk);
         vif.pkt_valid = 1;
@@ -55,9 +52,6 @@ class Driver;
     endtask
 
     task drive_payload(Packet pkt);
-//         pkt.print("Driver");
-        $display("[%0tps] Driver: Sending payload byte.", $time);
-       
         wait(vif.busy == 0);
         @(negedge vif.clk);
         vif.pkt_valid <= 1;
@@ -65,9 +59,6 @@ class Driver;
     endtask
     
     task drive_parity(Packet pkt);
-//         pkt.print("Driver");
-        $display("[%0tps] Driver: Sending parity byte.", $time);
-        
         wait(vif.busy == 0);
         @(negedge vif.clk);
         vif.pkt_valid <= 0;

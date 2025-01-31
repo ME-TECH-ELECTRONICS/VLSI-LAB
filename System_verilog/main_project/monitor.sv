@@ -5,7 +5,6 @@ class Monitor;
     event drv_done;
     virtual router_if vif;
   	int count = 0;
-  	int count_1 = 0;
     int prev_val = 0;
   
 
@@ -24,10 +23,7 @@ class Monitor;
         end
     endtask
     task run1();
-     
-        forever begin
-            checkPacket_out();
-        end
+       checkPacket_out();
     endtask
 
 
@@ -46,7 +42,6 @@ class Monitor;
         end
         else if(header && !item.pkt_valid) begin
             item.pkt_type = PARITY;
-            header = 0;
         end
         else begin
             item.pkt_type = RESET;
@@ -58,14 +53,12 @@ class Monitor;
     endtask
     
   task checkPacket_out();
+    int count_1 = 0;
         Packet item = new();
-        if(count_1 < header[7:2] + 1) begin
+        while(count_1 < header[7:2] + 1) begin
              @(posedge vif.clk);
-             #1;
-            // @(posedge vif.rd_en_0 or posedge vif.rd_en_1 or posedge vif.rd_en_2);
-            $display("[%0t] Monitor: [%0b, %0b, %0b]", $time, vif.rd_en_0, vif.rd_en_1, vif.rd_en_2);
+             #1; 
             wait(vif.rd_en_0 || vif.rd_en_1 || vif.rd_en_2); //begin
-            $display("[%0t] Monitor: [%0b, %0b, %0b]", $time, vif.rd_en_0, vif.rd_en_1, vif.rd_en_2);
             
             item = parsePacket();
             if(item.rd_en_0 && (item.dout_0 != 0) && (prev_val != item.dout_0)) begin
@@ -82,10 +75,9 @@ class Monitor;
                 mbx_out.put(item);
                 count_1 = count_1 + 1;
                 prev_val = item.dout_2;
+            end else begin
+                count_1 = count_1;
             end
-            
-            $display("[%0t] Monitor data: %0d, count: %0d, prev: %0d", $time, item.data, count_1, prev_val); 
-            // end
       	end
         
     endtask
