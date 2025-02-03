@@ -1,3 +1,10 @@
+/************************************************************************************/
+/*      AUTHOR: METECH                                                              */
+/*      FILE_NAME: scoreboard.sv                                                    */
+/*      DESCRIPTION: Verifies design using the received output and golden reference */
+/*      DATE: 03/02/2025                                                            */
+/************************************************************************************/
+
 class Scoreboard;
     bit[7:0] header = 0; // Stores the packet header
     mailbox #(Packet) mbx_in; // Mailbox for input packets

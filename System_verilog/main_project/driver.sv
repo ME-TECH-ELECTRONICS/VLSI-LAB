@@ -1,10 +1,17 @@
+/*********************************************************/
+/*      AUTHOR: METECH                                   */
+/*      FILE_NAME: driver.sv                             */
+/*      DESCRIPTION: Drives the input streams to the dut */
+/*      DATE: 03/02/2025                                 */
+/*********************************************************/
+
 class Driver;
     local bit[7:0] header; // Stores packet header data
     mailbox #(Packet) mbx; // Mailbox for communication with other components
     event drv_done; // Event to signal when driving is done
     virtual router_if vif; // Virtual interface for DUT interaction
 
-  function new(mailbox #(Packet) mbx, event drv_done, virtual router_if vif);
+    function new(mailbox #(Packet) mbx, event drv_done, virtual router_if vif);
         this.mbx = mbx; // Initialize mailbox
         this.drv_done = drv_done; // Initialize event
         this.vif = vif; // Initialize virtual interface

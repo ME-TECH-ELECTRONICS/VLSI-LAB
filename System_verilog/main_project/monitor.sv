@@ -1,3 +1,10 @@
+/*********************************************************/
+/*      AUTHOR: METECH                                   */
+/*      FILE_NAME: monitor.sv                            */
+/*      DESCRIPTION: Mointors the output from the dut    */
+/*      DATE: 03/02/2025                                 */
+/*********************************************************/
+
 class Monitor;
     local bit[7:0] header = 0; // Stores the header value
     mailbox #(Packet) mbx_in; // Mailbox for storing incoming packets

@@ -1,3 +1,10 @@
+/*********************************************************/
+/*      AUTHOR: METECH                                   */
+/*      FILE_NAME: generator.sv                          */
+/*      DESCRIPTION: Generates input streams             */
+/*      DATE: 03/02/2025                                 */
+/*********************************************************/
+
 class Generator;
     mailbox #(Packet) mbx; // Mailbox for communication with driver
     event drv_done; // Event to synchronize with driver

@@ -1,3 +1,10 @@
+/*********************************************************/
+/*      AUTHOR: METECH                                   */
+/*      FILE_NAME: testbench.sv                          */
+/*      DESCRIPTION: Testbench top module                */
+/*      DATE: 03/02/2025                                 */
+/*********************************************************/
+
 `include "interface.sv"
 `include "environment.sv"
 
@@ -13,7 +20,7 @@ module tb();
   
    	initial begin
       	$dumpfile("out.vcd"); // Specify the VCD file for waveform dumping
-        	$dumpvars(1); // Dump all variables for debugging
+        $dumpvars(1); // Dump all variables for debugging
       	#2000 $finish; // Terminate simulation after 2000 time units
     	end
 endmodule

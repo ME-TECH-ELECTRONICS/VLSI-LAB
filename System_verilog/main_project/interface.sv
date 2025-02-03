@@ -1,3 +1,10 @@
+/*********************************************************/
+/*      AUTHOR: METECH                                   */
+/*      FILE_NAME: interface.sv                          */
+/*      DESCRIPTION: Actual interface definition         */
+/*      DATE: 03/02/2025                                 */
+/*********************************************************/
+
 interface router_if();
     logic clk;           // Clock signal
     logic rst;           // Reset signal
