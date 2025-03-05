@@ -1,4 +1,3 @@
-// Code your design here
 module AMBA_APB(P_clk,P_rst,P_addr,P_selx,P_enable,P_write,P_wdata,P_ready,P_slverr,P_rdata);
     //input configration 
     input P_clk;
