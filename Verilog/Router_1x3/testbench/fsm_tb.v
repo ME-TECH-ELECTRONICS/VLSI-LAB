@@ -97,3 +97,4 @@ module fsm_tb();
 
     // The simulation can be extended with more test cases as needed
   end
+endmodule
