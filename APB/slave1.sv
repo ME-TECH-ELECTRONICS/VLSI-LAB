@@ -9,7 +9,6 @@ module APB_SLAVE (
     output   logic PREADY,
     output   logic PSLVERR,
     output   logic [31:0] PRDATA,
-
 );
     
 endmodule
