@@ -23,7 +23,6 @@ module APB_MASTER(
     parameter ACCESS = 2'b10;
     
     reg [1:0] PS, NS;
-    reg [7:0] MEMORY [7:0];
 
     always @(CLK) begin
         if (!RST_N) begin
