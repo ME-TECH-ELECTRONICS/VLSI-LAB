@@ -1,0 +1,209 @@
+$date
+	Mon Mar 10 12:46:47 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module apb_tb $end
+$var wire 8 ! APB_PRDATA [7:0] $end
+$var reg 8 " APB_PWDATA [7:0] $end
+$var reg 9 # APB_SLV_PADDR [8:0] $end
+$var reg 1 $ APB_SWRITE $end
+$var reg 1 % PCLK $end
+$var reg 1 & RST_N $end
+$var reg 1 ' TX $end
+$scope module uut $end
+$var wire 8 ( APB_PWDATA [7:0] $end
+$var wire 9 ) APB_SLV_PADDR [8:0] $end
+$var wire 1 $ APB_SWRITE $end
+$var wire 1 * CLK $end
+$var wire 1 % PCLK $end
+$var wire 1 + PSLVERR $end
+$var wire 1 & RST_N $end
+$var wire 1 ' TX $end
+$var wire 1 , PWRITE $end
+$var wire 8 - PWDATA [7:0] $end
+$var wire 1 . PSEL2 $end
+$var wire 1 / PSEL1 $end
+$var wire 1 0 PREADY2 $end
+$var wire 1 1 PREADY1 $end
+$var wire 1 2 PREADY $end
+$var wire 8 3 PRDATA2 [7:0] $end
+$var wire 8 4 PRDATA1 [7:0] $end
+$var wire 8 5 PRDATA [7:0] $end
+$var wire 1 6 PEN $end
+$var wire 9 7 PADDR [8:0] $end
+$var wire 8 8 APB_PRDATA [7:0] $end
+$scope module dut $end
+$var wire 8 9 APB_PWDATA [7:0] $end
+$var wire 9 : APB_SLV_PADDR [8:0] $end
+$var wire 1 $ APB_SWRITE $end
+$var wire 1 * CLK $end
+$var wire 8 ; PRDATA [7:0] $end
+$var wire 1 2 PREADY $end
+$var wire 1 + PSLVERR $end
+$var wire 1 & RST_N $end
+$var wire 1 ' TX $end
+$var wire 1 . PSEL2 $end
+$var wire 1 / PSEL1 $end
+$var parameter 2 < ACCESS $end
+$var parameter 2 = IDLE $end
+$var parameter 2 > SETUP $end
+$var reg 8 ? APB_PRDATA [7:0] $end
+$var reg 2 @ NS [1:0] $end
+$var reg 9 A PADDR [8:0] $end
+$var reg 1 6 PEN $end
+$var reg 2 B PS [1:0] $end
+$var reg 8 C PWDATA [7:0] $end
+$var reg 1 , PWRITE $end
+$upscope $end
+$scope module slv1 $end
+$var wire 1 * CLK $end
+$var wire 8 D PADDR [7:0] $end
+$var wire 1 6 PEN $end
+$var wire 1 / PSEL $end
+$var wire 8 E PWDATA [7:0] $end
+$var wire 1 , PWRITE $end
+$var wire 1 & RST_N $end
+$var reg 8 F PRDATA [7:0] $end
+$var reg 1 1 PREADY $end
+$var reg 1 G PSLVERR $end
+$upscope $end
+$scope module slv2 $end
+$var wire 1 * CLK $end
+$var wire 8 H PADDR [7:0] $end
+$var wire 1 6 PEN $end
+$var wire 1 . PSEL $end
+$var wire 8 I PWDATA [7:0] $end
+$var wire 1 , PWRITE $end
+$var wire 1 & RST_N $end
+$var reg 8 J PRDATA [7:0] $end
+$var reg 1 0 PREADY $end
+$var reg 1 K PSLVERR $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 >
+b0 =
+b10 <
+$end
+#0
+$dumpvars
+xK
+bx J
+bx I
+bx H
+xG
+bx F
+bx E
+bx D
+bx C
+bx B
+bx A
+b0 @
+bx ?
+bx ;
+b0 :
+b0 9
+bx 8
+bx 7
+x6
+bx 5
+bx 4
+bx 3
+x2
+x1
+x0
+x/
+x.
+bx -
+x,
+x+
+z*
+b0 )
+b0 (
+0'
+0&
+0%
+0$
+b0 #
+b0 "
+bx !
+$end
+#5000
+1%
+#10000
+0%
+#15000
+1%
+#20000
+0%
+1$
+b10100101 "
+b10100101 (
+b10100101 9
+b1 #
+b1 )
+b1 :
+1&
+#25000
+1%
+#30000
+0%
+0$
+#35000
+1%
+#40000
+0%
+#45000
+1%
+#50000
+0%
+1$
+b1011010 "
+b1011010 (
+b1011010 9
+b100000010 #
+b100000010 )
+b100000010 :
+#55000
+1%
+#60000
+0%
+0$
+#65000
+1%
+#70000
+0%
+#75000
+1%
+#80000
+0%
+b1 #
+b1 )
+b1 :
+#85000
+1%
+#90000
+0%
+#95000
+1%
+#100000
+0%
+b100000010 #
+b100000010 )
+b100000010 :
+#105000
+1%
+#110000
+0%
+#115000
+1%
+#120000
+0%

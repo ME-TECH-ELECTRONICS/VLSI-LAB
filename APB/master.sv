@@ -1,7 +1,6 @@
 module APB_MASTER(
     input    logic CLK,
     input    logic RST_N,
-    input    logic PRDATA,
     input    logic PREADY,
     input    logic PSLVERR,
     input    logic [7:0] PRDATA,
@@ -24,7 +23,7 @@ module APB_MASTER(
     
     reg [1:0] PS, NS;
 
-    always @(CLK) begin
+    always @(posedge CLK) begin
         if (!RST_N) begin
             PS <= IDLE;
         end
