@@ -1,39 +1,34 @@
-module APB_SLAVE (
-    input    logic CLK,
-    input    logic RST_N,
-    input    logic PWRITE,
-    input    logic PSEL,
-    input    logic PEN,
-    input    logic [7:0] PADDR,
-    input    logic [7:0] PWDATA,
-    output   logic PREADY,
-    output   logic PSLVERR,
-    output   logic [7:0] PRDATA
+`timescale 1ns / 1ns
+
+module slave (
+    input PCLK,
+    PRESETn,
+    input PSEL,
+    PENABLE,
+    PWRITE,
+    input [7:0] PADDR,
+    PWDATA,
+    output [7:0] PRDATA,
+    output reg PREADY
 );
 
-  logic [7:0] MEMORY[0:7];
+  reg [7:0] reg_addr;
+  reg [7:0] mem[0:63];
 
-  always @(posedge CLK) begin
-    if (!RST_N) begin
-        PREADY  <= 0;
-        PRDATA  <= 0;
-        PSLVERR <= 0;
-    end
-    else begin
-        if (PSEL) begin
-            if (!PEN) begin
-                PREADY <= 0;  // Setup phase, PREADY should be 0
-            end else begin
-                PREADY <= 1;  // Access phase, PREADY should be 1
-                if (PWRITE) begin
-                    MEMORY[PADDR] <= PWDATA;  // Write Operation
-                end else begin
-                    PRDATA <= MEMORY[PADDR];  // Read Operation
-                end
-            end
-        end else begin
-            PREADY <= 0;
-        end
-    end
+  assign PRDATA = mem[reg_addr];
+
+  always @(*) begin
+    if (!PRESETn) PREADY = 0;
+    else if (PSEL && !PENABLE && !PWRITE) begin
+      PREADY = 0;
+    end else if (PSEL && PENABLE && !PWRITE) begin
+      PREADY   = 1;
+      reg_addr = PADDR;
+    end else if (PSEL && !PENABLE && PWRITE) begin
+      PREADY = 0;
+    end else if (PSEL && PENABLE && PWRITE) begin
+      PREADY = 1;
+      mem[PADDR] = PWDATA;
+    end else PREADY = 0;
   end
 endmodule
