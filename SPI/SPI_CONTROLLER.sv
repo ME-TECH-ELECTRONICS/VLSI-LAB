@@ -2,9 +2,9 @@ module SPI_CONTROLLER (
     input  logic clk,
     input  logic rst_n,
     input  logic start,
-    input  logic in_data,
+    input  logic [7:0] in_data,
     input  logic MISO,
-    output logic out_data,
+    output logic [7:0] out_data,
     output logic MOSI,
     output logic SCK,
     output logic CS
@@ -28,15 +28,15 @@ module SPI_CONTROLLER (
         CS <= 0;
         busy <= 1;
         shift_reg <= in_data;
-        bit_cnt < = 0;
+        bit_cnt <= 0;
     end else if (busy) begin
-        SCK = ~SCK;
+        SCK <= ~SCK;
         if(SCK) begin
             recv_reg <= {recv_reg[6:0], MISO};
             bit_cnt <= bit_cnt + 1;
     
             if (bit_cnt == 7) begin
-                data_out <= recv_reg;
+                out_data <= recv_reg;
                 busy <= 0;           
                 CS <= 1;             
             end
