@@ -14,15 +14,25 @@ endinterface
 // Transaction class
 class transaction extends uvm_sequence_item;
     rand logic [7:0] d_in;
-    rand logic pkt_valid;
+    rand bit[7:0] header;
+    logic pkt_valid;
     logic rd_en_0 = 1, rd_en_1 = 1, rd_en_2 = 1;
     
+    logic [7:0] parity = 0;
     logic vld_out_0, vld_out_1, vld_out_2;
     logic err, busy;
     logic [7:0] dout_0, dout_1, dout_2;
+
+    constraint con1 { 
+        header[1:0] != 2'b11; 
+        header[7:2] != 0; 
+        header[7:2] <= 20;
+    }
     
     `uvm_object_utils_begin(transaction)
         `uvm_field_int(d_in, UVM_DEFAULT);
+        `uvm_field_int(header, UVM_DEFAULT);
+        `uvm_field_int(parity, UVM_DEFAULT);
         `uvm_field_int(pkt_valid, UVM_DEFAULT);
         `uvm_field_int(rd_en_0, UVM_DEFAULT);
         `uvm_field_int(rd_en_1, UVM_DEFAULT);
@@ -42,7 +52,41 @@ class transaction extends uvm_sequence_item;
     endfunction
 endclass
 
-// Generator (Sequence)
+// // Generator (Sequence)
+// class sequences extends uvm_sequence #(transaction);
+//     transaction trans;
+//     int header = 0;
+//     `uvm_object_utils(sequences)
+    
+//     function new(string name = "SEQUENCES");
+//         super.new(name);
+//     endfunction
+    
+//     task genHeader();
+//         trans = transaction::type_id::create("trans");
+//         start_item(trans);
+//         assert(trans.randomize());
+//         header = trans.header;
+//         trans.d_in = trans.header;
+//         trans.parity = trans.parity ^ header;
+//         finish_item(trans);
+//     endtask
+
+//     virtual task body();
+//         genHeader();
+//         repeat (header[7:2] + 1) begin 
+//             start_item(trans);
+//             assert(trans.randomize());
+//             trans.parity = trans.parity ^ trans.d_in;
+            
+//             finish_item(trans);
+//         end
+//         start_item(trans);
+//         `uvm_info("SEQUENCE", $sformatf("header: %0h, parity: %0h",  trans.header, trans.parity), UVM_NONE);
+//         finish_item(trans);
+//     endtask
+// endclass
+
 class sequences extends uvm_sequence #(transaction);
     transaction trans;
     `uvm_object_utils(sequences)
@@ -52,25 +96,97 @@ class sequences extends uvm_sequence #(transaction);
     endfunction
     
     virtual task body();
-
-        repeat (20) begin 
+        bit [7:0] header;
+        int count;
+        bit [7:0] parity = 0;
+        
+        // Send Header
+        trans = transaction::type_id::create("trans");
+        trans.pkt_valid = 1;
+        start_item(trans);
+        assert(trans.randomize());
+        header = trans.d_in; // Assign header value
+        finish_item(trans);
+        
+        count = header[7:2]; // Extract count from header
+        parity = header; // Initialize parity with header
+        `uvm_info(get_name(), $sformatf("header: %0h, parity: %0h",  header, parity), UVM_NONE);
+        
+        // Generate Payload
+        repeat (count) begin 
             trans = transaction::type_id::create("trans");
-
+            trans.pkt_valid = 1;
             start_item(trans);
             assert(trans.randomize());
-            // `uvm_info("SEQUENCE", $sformatf("Generated Input: d_in=%0h,     pkt_valid=%0h, rd_en_0=%0h, rd_en_1=%0h, rd_en_2=%0h",  trans.d_in, trans.pkt_valid, trans.rd_en_0, trans.rd_en_1,   trans.rd_en_2), UVM_NONE);
+            parity ^= trans.d_in; // Update parity with new data
+            `uvm_info(get_name(), $sformatf("header: %0h, parity: %0h",  header, parity), UVM_NONE);
             finish_item(trans);
         end
+        
+        // Send Parity
+        trans = transaction::type_id::create("trans");
+        start_item(trans);
+        trans.pkt_valid = 0;
+        trans.d_in = parity; // Assign computed parity
+        `uvm_info(get_name(), $sformatf("header: %0h, parity: %0h",  header, parity), UVM_NONE);
+        finish_item(trans);
     endtask
 endclass
 
-// Driver
+
+// // Driver
+// class driver extends uvm_driver #(transaction);
+//     `uvm_component_utils(driver)
+    
+//     virtual router_if vif;
+//     transaction trans;
+//     int addr = 0;
+//     function new(string name = "DRIVER", uvm_component parent = null);
+//         super.new(name, parent);
+//     endfunction
+    
+//     virtual function void build_phase(uvm_phase phase);
+//         super.build_phase(phase);
+//         trans = transaction::type_id::create("trans", this);
+//         if (!uvm_config_db#(virtual router_if)::get(this, "", "vif", vif))
+//             `uvm_fatal("router_driver", "Virtual interface not set")
+//     endfunction
+
+//     task run_phase(uvm_phase phase);
+//         int count = 0;
+
+//         forever begin
+//             // @(negedge vif.clk);
+//             wait(vif.busy == 0);
+//             seq_item_port.get_next_item(trans);
+//             vif.pkt_valid = trans.pkt_valid;
+//             @(negedge vif.clk);
+//             if(count < 1) addr = trans.d_in;
+//             // `uvm_info("DRVER", $sformatf("count: 0x%0h, addr: 0x%0h, len: 0x%0h, val:%0d",  count, addr, addr[7:2], (count > addr[7:2] + 1)), UVM_NONE);
+//             if(count > addr[7:2] + 1) begin
+//                 `uvm_info(get_name(), "Breaking...........", UVM_NONE)
+                
+//                 vif.pkt_valid = 0;
+//             end
+//             vif.d_in = trans.d_in;
+//             vif.rd_en_0 = trans.rd_en_0;
+//             vif.rd_en_1 = trans.rd_en_1;
+//             vif.rd_en_2 = trans.rd_en_2;
+//             // `uvm_info("DRIVER", $sformatf("Received Input: d_in=%0h, rd_en_0=%0h, rd_en_1=%0h, rd_en_2=%0h, count = %0d, addr=%0h, payload_len=%0h", trans.d_in, trans.rd_en_0, trans.rd_en_1, trans.rd_en_2, count, addr, addr[7:2]), UVM_NONE);
+//             seq_item_port.item_done();
+//             count = count + 1;
+//         end
+//     endtask
+// endclass
+
 class driver extends uvm_driver #(transaction);
     `uvm_component_utils(driver)
     
     virtual router_if vif;
     transaction trans;
     int addr = 0;
+    int count = 0; // ✅ Ensure count persists across loop iterations
+
     function new(string name = "DRIVER", uvm_component parent = null);
         super.new(name, parent);
     endfunction
@@ -83,26 +199,35 @@ class driver extends uvm_driver #(transaction);
     endfunction
 
     task run_phase(uvm_phase phase);
-        int count = 0;
-        @(negedge vif.clk);
-        vif.pkt_valid = 1;
         forever begin
-            @(negedge vif.clk);
             wait(vif.busy == 0);
-            @(negedge vif.clk);
             seq_item_port.get_next_item(trans);
-            if(count < 1) addr = trans.d_in;
-            if(count >= addr[7:2] + 1) vif.pkt_valid = 0;
-            vif.d_in = trans.d_in;
+            vif.pkt_valid = trans.pkt_valid;
+            
+            @(negedge vif.clk);
+            
+            if (count == 0) begin
+                addr = trans.d_in; // ✅ Capture header properly at first iteration
+            end
+
+            if (count > int'(addr[7:2]) + 1) begin
+                `uvm_info(get_name(), $sformatf("Breaking... count=%0d, addr[7:2]=0x%0h, threshold=%0d",
+                            count, addr[7:2], int'(addr[7:2]) + 1), UVM_NONE)
+                vif.pkt_valid = 0;
+                return; // ✅ Completely exit `run_phase`
+            end
+
+            vif.d_in    = trans.d_in;
             vif.rd_en_0 = trans.rd_en_0;
             vif.rd_en_1 = trans.rd_en_1;
             vif.rd_en_2 = trans.rd_en_2;
-            // `uvm_info("DRIVER", $sformatf("Received Input: d_in=%0h, rd_en_0=%0h, rd_en_1=%0h, rd_en_2=%0h, count = %0d, addr=%0h, payload_len=%0h", trans.d_in, trans.rd_en_0, trans.rd_en_1, trans.rd_en_2, count, addr, addr[7:2]), UVM_NONE);
+
             seq_item_port.item_done();
             count = count + 1;
         end
     endtask
 endclass
+
 
 // Monitor
 class monitor extends uvm_monitor;
@@ -121,7 +246,7 @@ class monitor extends uvm_monitor;
         super.build_phase(phase);
         trans = transaction::type_id::create("trans");
         if (!uvm_config_db#(virtual router_if)::get(this, "", "vif", vif))
-            `uvm_fatal("router_monitor", "Virtual interface not set")
+            `uvm_fatal("monitor", "Virtual interface not set")
     endfunction
     
     task run_phase(uvm_phase phase);
@@ -136,7 +261,7 @@ class monitor extends uvm_monitor;
             trans.vld_out_2  =  vif.vld_out_2;
             trans.err        =  vif.err;
             trans.busy       =  vif.busy;
-            `uvm_info("MONITOR", $sformatf("Received Output: dout_0=%0h, dout_1=%0h, dout_2=%0h", trans.dout_0, trans.dout_1, trans.dout_2), UVM_NONE);
+            `uvm_info("MONITOR", $sformatf("Received Output: dout_0=%0h, dout_1=%0h, dout_2=%0h, din=%0h, vld_out=%0h", trans.dout_0, trans.dout_1, trans.dout_2, vif.d_in,vif.vld_out_1), UVM_NONE);
             send.write(trans);
         end
     endtask
