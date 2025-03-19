@@ -184,7 +184,7 @@ class driver extends uvm_driver #(transaction);
     
     virtual router_if vif;
     transaction trans;
-    int addr = 0;
+    int len = 0;
     int count = 0; // ✅ Ensure count persists across loop iterations
 
     function new(string name = "DRIVER", uvm_component parent = null);
@@ -201,20 +201,22 @@ class driver extends uvm_driver #(transaction);
     task run_phase(uvm_phase phase);
         forever begin
             wait(vif.busy == 0);
+            @(negedge vif.clk)
             seq_item_port.get_next_item(trans);
+            
+            // @(negedge vif.clk);
             vif.pkt_valid = trans.pkt_valid;
             
-            @(negedge vif.clk);
-            
             if (count == 0) begin
-                addr = trans.d_in; // ✅ Capture header properly at first iteration
+                len = trans.d_in[7:2] + 1; // ✅ Capture header properly at first iteration
             end
 
-            if (count > int'(addr[7:2]) + 1) begin
-                `uvm_info(get_name(), $sformatf("Breaking... count=%0d, addr[7:2]=0x%0h, threshold=%0d",
-                            count, addr[7:2], int'(addr[7:2]) + 1), UVM_NONE)
+            if (count > len) begin
+                `uvm_info(get_name(), $sformatf("Breaking... count=%0d, len=0x%0h",
+                            count, len), UVM_NONE)
                 vif.pkt_valid = 0;
-                return; // ✅ Completely exit `run_phase`
+                count = 0;
+                continue;
             end
 
             vif.d_in    = trans.d_in;
