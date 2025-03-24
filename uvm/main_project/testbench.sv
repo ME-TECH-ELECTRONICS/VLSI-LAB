@@ -25,8 +25,7 @@ class transaction extends uvm_sequence_item;
 
     constraint con1 { 
         header[1:0] != 2'b11; 
-        header[7:2] inside {[1:63]};
-        
+        header[7:2] inside {[1:64]};
     }
     
     `uvm_object_utils_begin(transaction)
@@ -123,7 +122,6 @@ class driver extends uvm_driver #(transaction);
             len = int'(trans.d_in[7:2] + 1); // ✅ Capture header properly at first iteration
             seq_item_port.item_done();
             @(negedge vif.clk)
-            // @(negedge vif.clk)
 
         forever begin
             wait(vif.busy == 0);
@@ -174,7 +172,7 @@ class monitor extends uvm_monitor;
             trans.vld_out_2  =  vif.vld_out_2;
             trans.err        =  vif.err;
             trans.busy       =  vif.busy;
-            // `uvm_info("MONITOR", $sformatf("Received Output: dout_0=%0h, dout_1=%0h, dout_2=%0h, din=%0h, vld_out=%0h", trans.dout_0, trans.dout_1, trans.dout_2, vif.d_in,vif.vld_out_1), UVM_NONE);
+            trans.d_in       =  vif.d_in;
             send.write(trans);
         end
     endtask
@@ -183,6 +181,9 @@ endclass
 // Scoreboard
 class scoreboard extends uvm_scoreboard;
     `uvm_component_utils(scoreboard)
+    //create a empty queue
+    int in_stream[$], out_stream[$];
+    int prev_d_in = 0, prev_d_out = 0;
     transaction trans;
     uvm_analysis_imp #(transaction, scoreboard) recv;
     
@@ -198,8 +199,29 @@ class scoreboard extends uvm_scoreboard;
     
     virtual function void write(input transaction t);
         trans = t;
-        `uvm_info("SCOREBOARD", $sformatf("Received Output: dout_0=%0h, dout_1=%0h, dout_2=%0h", trans.dout_0, trans.dout_1, trans.dout_2), UVM_MEDIUM)
+        check_packet(trans);
+        `uvm_info("SCOREBOARD", $sformatf("d_in=%0d, dout_1=%0h, vld_out=%0d, rd_en=%0d", trans.d_in, trans.dout_1, trans.vld_out_1, trans.rd_en_1), UVM_MEDIUM)
     endfunction
+
+    task check_packet(transaction pkt);
+        if(pkt.d_in != prev_d_in) begin
+            in_stream.push_back(pkt.d_in);
+            prev_d_in = pkt.d_in;
+        end
+        if(pkt.rd_en_0 && pkt.vld_out_0 && (prev_d_out != pkt.dout_0)) begin
+            out_stream.push_back(pkt.dout_0);
+            prev_d_out = pkt.dout_0;
+        end
+        else if(pkt.rd_en_1 && pkt.vld_out_1 && (prev_d_out != pkt.dout_1)) begin
+            out_stream.push_back(pkt.dout_1);
+            prev_d_out = pkt.dout_1;
+        end
+        else if(pkt.rd_en_2 && pkt.vld_out_2 && (prev_d_out != pkt.dout_2)) begin
+            out_stream.push_back(pkt.dout_2);
+            prev_d_out = pkt.dout_2;
+        end
+        
+    endtask
 endclass
 
 class agent extends uvm_agent;
@@ -320,3 +342,5 @@ module tb_top;
         #1000 $finish;
       end
 endmodule
+
+// https://www.edaplayground.com/x/k24T
