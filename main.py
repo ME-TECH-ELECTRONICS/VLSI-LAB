@@ -3,6 +3,7 @@ def xor_hex_sequence(hex_string):
     result = 0
     for hex_num in hex_list:
         result ^= int(hex_num, 16)  # Convert hex to int and XOR
+        print(f"XORing: {result} ^ {hex_num} = {hex(result)}")
     return hex(result)  # Return result as hex
 
 # User input

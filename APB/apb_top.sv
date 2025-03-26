@@ -1,32 +1,77 @@
 `timescale 1ns / 1ns
 
-`include "master.sv"
-`include "slave.sv"
+`include "master.sv" // Include Master Bridge module
+`include "slave.sv"  // Include Slave module
 
 module APB_Protocol (
-    input PCLK,
-    PRESETn,
-    transfer,
-    READ_WRITE,
-    input [8:0] apb_write_paddr,
-    input [7:0] apb_write_data,
-    input [8:0] apb_read_paddr,
-    output PSLVERR,
-    output [7:0] apb_read_data_out
+    input PCLK,             // Clock signal
+    PRESETn,                // Active-low reset signal
+    transfer,               // Transfer enable signal
+    READ_WRITE,             // Read (1) or Write (0) control signal
+    input [8:0] apb_write_paddr, // APB write address
+    input [7:0] apb_write_data,  // Data to be written
+    input [8:0] apb_read_paddr,  // APB read address
+    output PSLVERR,         // Slave error signal
+    output [7:0] apb_read_data_out // Read data output
 );
 
-  wire [7:0] PWDATA, PRDATA, PRDATA1, PRDATA2;
-  wire [8:0] PADDR;
+  // Internal signals
+  wire [7:0] PWDATA, PRDATA, PRDATA1, PRDATA2; // Data buses
+  wire [8:0] PADDR; // Address bus
 
-  wire PREADY, PREADY1, PREADY2, PENABLE, PSEL1, PSEL2, PWRITE;
+  wire PREADY, PREADY1, PREADY2, PENABLE, PSEL1, PSEL2, PWRITE; // Control signals
 
+  // Select appropriate ready signal based on address MSB
   assign PREADY = PADDR[8] ? PREADY2 : PREADY1;
+  
+  // Select appropriate read data based on address MSB when READ_WRITE is asserted
   assign PRDATA = READ_WRITE ? (PADDR[8] ? PRDATA2 : PRDATA1) : 8'dx;
 
-  master_bridge dut_mas (apb_write_paddr,apb_read_paddr,apb_write_data,PRDATA,PRESETn,PCLK,READ_WRITE,transfer,PREADY,PSEL1,PSEL2,PENABLE,PADDR,PWRITE,PWDATA,apb_read_data_out,PSLVERR);
+  // Instantiate the Master Bridge module
+  master_bridge dut_mas (
+    apb_write_paddr,   // Write address
+    apb_read_paddr,    // Read address
+    apb_write_data,    // Write data
+    PRDATA,            // Read data
+    PRESETn,           // Reset signal
+    PCLK,              // Clock signal
+    READ_WRITE,        // Read/Write control
+    transfer,          // Transfer enable
+    PREADY,            // Ready signal
+    PSEL1,             // Select signal for Slave 1
+    PSEL2,             // Select signal for Slave 2
+    PENABLE,           // Enable signal
+    PADDR,             // Address bus
+    PWRITE,            // Write enable signal
+    PWDATA,            // Write data bus
+    apb_read_data_out, // Read data output
+    PSLVERR            // Slave error signal
+  );
 
-  slave dut1 (PCLK,PRESETn,PSEL1,PENABLE,PWRITE,PADDR[7:0],PWDATA,PRDATA1,PREADY1);
+  // Instantiate Slave 1
+  slave dut1 (
+    PCLK,          // Clock signal
+    PRESETn,       // Reset signal
+    PSEL1,         // Select signal for Slave 1
+    PENABLE,       // Enable signal
+    PWRITE,        // Write enable signal
+    PADDR[7:0],    // Address bus (lower 8 bits)
+    PWDATA,        // Write data bus
+    PRDATA1,       // Read data output
+    PREADY1        // Ready signal
+  );
 
-  slave dut2 (PCLK,PRESETn,PSEL2,PENABLE,PWRITE,PADDR[7:0],PWDATA,PRDATA2,PREADY2);
+  // Instantiate Slave 2
+  slave dut2 (
+    PCLK,          // Clock signal
+    PRESETn,       // Reset signal
+    PSEL2,         // Select signal for Slave 2
+    PENABLE,       // Enable signal
+    PWRITE,        // Write enable signal
+    PADDR[7:0],    // Address bus (lower 8 bits)
+    PWDATA,        // Write data bus
+    PRDATA2,       // Read data output
+    PREADY2        // Ready signal
+  );
 
 endmodule
